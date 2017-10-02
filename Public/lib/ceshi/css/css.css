@@ -1,0 +1,121 @@
+html{height:100%}
+body{min-height: 100%;position: relative;font-size:14px;color:#333; background-color:#fff}
+
+.bg-1{ background-color:#f5fafe}
+h4{line-height:30px}
+
+/* 导航 */
+
+.navbar-nav a{color:#fff;}
+.navbar-nav a:focus,.navbar-nav a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.navbar-nav>li>a:focus, .navbar-nav>li>a:hover {
+    text-decoration: none;
+    background-color: #393D49;
+}
+.nav .open>a,.nav .open>a:focus,.nav .open>a:hover {
+	color: #fff;
+    text-decoration: none;
+    background-color: #393D49;
+}
+
+.navbar-primary.g-nav-bg {
+    background-color: #393D49!important;
+    border-color: #009688!important;
+    border-bottom-width: 2px;
+}
+
+.dropdown:hover .dropdown-menu1{
+        display:block;    
+        position: absolute;
+    }
+   .dropdown-menu1{
+    position: absolute;
+    top:30px;
+    left: -200px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    width: 500px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    
+    
+    
+}
+.s_nav{
+    position: absolute;
+    
+    z-index: 1000;
+    display: block;
+    float: left;
+    min-width: 160px;
+    width: 500px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+/*页面框架*/
+.Hui-header{position:absolute;top:0; right:0; left:0;height:44px;z-index:999; padding:0 15px}
+.Hui-aside{position: absolute;top:44px;bottom:0;left:0;padding-top:10px;width:199px;z-index:99;overflow:auto; background-color:rgba(238,238,238,0.98);_background-color:rgb(238,238,238);border-right: 1px solid #e5e5e5}
+.Hui-article-box{position: absolute;top:53px;right:0;bottom: 0;left:0px; z-index:1; background-color:#fff}
+  .Hui-article{position: absolute;top:34px;bottom:0;left:0; right:0;overflow:auto;z-index:1}
+.Hui-container{ padding:45px 0 0}
+.Hui-aside,.Hui-article-box,.dislpayArrow{-moz-transition: all 0.2s ease 0s;-webkit-transition: all 0.2s ease 0s;-ms-transition: all 0.2s ease 0s;-o-transition: all 0.2s ease 0s;transition: all 0.2s ease 0s}
+.big-page .Hui-article-box,.big-page .dislpayArrow,.big-page .breadcrumb{left:0px}
+.big-page .Hui-aside{ left:-200px}
+.page-container{ padding:20px}
+@media (max-width: 767px) {
+  .page-container{ padding:15px}
+}
+
+/*选项卡导航*/
+.Hui-tabNav-wp{position:relative; height:35px;overflow:hidden}
+.Hui-tabNav,
+.Hui-tabNav .acrossTab li
+,.Hui-tabNav .acrossTab li em{background-image:url(../images/acrossTab/acrossTab-2.png)}
+.Hui-tabNav{height:35px; padding-right:75px;overflow:hidden; position:relative;background-color:#efeef0; background-repeat: repeat-x; background-position: 0 -175px;}
+.Hui-tabNav .acrossTab{ position:absolute; height:26px; line-height:26px; background:none; top:8px; left:0;padding-top:0}
+.Hui-tabNav .acrossTab li{height:26px;line-height:26px;}
+.Hui-tabNav .acrossTab li em{ right:-16px; height: 26px; width: 16px}
+.loading {background:url(../images/loading.gif) no-repeat center; height:100px}
+.show_iframe{ position:absolute; top:0; right:0; left:0; bottom:0;}
+.show_iframe iframe {position: absolute;bottom: 0;height: 100%;width: 100%}
+.Hui-tabNav-more {position: absolute;right:0px;width:70px;top:4px;display: none}
+
+
+/*4.2.6 横向导向tab导航
+	Sample:
+	<ul class="acrossTab">
+	  <li>导航一<i></i><em></em></li>
+	  <li class="active">导航二<i></i><em></em></li>
+	  <li>导航三<i></i><em></em></li>
+	</ul>
+*/
+.acrossTab,.acrossTab li,.acrossTab li em{ background-image:url(../images/acrossTab/acrossTab-bg.png)}
+.acrossTab{height:29px; background-repeat: repeat-x; background-position: 0 0; padding-top:1px}
+.acrossTab li,.acrossTab li em{ background-repeat:no-repeat; background-position:0 0}
+.acrossTab li{position:relative;float:left; display:inline-block; height:29px; line-height:29px; font-size:12px;cursor:pointer;padding:0 30px; white-space:nowrap;color:#282828; background-position:0 0}
+.acrossTab li em{position:absolute; width:23px;height:29px;right:-20px; top:0;z-index:50; background-position:right -30px}
+.acrossTab li:hover{background-position:0 -60px}
+.acrossTab li:hover em{background-position:right -90px}
+.acrossTab li.active{background-position:0 -120px; z-index:99}
+.acrossTab li.active em{background-position:right -150px}
+.acrossTab li i{position:absolute; display:block; width:13px; height:13px; top:50%; margin-top:-6px; right:5px; font-size:0; line-height:0; cursor:pointer; background-image:url(../images/acrossTab/acrossTab-close.png); background-repeat:no-repeat; background-position:0 0}
+.acrossTab li i:hover{background-position:0 bottom}

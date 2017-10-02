@@ -1,0 +1,318 @@
+<extend name="Common/index" />
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<block name="css">
+	<style>
+		.pagination {
+			margin: 20px 0;
+		}
+		.pagination ul {
+			display: inline-block;
+			list-style:none;
+			*display: inline;
+			/* IE7 inline-block hack */
+			*zoom: 1;
+			margin-left: 0;
+			margin-bottom: 0;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+			-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+		.pagination ul > li {
+			display: inline;
+		}
+		.pagination ul > li > a,
+		.pagination ul > li > span,
+		.pagination #lastspan {
+			float: left;
+			padding: 4px 12px;
+			line-height: 20px;
+			text-decoration: none;
+			background-color: #ffffff;
+			border: 1px solid #dddddd;
+			border-left-width: 0;
+		}
+		.pagination ul > li > a:hover,
+		.pagination ul > li > a:focus,
+		.pagination ul > .active > a,
+		.pagination ul > .active > span {
+			background-color: #f5f5f5;
+		}
+		.pagination ul > .active > a,
+		.pagination ul > .active > span {
+				color: #999999;
+				cursor: default;
+		}
+		.pagination ul > .disabled > span,
+		.pagination ul > .disabled > a,
+		.pagination ul > .disabled > a:hover,
+		.pagination ul > .disabled > a:focus {
+			color: #999999;
+			background-color: transparent;
+			cursor: default;
+		}
+		.pagination ul > li:first-child > a,
+		.pagination ul > li:first-child > span {
+			border-left-width: 1px;
+			-webkit-border-top-left-radius: 4px;
+			-moz-border-radius-topleft: 4px;
+			border-top-left-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px;
+			-moz-border-radius-bottomleft: 4px;
+			border-bottom-left-radius: 4px;
+		}
+		.pagination ul > li:last-child > a,
+		.pagination ul > li:last-child > span,
+		.pagination #lastspan {
+			-webkit-border-top-right-radius: 4px;
+			-moz-border-radius-topright: 4px;
+			border-top-right-radius: 4px;
+			-webkit-border-bottom-right-radius: 4px;
+			-moz-border-radius-bottomright: 4px;
+			border-bottom-right-radius: 4px;
+		}
+		.pagination-centered {
+			text-align: center;
+		}
+		.pagination-right {
+			text-align: right;
+		}
+		.pagination-large ul > li > a,
+		.pagination-large ul > li > span,
+		.pagination-large #lastspan{
+			padding: 11px 19px;
+			font-size: 17.5px;
+		}
+		.pagination-large ul > li:first-child > a,
+		.pagination-large ul > li:first-child > span {
+			-webkit-border-top-left-radius: 6px;
+			-moz-border-radius-topleft: 6px;
+			border-top-left-radius: 6px;
+			-webkit-border-bottom-left-radius: 6px;
+			-moz-border-radius-bottomleft: 6px;
+			border-bottom-left-radius: 6px;
+		}
+		.pagination-large ul > li:last-child > a,
+		.pagination-large ul > li:last-child > span,
+		.pagination-large #lastspan {
+			-webkit-border-top-right-radius: 6px;
+			-moz-border-radius-topright: 6px;
+			border-top-right-radius: 6px;
+			-webkit-border-bottom-right-radius: 6px;
+			-moz-border-radius-bottomright: 6px;
+			border-bottom-right-radius: 6px;
+		}
+		.pagination-mini ul > li:first-child > a,
+		.pagination-small ul > li:first-child > a,
+		.pagination-mini ul > li:first-child > span,
+		.pagination-small ul > li:first-child > span {
+			-webkit-border-top-left-radius: 3px;
+			-moz-border-radius-topleft: 3px;
+			border-top-left-radius: 3px;
+			-webkit-border-bottom-left-radius: 3px;
+			-moz-border-radius-bottomleft: 3px;
+			border-bottom-left-radius: 3px;
+		}
+		.pagination-mini ul > li:last-child > a,
+		.pagination-small ul > li:last-child > a,
+		.pagination-mini ul > li:last-child > span,
+		.pagination-small ul > li:last-child > span {
+			-webkit-border-top-right-radius: 3px;
+			-moz-border-radius-topright: 3px;
+			border-top-right-radius: 3px;
+			-webkit-border-bottom-right-radius: 3px;
+			-moz-border-radius-bottomright: 3px;
+			border-bottom-right-radius: 3px;
+		}
+		.pagination-small ul > li > a,
+		.pagination-small ul > li > span {
+			padding: 2px 10px;
+			font-size: 11.9px;
+		}
+		.pagination-mini ul > li > a,
+		.pagination-mini ul > li > span {
+			padding: 0 6px;
+			font-size: 10.5px;
+		}
+		a:hover{
+			color:blue;
+			text-decoration:none;
+		}
+		a:active{
+			color:orange;
+			text-decoration:none;
+		}
+	</style>
+</block>
+<block name="content">
+	<div style="overflow: auto;">
+		<table class="table table-border table-bordered table-hover table-bg" id="table" style="margin-bottom:35px;">
+			<thead>
+				<tr class="text-c">
+					<th width="100">编号</th>
+					<th width="100">需求用途</th>
+					<th width="100">客户姓名</th>
+					<th width="100">客户来源</th>
+					<th width="100">需求区域</th>
+					<th width="100">需求小区</th>
+					<th width="120">需求面积</th>
+					<th width="100">需求价格</th>
+					<th width="100">户型</th>
+					<th width="100">沟通阶段</th>
+					<th width="100">维护人</th>
+					<th width="100">录入时间</th>
+					<th width="70">操作</th>
+				</tr>
+			</thead>
+			<tbody id="table1">
+				<volist name="keyuan" id="es">
+					<tr class="text-c" data-href="{:U('Keyuan1/neirong1',array('id'=>$es['id']))}" data-title="<if condition='$es.xqbianhao'>{$es.xqbianhao}</if>" <if condition='($es["weihurenid"] eq session("uid")) or ($es["zhuangtai"] eq 0) or (session("uid") eq 2)'> ondblclick="Hui_admin_tabb(this) </if>">
+						<td id="td">
+							<if condition='($es["weihurenid"] eq session("uid")) or ($es["zhuangtai"] eq 0) or (session("uid") eq 2)'>
+								<a data-href="{:U('Keyuan1/neirong1',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.xqbianhao}</if>" href="javascript:;" style="text-decoration:none">
+									{$es.xqbianhao}
+								</a>
+								<else/>{$es.xqbianhao}
+							</if>
+						</td>
+						<td>
+							<foreach name="yongtu" item="v">
+								<if condition='$es["xqyongtu"] eq $v["lxid"]'>
+									{$v.lxming}
+								</if>
+							</foreach>
+						</td>
+						<td>
+							{$es.khxingming}
+							<if condition='$es["kehulx"] eq 2'>
+								<foreach name="kehulx" item="vv">
+									<if condition='$es["kehulx"] eq $vv["lxid"]'>
+										{$vv.lxming}
+									</if>
+								</foreach>
+							</if>
+						</td>
+						<td>
+							<foreach name="laiyuan" item="vv">
+								<if condition='$es["khlaiyuan"] eq $vv["lxid"]'>
+									{$vv.lxming}
+								</if>
+							</foreach>
+						</td>
+						<td>
+							<div style="width: 80px;">
+								<div style="white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;">
+									{$es.xqquyu}
+								</div>
+							</div>
+						</td>
+						<td>
+							<div style="width: 80px;">
+								<div style="white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;">
+									{$es.xqxiaoqu}
+								</div>
+							</div>
+						</td>
+						<td>
+							<if condition='$es["xqmianji1"] and $es["xqmianji2"]'>
+								{$es["xqmianji1"]}平米
+								~
+								{$es["xqmianji2"]}平米
+								<elseif condition='$es["xqmianji1"]'/>
+								{$es["xqmianji1"]}平米以上
+								<elseif condition='$es["xqmianji2"]'/>
+								{$es["xqmianji2"]}平米以下
+							</if>
+						</td>
+						<td>
+							<if condition='$es["xqjiage1"] and $es["xqjiage2"]'>
+								{$es["xqjiage1"]}万
+								~
+								{$es["xqjiage2"]}万
+								<elseif condition='$es["xqjiage1"]'/>
+								{$es["xqjiage1"]}万以上
+								<elseif condition='$es["xqjiage2"]'/>
+								{$es["xqjiage2"]}万以下
+							</if>
+						</td>
+						<td>
+							<if condition='$es["xqhuxing1"] and $es["xqhuxing2"]'>
+								{$es["xqhuxing1"]}室
+								~
+								{$es["xqhuxing2"]}室
+								<elseif condition='$es["xqhuxing1"]'/>
+								{$es["xqhuxing1"]}室以上
+								<elseif condition='$es["xqhuxing2"]'/>
+								{$es["xqhuxing2"]}室以下
+							</if>
+						</td>
+						<td>
+							<foreach name="gtjieduan" item="vv">
+								<if condition='$es["gtjieduan"] eq $vv["lxid"]'>
+									{$vv.lxming}
+								</if>
+							</foreach>
+						</td>
+						<td>
+							{$es["weihuren"]}
+						</td>
+						<td>
+							<?php $lurusj=time()-$es["lurusj"];if($lurusj>259200){echo (date('y-m-d',$es["lurusj"]));}else{ echo format_date($es["lurusj"]);} ?>
+						</td>
+						<td class="f-14" id="td">
+							<if condition='($es["weihurenid"] eq session("uid")) or ($es["zhuangtai"] eq 0) or (session("uid") eq 2)'>
+								<a data-href="{:U('Keyuan1/neirong1',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.xqbianhao}</if>" href="javascript:;" style="text-decoration:none">
+									查看
+								</a>
+							</if>
+						</td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+	<div>
+	<div class="pagination" style="width:100%;height:30px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;">
+		{$page}
+	</div>
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+		/*管理员-角色-添加*/
+		function admin_esfy_add(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		/*管理员-角色-编辑*/
+		function admin_esfy_edit(title,url,id,w,h){
+			layer_show(title,url,w,h);
+		}
+		/*管理员-角色-删除*/
+		function admin_esfy_del(obj,id){
+			layer.confirm('房源删除须谨慎，确认要删除吗？',function(index){
+				$.ajax({
+					type: 'POST',
+					url: '{:U('Fangyuan/delEsfy')}',
+					data: {'id':id},
+					dataType: 'json',
+					success: function(data){
+						$(obj).parents("tr").remove();
+						layer.msg('已删除!',{icon:1,time:1000});
+					},
+					error:function(data) {
+						console.log(data.msg);
+					},
+				});
+			});
+		}
+	</script>
+</block>

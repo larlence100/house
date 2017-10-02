@@ -1,0 +1,291 @@
+<extend name="Common/index" />
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<block name="css">
+
+<style type="text/css">
+html,body{
+  margin: 0px 0px;
+  width: 100%;
+  height: 100%;
+  
+  }
+
+.pagination {  
+  margin: 20px 0;  
+}  
+.pagination ul {  
+  display: inline-block;  
+  list-style:none;  
+  *display: inline;  
+  /* IE7 inline-block hack */  
+  
+  *zoom: 1;  
+  margin-left: 0;  
+  margin-bottom: 0;  
+  -webkit-border-radius: 4px;  
+  -moz-border-radius: 4px;  
+  border-radius: 4px;  
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  
+}  
+.pagination ul > li {  
+  display: inline;  
+}  
+.pagination ul > li > a,  
+.pagination ul > li > span,  
+.pagination #lastspan {  
+  float: left;  
+  padding: 4px 12px;  
+  line-height: 20px;  
+  text-decoration: none;  
+  background-color: #ffffff;  
+  border: 1px solid #dddddd;  
+  border-left-width: 0;  
+}  
+.pagination ul > li > a:hover,  
+.pagination ul > li > a:focus,  
+.pagination ul > .active > a,  
+.pagination ul > .active > span {  
+  background-color: #f5f5f5;  
+}  
+.pagination ul > .active > a,  
+.pagination ul > .active > span {  
+  color: #999999;  
+  cursor: default;  
+}  
+.pagination ul > .disabled > span,  
+.pagination ul > .disabled > a,  
+.pagination ul > .disabled > a:hover,  
+.pagination ul > .disabled > a:focus {  
+  color: #999999;  
+  background-color: transparent;  
+  cursor: default;  
+}  
+.pagination ul > li:first-child > a,  
+.pagination ul > li:first-child > span {  
+  border-left-width: 1px;  
+  -webkit-border-top-left-radius: 4px;  
+  -moz-border-radius-topleft: 4px;  
+  border-top-left-radius: 4px;  
+  -webkit-border-bottom-left-radius: 4px;  
+  -moz-border-radius-bottomleft: 4px;  
+  border-bottom-left-radius: 4px;  
+}  
+.pagination ul > li:last-child > a,  
+.pagination ul > li:last-child > span,  
+.pagination #lastspan {  
+  -webkit-border-top-right-radius: 4px;  
+  -moz-border-radius-topright: 4px;  
+  border-top-right-radius: 4px;  
+  -webkit-border-bottom-right-radius: 4px;  
+  -moz-border-radius-bottomright: 4px;  
+  border-bottom-right-radius: 4px;  
+}  
+.pagination-centered {  
+  text-align: center;  
+}  
+.pagination-right {  
+  text-align: right;  
+}  
+.pagination-large ul > li > a,  
+.pagination-large ul > li > span,  
+.pagination-large #lastspan{  
+  padding: 11px 19px;  
+  font-size: 17.5px;  
+}  
+.pagination-large ul > li:first-child > a,  
+.pagination-large ul > li:first-child > span {  
+  -webkit-border-top-left-radius: 6px;  
+  -moz-border-radius-topleft: 6px;  
+  border-top-left-radius: 6px;  
+  -webkit-border-bottom-left-radius: 6px;  
+  -moz-border-radius-bottomleft: 6px;  
+  border-bottom-left-radius: 6px;  
+}  
+.pagination-large ul > li:last-child > a,  
+.pagination-large ul > li:last-child > span,  
+.pagination-large #lastspan {  
+  -webkit-border-top-right-radius: 6px;  
+  -moz-border-radius-topright: 6px;  
+  border-top-right-radius: 6px;  
+  -webkit-border-bottom-right-radius: 6px;  
+  -moz-border-radius-bottomright: 6px;  
+  border-bottom-right-radius: 6px;  
+}  
+.pagination-mini ul > li:first-child > a,  
+.pagination-small ul > li:first-child > a,  
+.pagination-mini ul > li:first-child > span,  
+.pagination-small ul > li:first-child > span {  
+  -webkit-border-top-left-radius: 3px;  
+  -moz-border-radius-topleft: 3px;  
+  border-top-left-radius: 3px;  
+  -webkit-border-bottom-left-radius: 3px;  
+  -moz-border-radius-bottomleft: 3px;  
+  border-bottom-left-radius: 3px;  
+}  
+.pagination-mini ul > li:last-child > a,  
+.pagination-small ul > li:last-child > a,  
+.pagination-mini ul > li:last-child > span,  
+.pagination-small ul > li:last-child > span {  
+  -webkit-border-top-right-radius: 3px;  
+  -moz-border-radius-topright: 3px;  
+  border-top-right-radius: 3px;  
+  -webkit-border-bottom-right-radius: 3px;  
+  -moz-border-radius-bottomright: 3px;  
+  border-bottom-right-radius: 3px;  
+}  
+.pagination-small ul > li > a,  
+.pagination-small ul > li > span {  
+  padding: 2px 10px;  
+  font-size: 11.9px;  
+}  
+.pagination-mini ul > li > a,  
+.pagination-mini ul > li > span {  
+  padding: 0 6px;  
+  font-size: 10.5px;  
+}
+
+  
+	</style>
+</block>
+
+
+<block name="content">
+<div style="overflow: auto;">
+<table class="table table-border table-bordered table-hover table-bg table-sort" id="table"  style="margin-bottom:20px;">
+		<thead>
+            
+            <tr class="text-c">
+                
+					<th>标签</th>
+					<th>编号</th>
+					<th>地址</th>
+					<th>面积</th>
+					<th>价格</th>
+					<th>单价</th>
+					<th>户型</th>
+					<th>楼层</th>
+					<th>朝向</th>
+					<th>房龄</th>
+					<th>物业类型</th>
+					<th>装修</th>
+<th>录入时间</th>
+					<th>操作</th>
+            </tr>
+        </thead>
+			
+			<tbody id="table1" style="">
+				<volist name="fangyuan" id="es" empty='没有数据'>
+					<tr class="text-c" data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>"  ondblclick="Hui_admin_tabb(this)">
+						
+						<td>
+							<if condition='$es["tupian"]'><span class="label label-primary radius">图</span></if>
+							<if condition='$es["xuequ"]'><span class="label label-success radius">学</span></if>
+							<if condition='($es["shouyaobm"]) or ($es["shouyaoren"])'><span class="label label-secondary radius">钥</span></if>
+							<if condition='$es["jishou"]'><span class="label label-danger radius">急</span></if>                                          
+                            <if condition='$es["dqshu"] gt 9'><span class="label label-warning radius">精</span></if>
+                        </td>
+						<td id="td">
+						<a data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>" href="javascript:void;" style="color:red;">
+								{$es.bianhao}
+							</a> 
+						</td>
+						<td>{$es.xiaoqum}</td>
+						<td>{$es.mianji}</td>
+
+						<td><if condition="$es['shoujia'] gt 0">{$es.shoujia}万元</if>
+							<if condition="$es['zujia']">{$es.zujia}
+								<foreach name="zujialx" item="v">
+								<if condition='$es["zujialx"] eq $v["lxid"]'>{$v.lxming}</if>
+							</foreach>
+							</if>
+						</td>
+						<td>{$es.danjia}</td>
+						<td>
+							<if condition='$es["shi"]'>{$es["shi"]}室</if>
+							<if condition='$es["ting"]'>{$es["ting"]}厅</if>
+							<if condition='$es["wei"]'>{$es["wei"]}卫</if>
+							<if condition='$es["chu"]'>{$es["chu"]}厨</if>
+							<if condition='$es["yangtai"]'>{$es["yangtai"]}阳台</if>
+						</td>
+						<td>{$es.louceng}/{$es.zlouceng}</td>
+						<td>
+							<if condition='$es["chaoxiang"]'>
+							<foreach name="chaoxiang" item="v">
+								<if condition='$es["chaoxiang"] eq $v["lxid"]'>{$v.lxming}</if>
+							</foreach>
+							<else/>不详</if>
+						</td>
+						<td>
+							<if condition='$es["niandai"]'>{$es.niandai}<else/>不详</if>
+						</td>
+						<td>
+							<foreach name="yongtu" item="v">
+								<if condition='$es["yongtu"] eq $v["lxid"]'>{$v.lxming}</if>
+							</foreach>
+						</td>
+						<td>
+							<foreach name="zhuangxiu" item="v">
+								<if condition='$es["zhuangxiu"] eq $v["lxid"]'>{$v.lxming}</if>
+							</foreach>
+						</td>
+						<td><?php $shij=time()-$es["lurusj"];if($shij>259200){echo (date('y-m-d',$es["lurusj"]));}else{ echo format_date($es["lurusj"]);} ?></td>
+						<td class="f-14" id="td">
+							<a data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>" href="javascript:void;" style="color:red;">
+								详情
+							</a> 
+						</td>
+					</tr>
+				</volist>
+				<tr><td></td></tr>
+			</tbody>
+		</table>
+</div>
+<div class="pagination" style="width:100%;
+    height: 31px;
+    margin: 0 auto;
+    background:#fff;
+    position:fixed;
+    bottom: -1px;
+    text-align:center;">{$page}</div>
+	</block>
+	<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	</block>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

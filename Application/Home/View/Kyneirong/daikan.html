@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <head>
+        <meta charset="utf-8">
+        <title>layui</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="__PUBLIC__/lib/layui/css/layui.css"  media="all">
+        <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+        <style type="text/css">
+            #greetings{
+                position: absolute;
+                height: auto;
+                border-left: 1px solid rgba(0, 0, 0, 0.11);
+                border-right: 1px solid rgba(0, 0, 0, 0.11);
+                left: 0px;
+                z-index:5555; 
+                display: none;
+            }
+            #greetings ul{
+                list-style: none;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.44);
+                -webkit-margin-before: 0em;
+                -webkit-margin-after: 0em;
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+                -webkit-padding-start: 0px;
+            }
+            #greetings li{
+                text-align: left;
+                padding: 5px;
+                font-family: inherit;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+                height: 25px;
+                width: 180px;
+                line-height: 25px;
+                background-color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+            }
+            #greetings li:hover{
+                background-color: rgba(175, 42, 0, 0.52);
+                color: white;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/layui/css/layui.css">
+    </head>
+    <body>
+        <div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;display:none;">
+            <legend>客源写带看</legend>
+        </fieldset>
+        <form class="layui-form" action="__URL__/daikanHandle" method="post" style="margin-top: 20px;">
+            <input type="hidden" name="gongsiid" id="" value="{$_SESSION['gongsiid']}">
+            <input type="hidden" name="kybh" id="" value="{$_GET['kybh']}">
+            <input type="hidden" name="kyid" id="" value="{$_GET['kyid']}">
+            <input type="hidden" name="dkuid" id="" value="{$_GET['uid']}">
+            <div class="layui-inline">
+                <label class="layui-form-label">
+                    带看房源
+                </label>
+                <div class="layui-input-block">
+                    <textarea type="text" name="dkfangyuan" autocomplete="off" placeholder="点击搜索" class="layui-input" id="sousuo1" lay-verify="required" style="width: 555px;" readonly=""></textarea>
+                    <input type="hidden" name="fangyuan" id="fangyuan">
+                    <div id="greetings">
+                        <input type="text" name="" autocomplete="off" placeholder="请输入房源编号" class="layui-input" id="sousuo" style="width: 222px;">
+                        <ul id="tcontent"></ul>
+                    </div>
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <a class="layui-btn layui-btn-primary" id="cz1">重置</a>
+            <div>&nbsp;</div>
+            <div class="layui-form-item layui-form-text" style="width:666px;">
+                <label class="layui-form-label">客户评价</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" name="kehupj" class="layui-textarea" lay-verify="required"></textarea>
+                </div>
+            </div>
+            <div style="height: 50px;"></div>
+            <div class="layui-form-item" style="width:100%;height:45px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;border-top-style: solid;border-top-width: 1px;border-top-color: #009688;padding-top: 5px;" id="submit">
+                <div class="layui-input-block" style="margin-left: -15px;">
+                    <button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-radius layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+        <script src="__PUBLIC__/lib/layui/layui.js" charset="utf-8"></script>
+        <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+        <script>
+            layui.use(['form', 'layedit', 'laydate'], function(){
+                var form = layui.form()
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate;
+                //监听提交
+                form.on('submit(demo1)', function(data){
+                    parent.layer.msg('更新成功',{time:3600});
+                    setTimeout("parent.location.reload();",{time:3600});
+                });
+            });
+            $("#sousuo1").click(function(){
+                var display =$('#greetings').css('display');
+                if(display == 'none'){
+                    $("#greetings").show();
+                }else{
+                    $("#greetings").hide(); 
+                }
+            })
+            $("#sousuo").keyup(function(){
+                $("#greetings").show();
+                var txt=$("#sousuo").val();
+                if (txt!="") {
+                    $.ajax({
+                        url:'{:U('Kyneirong/get_bianhao')}',
+                        Type:"POST",
+                        data:"txt="+txt,
+                        dataType:"json",
+                        success:function(data){
+                            var district = data.district;
+                            $("#tcontent li").remove();
+                            for(var i in district){
+                                var li=$("<li></li>");
+                                $(li).attr('dataid',district[i]['id']);
+                                $(li).html(district[i]['bianhao']);
+                                $("#tcontent").append(li);
+                            }
+                        }
+                    });
+                }
+            });
+            $("#tcontent").on("click","li", function() {  
+                $("#greetings").show();
+                var Uarry=$("#tcontent li");
+                var count=$(this).index();
+                var Tresult=Uarry.eq(count).text();
+                var bianhao=Uarry.eq(count).attr('dataid');
+                var bb=$("#sousuo1").val();
+                bb+=Tresult+';';
+                $("#bianhao").val(bianhao);
+                $("#sousuo1").val(bb);
+                $("#sousuo").val("");
+                $("#greetings").hide();
+            })
+            $("#cz1").click(function(){
+                $("#sousuo1").val("");
+            });
+        </script>
+    </body>
+</html>

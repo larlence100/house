@@ -1,0 +1,149 @@
+<extend name="Common/index"/>
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<block name="content">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/layui/css/layui.css">
+		<div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div> 
+	<article class="page-container">
+		
+
+		<form action="__URL__/editPianquHandle" method="post" class="form form-horizontal" id="form-admin-pianqu-edit">
+			<input type="hidden" name="id" value="{$pianqu.id}"/>
+			<br/>
+			<div class="col-xs-12 col-sm-12">
+				<div class="row cl">
+					<label class="form-label col-xs-3 col-sm-offset-1">
+						<span class="c-red">*</span>片区名称：
+					</label>
+					<div class="formControls col-xs-5">
+						<input type="text" class="input-text" value="{$pianqu.pianqum}" placeholder="" id="pianqum" name="pianqum" required="required">
+					</div>
+				</div>
+                <br/>
+                <div class="row cl">
+                    <label class="form-label col-xs-3 col-sm-offset-1">
+                        <span class="c-red">*</span>拼音检索：
+                    </label>
+                    <div class="formControls col-xs-5">
+                        <input type="text" class="input-text" value="{$pianqu.pinyinjs}" placeholder="" id="pinyinjs" name="pinyinjs" required="required">
+                    </div>
+                </div>
+				<br/>
+				<div class="row cl">
+					<label class="form-label col-xs-3 col-sm-offset-1">
+						<span class="c-red">*</span>所属行政区：
+					</label>
+					<div class="formControls col-xs-5">
+						<select nullmsg="请选择行政区" datatype="" value="{$pianqu.ssxzq}" id="ssxzq" name="ssxzq" size="1" class="input-text radius" required>
+							<foreach name="ssxzq" item="pq">
+								<option style="display:none"></option>
+	                			<option value="{$pq.id}" <if condition='$pianqu["ssxzq"] eq $pq["id"]'>selected=""</if>>{$pq.xzqming}</option>
+	                		</foreach>
+	              		</select>
+					</div>
+				</div>
+				<br/>
+				<div class="row cl">
+					<label class="form-label col-xs-3 col-sm-offset-1">
+						经度：
+					</label>
+					<div class="formControls col-xs-5">
+						<input type="text" class="input-text" value="{$pianqu.jingdu}" placeholder="点击选择经纬度" id="jingdu" name="jingdu" readonly="readonly">
+					</div>
+				</div>
+				<br/>
+				<div class="row cl">
+					<label class="form-label col-xs-3 col-sm-offset-1">
+						维度：
+					</label>
+					<div class="formControls col-xs-5">
+						<input type="text" class="input-text" value="{$pianqu.weidu}" placeholder="点击选择经纬度" id="weidu" name="weidu" readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item" style="width:100%;height:50px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;border-top-style: solid;border-top-width: 1px;border-top-color: #009688;padding-top: 5px; margin-left: -15px">
+                <div class="layui-form-item"  style="margin-left: -15px;">
+                    <button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即更新</button>
+                    <button type="reset" class="layui-btn layui-btn-radius layui-btn-primary">重置</button>
+                </div>
+            </div>
+		</form>
+	</article>
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".permission-list dt input:checkbox").click(function(){
+				$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+			});
+			$(".permission-list2 dd input:checkbox").click(function(){
+				var l =$(this).parent().parent().find("input:checked").length;
+				var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+				if($(this).prop("checked")){
+					$(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+					$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+				}
+				else{
+					if(l==0){
+						$(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+					}
+					if(l2==0){
+						$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+					}
+				}
+			});
+			$("#form-admin-pianqu-edit").validate({
+				rules:{
+					roleName:{
+						required:true,
+					},
+				},
+				onkeyup:false,
+				focusCleanup:true,
+				success:"valid",
+				submitHandler:function(form){
+					$(form).ajaxSubmit();
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.location.reload();
+					parent.layer.msg('更新成功');
+					parent.layer.close(index);
+				}
+			});
+		});
+	</script>
+	<script>
+        $("#jingdu").click(function(){
+            layer.open({
+		      type: 2,
+		      title: '',
+		      shadeClose: true,
+		      shade: false,
+		      maxmin: true, //开启最大化最小化按钮
+		      area: ['800px', '400px'],
+		      content: '{:U('Ziyuan/editjw',array('id'=>$pianqu['id']))}'
+			});
+		})
+        $("#weidu").click(function(){
+            layer.open({
+		      type: 2,
+		      title: '',
+		      shadeClose: true,
+		      shade: false,
+		      maxmin: true, //开启最大化最小化按钮
+		      area: ['800px', '400px'],
+		      content: '{:U('Ziyuan/editjw',array('id'=>$pianqu['id']))}'
+			});
+		})
+	</script>
+	<!--/请在上方写此页面业务相关的脚本-->
+</block>

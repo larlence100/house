@@ -1,0 +1,478 @@
+[ 2017-06-17T09:05:30+08:00 ] 220.178.213.186 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001166s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002261s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002309s ]
+
+[ 2017-06-17T09:05:30+08:00 ] 220.178.213.186 /index.php/home/login/regist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000332s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000402s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000449s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015258s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015306s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001416s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002479s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000950s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000999s ]
+
+[ 2017-06-17T09:05:30+08:00 ] 220.178.213.186 /index.php/home/login/regist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000314s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000441s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0011s ]
+SQL: SELECT `keyid` FROM `jjrxt_yonghu` WHERE `keyid` = '11faee6d12c1f62c' AND `gongsiid` = 10000 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `jjrxt_mac` [ RunTime:0.0010s ]
+SQL: SELECT `macid`,`shenhe` FROM `jjrxt_mac` WHERE `macid` = '8C-70-5A-39-57-34' LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2017-06-17T09:05:30+08:00 ] 220.178.213.186 /index.php/home/login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000329s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003971s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004018s ]
+NOTIC: [8] Undefined index: mmm /www/web/dahuainan_t/public_html/Application/Home/Controller/LoginController.class.php 第 7 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000105s ]
+NOTIC: [8] Undefined variable: verifyerror /www/web/dahuainan_t/public_html/Application/Runtime/Cache/Home/5b6adcb62ad2b5dfc2abc2cd5e11dc99.php 第 50 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017267s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017304s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000235s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002344s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002637s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000432s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000479s ]
+
+[ 2017-06-17T09:05:39+08:00 ] 220.178.213.186 /index.php/home/login/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004282s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000461s ]
+SQL: SHOW COLUMNS FROM `jjrxt_mac` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `jjrxt_mac` WHERE `macid` = '8C-70-5A-39-57-34' AND `shenhe` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `jjrxt_yonghu` WHERE `dianhua` = 'admin' AND `gongsiid` = 10000 LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `jjrxt_yonghu` WHERE `dianhua` = 'admin' AND `gongsiid` = 10000 LIMIT 1   [ RunTime:0.0007s ]
+SQL: UPDATE `jjrxt_yonghu` SET `logintime`='1497661539',`loginip`='220.178.213.186' WHERE `id` = 1 [ RunTime:0.0007s ]
+
+[ 2017-06-17T09:05:39+08:00 ] 220.178.213.186 /index.php/home/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000340s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000442s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `jjrxt_yonghu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000187s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037035s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037083s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000273s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000494s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000839s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000431s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000479s ]
+
+[ 2017-06-17T09:05:40+08:00 ] 220.178.213.186 /index.php/home/index/welcome.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000327s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005031s ]
+SQL: SHOW COLUMNS FROM `jjrxt_xianzhi` [ RunTime:0.0009s ]
+SQL: SELECT a.shijian,c.bmming,b.ygmingcheng,d.bianhao,d.id FROM `jjrxt_xianzhi` `a`,`jjrxt_yonghu` `b`,`jjrxt_bumen` `c`,`jjrxt_fangyuan` `d` WHERE ( a.uid=b.id and b.bumen=c.id and a.fyid=d.id ) ORDER BY a.shijian desc LIMIT 10   [ RunTime:0.0530s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0019s ]
+SQL: SELECT a.ygmingcheng,a.dianhua,a.touxiang,a.ygbianhao,b.bmming FROM `jjrxt_yonghu` `a`,`jjrxt_bumen` `b` WHERE ( a.bumen=b.id and a.id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `jjrxt_shoucang` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `jjrxt_shoucang` WHERE `user_id` = 1  [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `jjrxt_fangyuan` [ RunTime:0.0011s ]
+SQL: select count(*) from jjrxt_fangyuan where gongsiid=10000 and id in (2,7,8) [ RunTime:0.0025s ]
+SQL: select * from jjrxt_fangyuan where gongsiid=10000 and id in (2,7,8) limit 0,10 [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `jjrxt_xingzhengqu` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `jjrxt_xingzhengqu`  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `jjrxt_xiaoqu` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `jjrxt_xiaoqu` WHERE `gongsiid` = 10000  [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `jjrxt_peizhi` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `jjrxt_peizhi` WHERE `pzming` = 'zhuangtai'  [ RunTime:0.0018s ]
+SQL: SELECT * FROM `jjrxt_peizhi` WHERE `pzming` = 'ggleibie'  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `jjrxt_peizhi` WHERE `pzming` = 'zujialx'  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `jjrxt_peizhi` WHERE `pzming` = 'leixing'  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `jjrxt_peizhi` WHERE `pzming` = 'yongtu'  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `jjrxt_yonghu` [ RunTime:0.0008s ]
+SQL: SELECT `xzchakan` FROM `jjrxt_yonghu` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `jjrxt_xianzhi` [ RunTime:0.0011s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `jjrxt_xianzhi` WHERE `uid` = 1 AND `time` = '06-17' LIMIT 1   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `jjrxt_gsgonggao` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `jjrxt_gsgonggao` GROUP BY ggshijian desc LIMIT 7   [ RunTime:0.0031s ]
+SQL: SELECT `ygmingcheng` FROM `jjrxt_yonghu` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: select FROM_UNIXTIME(lurusj, "%Y-%m-%d") as datetime,count(id) as fycount from jjrxt_fangyuan where weihurenid=1 and lurusj>= 1496246400 and lurusj < 1497661539 group by datetime [ RunTime:0.0141s ]
+SQL: select FROM_UNIXTIME(lurusj, "%Y-%m-%d") as datetime,count(id) as kycount from jjrxt_keyuan where weihurenid=1 and lurusj>= 1496246400 and lurusj < 1497661539 group by datetime [ RunTime:0.0018s ]
+SQL: select FROM_UNIXTIME(shijian, "%Y-%m-%d") as datetime,count(id) as fygjcount from jjrxt_fygenjin where uid=1 and shijian>= 1496246400 and shijian < 1497661539 group by datetime [ RunTime:0.0015s ]
+SQL: select FROM_UNIXTIME(gjshijian, "%Y-%m-%d") as datetime,count(id) as kygjcount from jjrxt_kygenjin where gjuid=1 and gjshijian>= 1496246400 and gjshijian < 1497661539 group by datetime [ RunTime:0.0007s ]
+SQL: select FROM_UNIXTIME(a.create_time, "%Y-%m-%d") as datetime,count(*) as tupiancount from (select * from jjrxt_photo where uid=1 and create_time>= 1496246400 and create_time < 1497661539 group by fybh) as a group by datetime [ RunTime:0.0026s ]
+SQL: select FROM_UNIXTIME(lurusj, "%Y-%m-%d") as datetime,count(id) as yaoshicount from jjrxt_fangyuan where shouyaoren=1 and lurusj>= 1496246400 and lurusj < 1497661539 group by datetime [ RunTime:0.0157s ]
+SQL: select FROM_UNIXTIME(shijian, "%Y-%m-%d") as datetime,count(id) as fydiaoqucount from jjrxt_xianzhi where uid=1 and shijian>= 1496246400 and shijian < 1497661539 group by datetime [ RunTime:0.0022s ]
+SQL: select FROM_UNIXTIME(dkshijian, "%Y-%m-%d") as datetime,count(id) as daikancount from jjrxt_kydaikan where dkuid=1 and dkshijian>= 1496246400 and dkshijian < 1497661539 group by datetime [ RunTime:0.0018s ]
+SQL: select FROM_UNIXTIME(a.dkshijian, "%Y-%m-%d") as datetime,count(id) as daipancount from (select * from jjrxt_kydaikan group by kybh) as a where a.dkuid=1 and a.dkshijian>= 1496246400 and a.dkshijian < 1497661539 group by datetime [ RunTime:0.0007s ]
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: fangyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 77 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: keyuan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 81 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: fygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 85 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: kygenjin1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: tupian1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 93 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: yaoshi1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: fydiaoqu1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 101 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daikan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 105 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: daipan1 /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 109 行.
+NOTIC: [8] Undefined variable: zong /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 117 行.
+NOTIC: [8] Undefined index: kycount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 118 行.
+NOTIC: [8] Undefined index: fygjcount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 119 行.
+NOTIC: [8] Undefined index: fydiaoqucount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 120 行.
+NOTIC: [8] Undefined index: kygjcount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 121 行.
+NOTIC: [8] Undefined index: tupiancount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 122 行.
+NOTIC: [8] Undefined index: yaoshicount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 123 行.
+NOTIC: [8] Undefined index: daikancount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 124 行.
+NOTIC: [8] Undefined index: daipancount /www/web/dahuainan_t/public_html/Application/Home/Controller/BaobiaoController.class.php 第 125 行.
+SQL: SHOW COLUMNS FROM `jjrxt_bumen` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `jjrxt_bumen` WHERE `gongsiid` = 10000  [ RunTime:0.0015s ]
+SQL: SELECT `bumen` FROM `jjrxt_yonghu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `jjrxt_yonghu` WHERE `bumen` = 2 AND `gongsiid` = 10000  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000216s ]
+NOTIC: [8] Undefined index: _ACCESS_LIST /www/web/dahuainan_t/public_html/Application/Runtime/Cache/Home/51f56f8f375e1b2493439729eff22748.php 第 144 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054529s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057695s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000259s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000416s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000737s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000464s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000513s ]
+

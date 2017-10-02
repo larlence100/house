@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="__PUBLIC__/favicon.ico" >
+<link rel="Shortcut Icon" href="__PUBLIC__/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__PUBLIC__/lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/layui/css/layui.css"  media="all">
+<!--[if IE 6]>
+<script type="text/javascript" src="__PUBLIC__/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+
+</head>
+<body >
+<script src="__PUBLIC__/lib/Syunew3.js"></script>
+<script type="text/javascript">
+
+var bConnect=0;
+ 
+function load()
+{
+    //如果是IE10及以下浏览器，则跳过不处理，
+    if(navigator.userAgent.indexOf("MSIE")>0 && !navigator.userAgent.indexOf("opera") > -1) return;
+    try
+    {
+        var s_pnp=new SoftKey3W();
+         s_pnp.Socket_UK.onopen = function() 
+        {
+               bConnect=1;//代表已经连接，用于判断是否安装了客户端服务
+        } 
+        
+        //在使用事件插拨时，注意，一定不要关掉Sockey，否则无法监测事件插拨
+        s_pnp.Socket_UK.onmessage =function got_packet(Msg) 
+        {
+            var PnpData = JSON.parse(Msg.data);
+            if(PnpData.type=="PnpEvent")//如果是插拨事件处理消息
+            {
+                if(PnpData.IsIn) 
+                {
+                        alert("UKEY已被插入，被插入的锁的路径是："+PnpData.DevicePath);
+                }
+                else
+                {
+                        alert("UKEY已被拨出，被拨出的锁的路径是："+PnpData.DevicePath);
+                }
+            }
+        } 
+        
+        s_pnp.Socket_UK.onclose = function()
+        {
+            
+        }
+   }
+   catch(e)  
+   {  
+        alert(e.name + ": " + e.message);
+        return false;
+    }  
+}
+
+var digitArray = new Array('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f');
+
+function toHex( n ) {
+
+        var result = ''
+        var start = true;
+
+        for ( var i=32; i>0; ) {
+                i -= 4;
+                var digit = ( n >> i ) & 0xf;
+
+                if (!start || digit != 0) {
+                        start = false;
+                        result += digitArray[digit];
+                }
+        }
+
+        return ( result == '' ? '0' : result );
+}
+function login_onclick() 
+{
+    //如果是IE10及以下浏览器，则使用AVCTIVEX控件的方式
+    if(navigator.userAgent.indexOf("MSIE")>0 && !navigator.userAgent.indexOf("opera") > -1) return Handle_IE10();
+    bConnect=1;
+    //判断是否安装了服务程序，如果没有安装提示用户安装
+    if(bConnect==0)
+    {
+        window.alert ( "未能连接服务程序，请确定服务程序是否安装。");return false;
+    }
+	 try
+	 {
+		var DevicePath,mylen,ret,keyid,username,mykey,outstring,address,mydata,i,InString,versionex,version,seed;
+		var ProduceDate,macAddr;
+		
+		
+        //由于是使用事件消息的方式与服务程序进行通讯，
+        //好处是不用安装插件，不分系统及版本，控件也不会被拦截，同时安装服务程序后，可以立即使用，不用重启浏览器
+        //不好的地方，就是但写代码会复杂一些
+        var s_simnew1=new SoftKey3W(); //创建UK类
+			
+		 s_simnew1.Socket_UK.onopen = function() {
+	   	   s_simnew1.ResetOrder();//这里调用ResetOrder将计数清零，这样，消息处理处就会收到0序号的消息，通过计数及序号的方式，从而生产流程
+	    } 
+		    
+		 //写代码时一定要注意，每调用我们的一个UKEY函数，就会生产一个计数，即增加一个序号，较好的逻辑是一个序号的消息处理中，只调用我们一个UKEY的函数
+	    s_simnew1.Socket_UK.onmessage =function got_packet(Msg) 
+	    {
+	        var UK_Data = JSON.parse(Msg.data);
+	        if(UK_Data.type!="Process")return ;//如果不是流程处理消息，则跳过
+	        //alert(Msg.data);
+	        switch(UK_Data.order) 
+	        {
+	            case 0:
+	                {
+	                    s_simnew1.FindPort(0);//查找加密锁
+	                }
+	                break;//!!!!!重要提示，如果在调试中，发现代码不对，一定要注意，是不是少了break,这个少了是很常见的错误
+	            case 1:
+	                {
+	                    if( UK_Data.LastError!=0){window.alert ( "未发现加密锁，请插入加密锁");s_simnew1.Socket_UK.close();return false;} 
+	                    DevicePath=UK_Data.return_value;//获得返回的UK的路径
+	                    
+				         s_simnew1.GetID_1(DevicePath); //'读取锁的ID
+				    }
+				    break;
+				case 2:
+				    {	
+				        if( UK_Data.LastError!=0){window.alert("读取锁的ID时错误，错误码为："+UK_Data.LastError.toString());s_simnew1.Socket_UK.close();return false;}
+				        keyid=toHex(UK_Data.return_value);
+				        
+				        s_simnew1.GetID_2(DevicePath); //'读取锁的ID
+				    }
+				    break;
+				case 3:
+				    {	
+				        if( UK_Data.LastError!=0){window.alert("读取锁的ID时错误，错误码为："+UK_Data.LastError.toString());s_simnew1.Socket_UK.close();return false;}
+				        keyid=keyid+toHex(UK_Data.return_value);
+				        document.getElementById("keyid").value=keyid;
+				        
+				        s_simnew1.MacAddr();  //读电脑的MAC地址
+				    }
+				    break;			
+				
+	            }
+	     }
+    	    
+		 s_simnew1.Socket_UK.onclose = function(){
+
+	     }
+		 return true;
+	 }
+
+	 catch(e)  
+	 {  
+		alert(e.name + ": " + e.message);
+		return false;
+	 }  
+
+}
+	</script>
+	<div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div> 
+	<article class="page-container">
+		<form action="__URL__/editUserHandle" method="post" class="form form-horizontal" id="form-admin-user-edit">
+			<input type="hidden" name="id" value="{$user.id}"/>
+			
+			<div class="col-xs-12 col-sm-12">
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>手机号：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="text" class="input-text disabled" value="{$user.dianhua}" placeholder=""  name="dianhua" datatype="s5-16" readonly/>
+					</div>
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>用户名称：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="text" class="input-text" value="{$user.ygmingcheng}" placeholder=""  name="ygmingcheng">
+					</div>
+				</div>
+				<br/>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>密码：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="password" class="input-text" value="" placeholder="" id="password" name="mima">
+					</div>
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>员工编号：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="text" class="input-text" value="{$user.ygbianhao}" placeholder="" id="" name="ygbianhao">
+					</div>
+					
+				</div>
+				<br/>
+				<div class="row cl">
+					
+					<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>所属部门：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<select name="bumen" class="input-text radius">
+							<foreach name='bumen' item='v'>
+								<option style="display:none">请选择部门</option>
+								<option value="{$v['id']}" <if condition="$user['bumen'] eq $v['id']">selected</if>>{$v.bmming}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				</div>
+				<br/>
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2">
+						限制查看数：
+					</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<select name="xzchakan" class="input-text radius">
+							<option value="30" <if condition="$user['bumen'] eq '30'">selected</if>>30</option>
+							<option value="40" <if condition="$user['bumen'] eq '40'">selected</if>>40</option>
+							<option value="50" <if condition="$user['bumen'] eq '50'">selected</if>>50</option>
+						</select>
+					</div>
+					<if condition="$_SESSION['superadmin'] eq 1">
+					<label class="form-label col-xs-4 col-sm-2">
+						Keyid：
+					</label>
+					<div class="formControls col-xs-4 col-sm-2">
+						<input type="text" class="input-text" placeholder=""  name="keyid"  id="keyid" value="{$user.keyid}" readonly/>
+					</div>
+					<label class="formControls col-xs-4 col-sm-2">
+						<a onclick='login_onclick();'>获取key</a><br/>
+						<a onclick='qingkongkey();'>清空key</a>
+					</label>
+					</if>
+				</div>
+			</div>
+  <div style="height: 50px;"></div>
+  <div class="layui-form-item" style="width:100%;
+    height:45px;
+    margin:0 auto;
+    background:#fff;
+    position:fixed;
+    bottom:0;
+    text-align:center;
+    border-top-style: solid;border-top-width: 1px;border-top-color: #009688;
+    padding-top: 5px;
+	margin-left: -20px;
+    "
+     id="submit">
+    <div class="layui-input-block" style="margin-left: -15px;">
+      <button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-radius layui-btn-primary">重置</button>
+    </div>
+  </div>
+		</form>
+	</article>
+
+
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/h-ui.admin/js/H-ui.admin.js"></script>
+
+<script>
+	$(document).ready(function(){
+	    $(document).bind("contextmenu",function(e){
+	          return false;
+	    });
+	});
+</script>
+
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".permission-list dt input:checkbox").click(function(){
+				$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+			});
+			$(".permission-list2 dd input:checkbox").click(function(){
+				var l =$(this).parent().parent().find("input:checked").length;
+				var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+				if($(this).prop("checked")){
+					$(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+					$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+				}
+				else{
+					if(l==0){
+						$(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+					}
+					if(l2==0){
+						$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+					}
+				}
+			});
+			/*$("#form-admin-user-edit").validate({
+				rules:{
+					roleName:{
+						required:true,
+					},
+				},
+				onkeyup:false,
+				focusCleanup:true,
+				success:"valid",
+				submitHandler:function(form){
+					$(form).ajaxSubmit();
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.location.reload();
+					parent.layer.msg('更新成功');
+					parent.layer.close(index);
+				}
+			});*/
+		});
+	</script>
+	<script type="text/javascript">
+		/*管理员-角色-添加*/
+		function admin_role_add(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function qingkongkey(){
+			$('#keyid').val('');
+		}
+	</script>
+	<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

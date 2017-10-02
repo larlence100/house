@@ -1,0 +1,77 @@
+[ 2017-10-02T20:47:25+08:00 ] 127.0.0.1 /kaidandashi/api/rent/getRentList
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002266s ]
+
+[ 2017-10-02T20:47:25+08:00 ] 127.0.0.1 /kaidandashi/api/rent/getRentList
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002228s ]
+
+[ 2017-10-02T20:48:07+08:00 ] ::1 /kaidandashi/api/rent/getRentList
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+
+[ 2017-10-02T20:48:15+08:00 ] ::1 /kaidandashi/api/rent/rentlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000537s ]
+ERR: 非法操作:rentlist
+
+[ 2017-10-02T20:48:22+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000432s ]
+
+[ 2017-10-02T20:48:29+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000432s ]
+
+[ 2017-10-02T20:50:23+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000520s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:50:46+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000430s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:50:47+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000431s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:50:47+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000465s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:50:48+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:50:48+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000437s ]
+ERR: 模板不存在:./Application/Api/View/Rent/rent_list.html
+
+[ 2017-10-02T20:51:38+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000506s ]
+
+[ 2017-10-02T20:52:03+08:00 ] ::1 /kaidandashi/api/rent/rent_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000434s ]
+

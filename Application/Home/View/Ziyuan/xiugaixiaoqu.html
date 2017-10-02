@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	| 开单大师（专业的房产ERP管理系统）
+	+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
+	+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	| 本系统由淮南市银泰科技软件有限公司提供技术支持
+	+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	| QQ号：984784483
+	+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/layui/css/layui.css">
+		<form class="layui-form" action="__URL__/xiugaixiaoquHandle" method="get">
+			<input type="hidden" value="{$xiaoqu['id']}" name="id">
+			<div style="line-height:30px;">&nbsp;</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						供水：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="gongshui" autocomplete="off" class="layui-input" value="{$xiaoqu['gongshui']}">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						供电：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="gongdian" autocomplete="off" class="layui-input" value="{$xiaoqu['gongdian']}">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						供暖：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="gongnuan" autocomplete="off" class="layui-input" value="{$xiaoqu['gongnuan']}">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						燃气：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="ranqi" autocomplete="off" class="layui-input" value="{$xiaoqu['ranqi']}">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						物业名称：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="wuyemc" autocomplete="off" class="layui-input" value="{$xiaoqu['wuyemc']}">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						物业电话：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="wuyedh" autocomplete="off" class="layui-input" value="{$xiaoqu['wuyedh']}">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						街道：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="jiedao" autocomplete="off" class="layui-input" value="{$xiaoqu['jiedao']}">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						物业地址：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="wuyedz" autocomplete="off" class="layui-input" value="{$xiaoqu['wuyedz']}">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						物业费：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="wuyefei" autocomplete="off" class="layui-input" value="{$xiaoqu['wuyefei']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">元/月</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						电梯服务：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="diantifuwu" autocomplete="off" class="layui-input" value="{$xiaoqu['diantifuwu']}">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						均价：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="csjunjia" autocomplete="off" class="layui-input" value="{$xiaoqu['csjunjia']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">元</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						房屋总套数：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="fangwuzts" autocomplete="off" class="layui-input" value="{$xiaoqu['fangwuzts']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">套</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						楼栋总数：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="loudongzs" autocomplete="off" class="layui-input" value="{$xiaoqu['loudongzs']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">栋</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						容积率：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="rongjilv" autocomplete="off" class="layui-input" value="{$xiaoqu['rongjilv']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">%</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						绿化率：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="lvhualv" autocomplete="off" class="layui-input" value="{$xiaoqu['lvhualv']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">%</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						建造年代：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="jianzaond" autocomplete="off" class="layui-input" value="{$xiaoqu['jianzaond']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">年</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						产权：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="chanquan" autocomplete="off" class="layui-input" value="{$xiaoqu['chanquan']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">年</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						占地面积：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="zhandimj" autocomplete="off" class="layui-input" value="{$xiaoqu['zhandimj']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">m²</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						建筑面积：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="jianzhumj" autocomplete="off" class="layui-input" value="{$xiaoqu['jianzhumj']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">m²</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地上车位数量：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dshangtcwsl" autocomplete="off" class="layui-input" value="{$xiaoqu['dshangtcwsl']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">个</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地下车位数量：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dxiatcwsl" autocomplete="off" class="layui-input" value="{$xiaoqu['dxiatcwsl']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">个</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地上车位售价：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dshangtcwsj" autocomplete="off" class="layui-input" value="{$xiaoqu['dshangtcwsj']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">万</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地下车位售价：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dxiatcwsj" autocomplete="off" class="layui-input" value="{$xiaoqu['dxiatcwsj']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">万</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地上车位租赁：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dshangtcwzl" autocomplete="off" class="layui-input" value="{$xiaoqu['dshangtcwzl']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">元/月</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						地下车位租赁：
+					</label>
+					<div class="layui-input-inline" style="width:150px;">
+						<input type="tel" name="dxiatcwzl" autocomplete="off" class="layui-input" value="{$xiaoqu['dxiatcwzl']}">
+					</div>
+					<div style="color: #757575" class="layui-form-mid layui-word-aux">元/月</div>
+				</div>
+			</div>
+			<div class="layui-form-item" pane="">
+				<label class="layui-form-label" style="width:100px;">
+					住宅类型：
+				</label>
+				<div class="layui-input-block">
+					<foreach name="zhuzhailx" item="pz">
+						<input type="checkbox" name="fwleixing[{$pz.lxid}]" <?php if (in_array($pz['lxid'],$zhuzhailx2)) {echo "checked=\"\"";} ?> lay-skin="primary" title="{$pz.lxming}">
+					</foreach>
+				</div>
+			</div>
+			<div class="layui-form-item" pane="">
+				<label class="layui-form-label" style="width:100px;">
+					物业类型：
+				</label>
+				<div class="layui-input-block">
+					<foreach name="wuyelx" item="pz">
+						<input type="checkbox" name="wuyelx[{$pz.lxid}]" <?php if (in_array($pz['lxid'],$wuyelx2)) {echo "checked=\"\"";} ?> lay-skin="primary" title="{$pz.lxming}">
+					</foreach>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width:100px;">
+						小区简介：
+					</label>
+					<div class="layui-input-inline" style="width:666px;">
+						<textarea placeholder="请输入内容" class="layui-textarea" name="jianjie">{$xiaoqu['jianjie']}</textarea>
+					</div>
+				</div>
+			</div>
+			<div style="line-height:48PX;">&nbsp;</div>
+			<div class="layui-form-item" style="width:100%;height:50px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;">
+				<div class="layui-form-item">
+					<button class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-radius layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+		<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script src="__PUBLIC__/lib/layui/layui.js" charset="utf-8"></script>
+		<script>
+			//Demo
+			layui.use('form', function(){
+				var form = layui.form();
+				//监听提交
+				form.on('submit(demo1)', function(data){
+					parent.layer.msg('更新成功',{time:3600});
+					setTimeout("parent.location.reload();",{time:3600});
+				});
+			});
+		</script>
+	</body>
+</html>
+        
+        
+        

@@ -1,0 +1,578 @@
+<extend name="Common/index" />
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<block name="content">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/layui/css/layui.css">
+	<link href="__PUBLIC__/lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div id="tab_demo" class="HuiTab">
+			<div class="row cl">
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div id="tab_demo" class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div class="tabBar clearfix">
+						<div style="line-height:15PX;">&nbsp;</div>
+						<span style="font-size:15px">基本信息</span>
+						<span id="xq_img" style="font-size:15px;">图片</span>
+						<span style="font-size:15px">地图</span>
+						<a class="btn btn-success radius r" style="margin-bottom:5px;" href="javascript:location.replace(location.href);" title="刷新">
+							<i class="Hui-iconfont">&#xe68f;</i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div class="row cl">
+						<div style="line-height:15PX;">&nbsp;</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								小区名称：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							{$xiaoqu["xiaoqum"]}
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								所属片区：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							<if condition='$xiaoqu["ssxzq"] and $xiaoqu["sspianqu"]'>
+								<foreach name="ssxzq" item="xzq">
+									<if condition='$xiaoqu["ssxzq"] eq $xzq["id"]'>
+										{$xzq.xzqming}
+									</if>
+								</foreach>
+								-
+								<foreach name="sspianqu" item="pq">
+									<if condition='$xiaoqu["sspianqu"] eq $pq["id"]'>
+										{$pq.pianqum}
+									</if>
+								</foreach>
+								<elseif condition='$xiaoqu["ssxzq"]'/>
+								<foreach name="ssxzq" item="xzq">
+									<if condition='$xiaoqu["ssxzq"] eq $xzq["id"]'>
+										{$xzq.xzqming}
+									</if>
+								</foreach>
+								<elseif condition='$xiaoqu["sspianqu"]'/>
+								<foreach name="sspianqu" item="pq">
+									<if condition='$xiaoqu["sspianqu"] eq $pq["id"]'>
+										{$pq.pianqum}
+									</if>
+								</foreach>
+							</if>
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								小区地址：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							{$xiaoqu["xiaoqudz"]}
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-4 col-sm-4 col-md-4"></div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-4 col-sm-4 col-md-4">
+							<div style="float: right;">
+								<a class="btn btn-primary radius" href="javascript:;" onclick="layer_show('调整坐标','{:U('Ziyuan/tzdtzb',array('id'=>$xiaoqu['id']))}','960')">
+									<i class="Hui-iconfont">&#xe600;</i> 调整坐标
+								</a>
+								<a class="btn btn-primary radius" href="javascript:;" onclick="layer_show('修改小区','{:U('Ziyuan/xiugaixiaoqu',array('id'=>$xiaoqu['id']))}','870')">
+									<i class="Hui-iconfont">&#xe600;</i> 修改小区
+								</a>
+							</div>
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<legend></legend>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								房屋总套数：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["fangwuzts"]'>
+								{$xiaoqu["fangwuzts"]}套
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								楼栋总数：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["loudongzs"]'>
+								{$xiaoqu["loudongzs"]}栋
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								建造年代：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["jianzaond"]'>
+								{$xiaoqu["jianzaond"]}年
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								产权：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["chanquan"]'>
+								{$xiaoqu["chanquan"]}年
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								物业类型：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							<foreach name="wuyelx" item="v">
+								{$v.lxming}；
+							</foreach>
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								容积率：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["rongjilv"]'>
+								{$xiaoqu["rongjilv"]}%
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								绿化率：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["lvhualv"]'>
+								{$xiaoqu["lvhualv"]}%
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								占地面积：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["zhandimj"]'>
+								{$xiaoqu["zhandimj"]}m²
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								建筑面积：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["jianzhumj"]'>
+								{$xiaoqu["jianzhumj"]}m²
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								建筑类型：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							<foreach name="zhuzhailx" item="v">
+								{$v.lxming}；
+							</foreach>
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								燃气：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							{$xiaoqu["ranqi"]}
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								电梯服务：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							{$xiaoqu["diantifuwu"]}
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								供水：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							{$xiaoqu["gongshui"]}
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								供暖：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							{$xiaoqu["gongnuan"]}
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								供电：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							{$xiaoqu["gongdian"]}
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地上车位数量：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dshangtcwsl"]'>
+								{$xiaoqu["dshangtcwsl"]}个
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地上车位租赁：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dshangtcwzl"]'>
+								{$xiaoqu["dshangtcwzl"]}元/月
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地上车位销售：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dshangtcwsj"]'>
+								{$xiaoqu["dshangtcwsj"]}万
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								物业费：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["wuyefei"]'>
+								{$xiaoqu["wuyefei"]}元/月
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								物业电话：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							{$xiaoqu["wuyedh"]}
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地下车位数量：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dxiatcwsl"]'>
+								{$xiaoqu["dxiatcwsl"]}个
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地下车位租赁：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dxiatcwzl"]'>
+								{$xiaoqu["dxiatcwzl"]}元/月
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								地下车位销售：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["dxiatcwsj"]'>
+								{$xiaoqu["dxiatcwsj"]}万
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								均价：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<if condition='$xiaoqu["csjunjia"]'>
+								{$xiaoqu["csjunjia"]}元
+							</if>
+						</div>
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								物业名称：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-2 col-sm-2 col-md-2">
+							{$xiaoqu["wuyemc"]}
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<legend></legend>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								街道：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-5 col-sm-5 col-md-5">
+							{$xiaoqu["jiedao"]}
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								物业地址：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-5 col-sm-5 col-md-5">
+							{$xiaoqu["wuyedz"]}
+						</div>
+					</div>
+					<div style="line-height:10PX;">&nbsp;</div>
+					<legend></legend>
+					<div class="row cl">
+						<div style="margin:0;padding:0;width: 100px;" class="formControls col-xs-1 col-sm-1 col-md-1">
+							<span style="float: right;color: #757575">
+								小区简介：
+							</span>
+						</div>
+						<div style="margin:0;padding:0;color: black;" class="formControls col-xs-10 col-sm-10 col-md-10">
+							{$xiaoqu["jianjie"]}
+						</div>
+					</div>
+				</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div align="center">
+						<if condition='($yesshangtu eq 1) or ($_SESSION["superadmin"] eq 1)'>
+							<a class="btn btn-primary radius  size-XXL" href="javascript:void;" onclick="tupian('上传小区图片','{:U('Ziyuan/scxqtp',array('xqid'=>$xiaoqu['id']))}','800')">
+								上传小区图片
+							</a>
+						</if>
+						<a class="btn btn-default radius  size-XXL" href="javascript:;" id="downloadallpic">全部图片下载</a>
+					</div>
+					<div>&nbsp;</div>
+					<div id="xq_img_div" style="padding: 10px;margin: 10px;"></div>
+					<div>&nbsp;</div>
+				</div>
+			</div>
+			<div class="tabCon">
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+				<style type="text/css">
+					body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+				</style>
+				<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=bMcGRysohMkELc3LhlrUnDKlWGbv7Xno"></script>
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div id="allmap" style="height: 400px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/lightbox2/2.8.1/js/lightbox.min.js"></script>
+	<script type="text/javascript">
+		jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+			var $tab_menu=$(tabBar);
+			// 初始化操作
+			$tab_menu.removeClass(class_name);
+			$(tabBar).eq(i).addClass(class_name);
+			$(tabCon).hide();
+			$(tabCon).eq(i).show();
+			$tab_menu.bind(tabEvent,function(){
+				$tab_menu.removeClass(class_name);
+				$(this).addClass(class_name);
+				var index=$tab_menu.index(this);
+				$(tabCon).hide();
+				$(tabCon).eq(index).show()
+				// 百度地图API功能
+				var map = new BMap.Map("allmap");
+				var point = new BMap.Point(<if condition='$xiaoqu["dituzb"]'>{$xiaoqu.dituzb}<else/>117.005758,32.631959</if>);
+				map.centerAndZoom(<if condition='$xiaoqu["dituzb"]'>point,15<else/>point,12</if>);
+				<if condition='$xiaoqu["dituzb"]'>
+					var marker = new BMap.Marker(point);  // 创建标注
+					map.addOverlay(marker);               // 将标注添加到地图中
+					marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+					map.addControl(new BMap.MapTypeControl());
+				</if>
+				map.addControl(new BMap.MapTypeControl());//添加地图类型控件
+				map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
+				map.enableInertialDragging();
+				map.enableContinuousZoom();
+				// 覆盖区域图层测试
+				map.addTileLayer(new BMap.PanoramaCoverageLayer());
+				var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+				stCtrl.setOffset(new BMap.Size(20, 36));
+				map.addControl(stCtrl);//添加全景控件
+				// 添加带有定位的导航控件
+				var navigationControl = new BMap.NavigationControl({
+					// 靠左上角位置
+					anchor: BMAP_ANCHOR_TOP_LEFT,
+					// LARGE类型
+					type: BMAP_NAVIGATION_CONTROL_LARGE,
+				});
+				map.addControl(navigationControl);
+			})
+		}
+		$(function(){
+			$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","0")
+		});
+		function tupian(title,url,w,h){
+				layer_show1(title,url,w,h);
+			}
+		function layer_show1(title,url,w,h){
+			if (title == null || title == '') {
+				title=false;
+			};
+			if (url == null || url == '') {
+				url="404.html";
+			};
+			if (w == null || w == '') {
+				w=800;
+			};
+			if (h == null || h == '') {
+				h=($(window).height() - 50);
+			};
+			layer.open({
+				type: 2,
+				area: [w+'px', h +'px'],
+				fix: false, //不固定
+				maxmin: true,
+				shade:0.4,
+				title: title,
+				content: url,
+			});
+		}
+	</script>
+	<!--//图片上传-->
+	<script type="text/javascript">
+		var isFrist = false;
+		$("#xq_img").click(function(){
+			//异步显示房源图片列表页
+			if(!isFrist){
+				var xq_id={$xiaoqu["id"]};
+				$.ajax({
+					url:'{:U('Ziyuan/get_xq_img')}',
+					Type:"POST",
+					data:"xq_id=" + xq_id,
+					dataType:"json",
+					success:function(data){
+						var pics = data.pics;
+						for(var i in pics){
+							var img='<div class="row"><div class="col-xs-3 col-sm-3 col-md-3"><div class="thumbnail mb-10"><div class="picbox"><a href="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" data-lightbox="gallery" data-title=""><img class="img-responsive1" width="220px" height="166px" src="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/t_'+pics[i]['image']+'" alt="..." /></a></div><div class="caption mt-10"><p><a style="text-decoration:none" class=" btn btn-danger pd-5" onClick="picture_del(this,'+pics[i]['id']+')" href="javascript:;" >删除</a> <a download="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" href="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" class="btn btn-default" role="button">下载</a></p><div style="line-height:10PX;">&nbsp;</div><p><h5 class="text-primary">上传人：'+pics[i]['ygmingcheng']+'<small class="text-muted pull-right"><span class="pd-10">'+pics[i]['create_time']+'</span></small></h5></p></div></div></div></div>';
+							$("#xq_img_div").append(img);
+						}
+					}
+				});
+				isFrist = true;
+			}
+		});
+		/*图片-删除*/
+		function picture_del(obj,id){
+			layer.confirm('确认要删除吗？',function(index){
+				$.ajax({
+					type: 'POST',
+					url: '{:U('Ziyuan/xq_pic_del')}',
+					data:"xq_pic_id=" + id,
+					dataType: 'json',
+					success: function(data){
+						if(data.info=="你没有权限"){
+							layer.msg('你没有权限!',{icon:5,time:1000});
+						}else{
+							$(obj).parents(".row").remove();
+							layer.msg('已删除!',{icon:1,time:1000});
+						}
+					},
+					error:function(data) {
+						console.log(data.msg);
+					},
+				});
+			});
+		}
+		function reloadparentimg(){
+			var xq_id={$xiaoqu["id"]};
+			$.ajax({
+				url:'{:U('Ziyuan/get_xq_img')}',
+				Type:"POST",
+				data:"xq_id=" + xq_id,
+				dataType:"json",
+				success:function(data){
+					var pics = data.pics; 
+					$("#xq_img_div").empty();
+					for(var i in pics){
+						var img='<div class="row"><div class="col-xs-3 col-sm-3 col-md-3"><div class="thumbnail mb-10"><div class="picbox"><a href="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" data-lightbox="gallery" data-title=""><img class="img-responsive1" width="220px" height="166px"  src="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/t_'+pics[i]['image']+'" alt="..." /></a></div><div class="caption mt-10"><p><a style="text-decoration:none" class=" btn btn-danger pd-5" onClick="picture_del(this,'+pics[i]['id']+')" href="javascript:;" >删除</a> <a download="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" href="/Upload/'+pics[i]['gongsiid']+'/xiaoqu/'+pics[i]['xqid']+'/'+pics[i]['image']+'" class="btn btn-default" role="button">下载</a></p><div style="line-height:10PX;">&nbsp;</div><p><h5 class="text-primary">上传人：'+pics[i]['ygmingcheng']+'<small class="text-muted pull-right"><span class="pd-10">'+pics[i]['create_time']+'</span></small></h5></p></div></div></div></div>';
+						$("#xq_img_div").append(img);
+					}
+				}
+			});
+		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("#downloadallpic").click(function() {
+				var downloadUrl = new Array();
+				$('.downpic').each(function(){
+					downloadUrl.push($(this).attr('href'));
+				});
+				$(downloadUrl).multiDownload({"source":"local"});
+			});
+		});
+		function DownLoadReportIMG(obj){
+			var downloadUrl = new Array();
+			downloadUrl.push($(obj).attr('d'));
+			$(downloadUrl).multiDownload({"source":"local"});
+		}
+	</script>
+</block>
+        
+        

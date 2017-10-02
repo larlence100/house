@@ -1,0 +1,1041 @@
+<extend name="Common/index" />
+<!-- +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 开单大师（专业的房产ERP管理系统）
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| Copyright (c) 2008-2017 http://www.kaidandashi.com All rights reserved.
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| 本系统由淮南市银泰科技软件有限公司提供技术支持
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+| QQ号：984784483
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<block name="content">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="row cl">
+			<div>&nbsp;</div>
+			<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+			<div class="formControls col-xs-10 col-sm-10 col-md-10">
+				<if condition='($keyuan["weihurenid"] eq session("uid") and (($keyuan["zhuangtai"] eq 0) or ($keyuan["zhuangtai"] eq 1))) or ((session("uid") eq 2) and (($keyuan["zhuangtai"] eq 0) or ($keyuan["zhuangtai"] eq 1)))'>
+					<div style="width: 72px;float: left;">
+						<a href="javascript:;" onclick="edit('客源编辑','{:U('Kyneirong/editKeyuan2',array('id'=>$keyuan['id']))}','950')" style="text-decoration:none;">
+							<i class="Hui-iconfont" style="font-size:50px; line-height:10px;">
+								&#xe6df;
+							</i>
+							<strong><p style="color:black;">修改信息</p></strong>
+						</a>
+					</div>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 1) and ($keyuan["weihurenid"] eq session("uid")) or ((session("uid") eq 2) and ($keyuan["zhuangtai"] eq 1))'>
+					<div style="width: 72px;float: left;">
+						<a href="javascript:;" onclick="gongke(this,{$keyuan['id']})" style="text-decoration:none">
+							<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+								&#xe725;
+							</i>
+							<strong><p style="color:black;">转为公客</p></strong>
+						</a>
+					</div>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 0) and ($keyuan["weihurenid"] eq session("uid")) and ($keyuanshu lt 15) or ((session("uid") eq 2) and ($keyuan["zhuangtai"] eq 0))'>
+					<div style="width: 72px;float: left;">
+						<a href="javascript:;" onclick="sike(this,{$keyuan['id']})" style="text-decoration:none">
+							<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+								&#xe624;
+							</i>
+							<strong><p style="color:black;">收为私客</p></strong>
+						</a>
+					</div>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 1)'>
+					<if condition='($keyuan["weihurenid"] eq session("uid")) or (session("uid") eq 2)'>
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onclick="fengpan('封盘','{:U('Kyneirong/fengpan',array('id'=>$keyuan['id']))}','480','480')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe60e;
+								</i>
+								<strong><p style="color:black;">&nbsp;&nbsp;&nbsp;封盘</p></strong>
+							</a>
+						</div>
+					</if>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 0) or ((session("uid") eq 2) and ($keyuan["zhuangtai"] eq 0))'>
+					<div style="width: 72px;float: left;">
+						<a href="javascript:;" onclick="fengpan('封盘','{:U('Kyneirong/fengpan',array('id'=>$keyuan['id']))}','480','480')" style="text-decoration:none">
+							<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+								&#xe60e;
+							</i>
+							<strong><p style="color:black;">&nbsp;&nbsp;&nbsp;封盘</p></strong>
+						</a>
+					</div>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 4) and ($keyuan["weihurenid"] eq session("uid")) or ((session("uid") eq 2) and ($keyuan["zhuangtai"] eq 4))'>
+					<div style="width: 72px;float: left;">
+						<a href="javascript:;" onclick="kaipan('开盘','{:U('Kyneirong/kaipan',array('id'=>$keyuan['id']))}','480','480')" style="text-decoration:none">
+							<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+								&#xe605;
+							</i>
+							<strong><p style="color:black;">&nbsp;&nbsp;&nbsp;开盘</p></strong>
+						</a>
+					</div>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 0) or ($keyuan["zhuangtai"] eq 1)'>
+					<if condition='$keyuan["weihurenid"] eq session("uid") or (session("uid") eq 2)'>
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onclick="genjin('写跟进','{:U('Kyneirong/genjin',array('kyid'=>$keyuan['id'],'kybh'=>$keyuan['xqbianhao'],'uid'=>session('uid')))}','800')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe70c;
+								</i>
+								<strong><p style="color:black;">&nbsp;写跟进</p></strong>
+							</a>
+						</div>
+					</if>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 0) or ($keyuan["zhuangtai"] eq 1) or ($keyuan["zhuangtai"] eq 4)'>
+					<if condition='$keyuan["weihurenid"] eq session("uid") or (session("uid") eq 2)'>
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onclick="tixing('写提醒','{:U('Kyneirong/tixing',array('kyid'=>$keyuan['id'],'kybh'=>$keyuan['xqbianhao'],'uid'=>session('uid')))}','800','500')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe6c5;
+								</i>
+								<strong><p style="color:black;">写提醒</p></strong>
+							</a>
+						</div>
+					</if>
+				</if>
+				<if condition='($keyuan["zhuangtai"] eq 0) or ($keyuan["zhuangtai"] eq 1)'>
+					<if condition='$keyuan["weihurenid"] eq session("uid") or (session("uid") eq 2)'>
+						<div style="width: 72px;float: left;">
+							<a href="javascript:;" onclick="daikan('写带看','{:U('Kyneirong/daikan',array('kyid'=>$keyuan['id'],'kybh'=>$keyuan['xqbianhao'],'uid'=>session('uid')))}','800','500')" style="text-decoration:none">
+								<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+									&#xe6a9;
+								</i>
+								<strong><p style="color:black;">&nbsp;写带看</p></strong>
+							</a>
+						</div>
+					</if>
+				</if>
+				<div style="width: 72px;float: left;">
+					<a title="刷新" href="javascript:location.replace(location.href);" onclick="" style="text-decoration:none">
+						<i class="Hui-iconfont" style="font-size:50px;line-height:10px;">
+							&#xe68f;
+						</i>
+						<strong><p style="color:black;">&nbsp;&nbsp;刷新</p></strong>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="tab_demo" class="HuiTab">
+			<div class="row cl">
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div id="tab_demo" class="formControls col-xs-10 col-sm-10 col-md-10">
+					<div class="tabBar clearfix">
+						<span style="font-size:15px">基本信息</span>
+						<span id="fy_img" style="font-size:15px;display:none">房源匹配</span>
+						<span style="font-size:15px">跟进记录</span>
+						<span style="font-size:15px">带看记录</span>
+						<span style="font-size:15px">提醒记录</span>
+						<span style="font-size:15px;display:none">日志</span>
+					</div>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="row cl">
+					<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+					<div id="tab_demo" class="formControls col-xs-10 col-sm-10 col-md-10">
+						<div style="float: left;width:69.5%;">
+							<table border="1">
+								<tr>
+									<th style="color: black;">
+										<div style="line-height:10PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="font-size:30px;" align="center" class="formControls col-xs-12 col-sm-12 col-md-12">
+												<strong>[{$keyuan['xqbianhao']}]{$xiaoqum}</strong>
+											</div>
+											<if condition='$keyuan["xqquyu"]'>
+												<div style="font-size:21px;" class="formControls col-xs-12 col-sm-12 col-md-12">
+													<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+														<span style="float: right;color: #757575">
+															需求区域：
+														</span>
+													</div>
+													<div style="margin:0;padding:0;" class="formControls col-xs-10 col-sm-10 col-md-10">
+														{$keyuan["xqquyu"]}
+													</div>
+												</div>
+											</if>
+											<if condition='$keyuan["xqxiaoqu"]'>
+												<div style="font-size:21px;" class="formControls col-xs-12 col-sm-12 col-md-12">
+													<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+														<span style="float: right;color: #757575">
+															需求小区：
+														</span>
+													</div>
+													<div style="margin:0;padding:0;" class="formControls col-xs-10 col-sm-10 col-md-10">
+														{$keyuan["xqxiaoqu"]}
+													</div>
+												</div>
+											</if>
+											<div style="font-size:21px;" class="formControls col-xs-12 col-sm-12 col-md-12">
+												<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+													<span style="float: right;color: #757575">
+														需求价格：
+													</span>
+												</div>
+												<div style="margin:0;padding:0;" class="formControls col-xs-10 col-sm-10 col-md-10">
+													<if condition='$keyuan["xqjiage1"] and $keyuan["xqjiage2"]'>
+														<strong style="color: red">
+															{$keyuan["xqjiage1"]}
+														</strong>
+														<sub style="color: red">元</sub>
+														<span style="color: red">~</span>
+														<strong style="color: red">
+															{$keyuan["xqjiage2"]}
+														</strong>
+														<sub style="color: red">元</sub>
+														<elseif condition='$keyuan["xqjiage1"]'/>
+														<strong style="color: red">
+															{$keyuan["xqjiage1"]}
+														</strong>
+														<sub style="color: red">元以上</sub>
+														<elseif condition='$keyuan["xqjiage2"]'/>
+														<strong style="color: red">
+															{$keyuan["xqjiage2"]}
+														</strong>
+														<sub style="color: red">元以下</sub>
+													</if>
+												</div>
+											</div>
+											<div style="font-size:21px;" class="formControls col-xs-12 col-sm-12 col-md-12">
+												<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+													<span style="float: right;color: #757575">
+														需求面积：
+													</span>
+												</div>
+												<div style="margin:0;padding:0;" class="formControls col-xs-10 col-sm-10 col-md-10">
+													<if condition='$keyuan["xqmianji1"] and $keyuan["xqmianji2"]'>
+														<strong>{$keyuan["xqmianji1"]}</strong>
+														<sub>平米</sub>
+														~
+														<strong>{$keyuan["xqmianji2"]}</strong>
+														<sub>平米</sub>
+														<elseif condition='$keyuan["xqmianji1"]'/>
+														<strong>{$keyuan["xqmianji1"]}</strong>
+														<sub>平米以上</sub>
+														<elseif condition='$keyuan["xqmianji2"]'/>
+														<strong>{$keyuan["xqmianji2"]}</strong>
+														<sub>平米以下</sub>
+													</if>
+												</div>
+											</div>
+											<div style="font-size:21px;" class="formControls col-xs-12 col-sm-12 col-md-12">
+												<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+													<span style="float: right;color: #757575">
+														需求户型：
+													</span>
+												</div>
+												<div style="margin:0;padding:0;" class="formControls col-xs-10 col-sm-10 col-md-10">
+													<if condition='$keyuan["xqhuxing1"] and $keyuan["xqhuxing2"]'>
+														<strong>{$keyuan["xqhuxing1"]}</strong>
+														<sub>室</sub>
+														~
+														<strong>{$keyuan["xqhuxing2"]}</strong>
+														<sub>室</sub>
+														<elseif condition='$keyuan["xqhuxing1"]'/>
+														<strong>{$keyuan["xqhuxing1"]}</strong>
+														<sub>室以上</sub>
+														<elseif condition='$keyuan["xqhuxing2"]'/>
+														<strong>{$keyuan["xqhuxing2"]}</strong>
+														<sub>室以下</sub>
+													</if>
+												</div>
+											</div>
+										</div>
+										<div style="line-height:10PX;">&nbsp;</div>
+									</th>
+								</tr>
+								<tr>
+									<th style="color:black;font-size:15px">
+										<div style="line-height:10PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户姓名：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['khxingming']}
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户等级：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="kydengji" item="vv">
+													<if condition='$keyuan["kydengji"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求楼层：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<if condition='$keyuan["louceng1"] and $keyuan["louceng2"]'>
+													{$keyuan["louceng1"]}
+													~
+													{$keyuan["louceng2"]}层
+													<elseif condition='$keyuan["louceng1"]'/>
+													{$keyuan["louceng1"]}层以上
+													<elseif condition='$keyuan["louceng2"]'/>
+													{$keyuan["louceng2"]}层以下
+												</if>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求朝向：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="chaoxiang" item="v">
+													{$v.lxming};
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求房龄：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<if condition='$keyuan["fangling1"] and $keyuan["fangling2"]'>
+													{$keyuan["fangling1"]}
+													~
+													{$keyuan["fangling2"]}年
+													<elseif condition='$keyuan["fangling1"]'/>
+													{$keyuan["fangling1"]}年以上
+													<elseif condition='$keyuan["fangling2"]'/>
+													{$keyuan["fangling2"]}年以下
+												</if>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求装修：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="zhuangxiu" item="v">
+													{$v.lxming};
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求配套：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="peitao" item="v">
+													{$v.lxming};
+												</foreach>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户来源：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="laiyuan" item="vv">
+													<if condition='$keyuan["khlaiyuan"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													沟通阶段：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="gtjieduan" item="vv">
+													<if condition='$keyuan["gtjieduan"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													消费理念：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="xflinian" item="vv">
+													<if condition='$keyuan["xflinian"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													需求付款：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="fukuan" item="vv">
+													<if condition='$keyuan["fukuan"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													客户等级：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="kydengji" item="vv">
+													<if condition='$keyuan["kydengji"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													国籍：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="guoji" item="vv">
+													<if condition='$keyuan["guoji"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													民族：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="minzu" item="vv">
+													<if condition='$keyuan["minzu"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													证件号码：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['sfzheng']}
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													邮箱：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['youxiang']}
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													QQ：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['qqhao']}
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													微信：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['weixin']}
+											</div>
+										</div>
+										<div style="line-height:5PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													交通工具：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												<foreach name="jtgongju" item="vv">
+													<if condition='$keyuan["jtgongju"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
+												<span style="float: right;color: #757575">
+													车型：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
+												{$keyuan['chexing']}
+											</div>
+										</div>
+										<div style="line-height:10PX;">&nbsp;</div>
+									</th>
+								</tr>
+								<tr>
+									<th>
+										<div style="line-height:10PX;">&nbsp;</div>
+										<div class="formControls col-xs-12 col-sm-12 col-md-12">
+											<div style="margin:0;padding:0;" class="formControls col-xs-1 col-sm-1 col-md-1">
+												<span style="float: right;color: #757575">
+													备注：
+												</span>
+											</div>
+											<div style="margin:0;padding:0;" class="formControls col-xs-11 col-sm-11 col-md-11">
+												{$keyuan['beizhu']}
+											</div>
+										</div>
+										<div style="line-height:10PX;">&nbsp;</div>
+									</th>
+								</tr>
+							</table>
+						</div>
+						<div style="float:right;width:30%;">
+							<div>
+								<table border="1">
+									<tr>
+										<th style="font-size:18px;color: black">
+											<div style="line-height:5PX;">&nbsp;</div>
+											&nbsp;&nbsp;&nbsp;最近7天：
+											<h1 align="center">{$daikanshu}次带看</h1>
+										</th>
+									</tr>
+								</table>
+							</div>
+							<div style="line-height:5PX;">&nbsp;</div>
+							<div>
+								<table border="1">
+									<tr>
+										<th style="font-size:15px;color: black">
+											<div class="formControls col-xs-10 col-sm-10 col-md-10">
+												<span style="color: #757575">
+													客户：
+												</span>
+												{$keyuan["khxingming"]}
+												<foreach name="kehulx" item="vv">
+													<if condition='$keyuan["kehulx"] eq $vv["lxid"]'>
+														{$vv.lxming}
+													</if>
+												</foreach>
+												<div style="line-height:5PX;"></div>
+												<i class="Hui-iconfont" style="color: #757575">&#xe6a3;</i>
+												{$keyuan["dianhua"]}
+											</div>
+										</th>
+									</tr>
+								</table>
+							</div>
+							<div style="line-height:5PX;">&nbsp;</div>
+							<div>
+								<table border="1">
+									<tr>
+										<th style="color: #757575;font-size:15px">
+											&nbsp;相关经纪人
+										</th>
+										<th></th>
+										<th></th>
+									</tr>
+									<tr>
+										<th style="width:80px;color:black;font-size:15px">
+											<div align="right" style="color: #757575;">
+												录入人：&nbsp;
+											</div>
+										</th>
+										<th style="color:black;font-size:15px">
+											&nbsp;&nbsp;&nbsp;{$luru['bmming']}-{$luru["ygmingcheng"]}
+											<div style="line-height:5PX;"></div>
+											<span style="color: #757575">
+												&nbsp;&nbsp;&nbsp;电话:
+											</span>
+											<span style="color: black">
+												&nbsp;&nbsp;&nbsp;{$lrdh}
+											</span>
+										</th>
+										<th></th>
+									</tr>
+									<tr>
+										<th style="width:80px;color:black;font-size:15px">
+											<div align="right" style="color: #757575;">
+												维护人：&nbsp;
+											</div>
+										</th>
+										<th style="color:black;font-size:15px">
+											&nbsp;&nbsp;&nbsp;{$weihu['bmming']}-{$weihu["ygmingcheng"]}
+											<div style="line-height:5PX;"></div>
+											<span style="color: #757575">
+												&nbsp;&nbsp;&nbsp;电话:
+											</span>
+											<span style="color: black">
+												&nbsp;&nbsp;&nbsp;{$whdh}
+											</span>
+										</th>
+										<th>
+											<div align="center">
+												<a title="变更维护人" href="javascript:;" onclick="bgwhr('变更维护人','{:U('Kyneirong/bgwhr',array('id'=>$keyuan['id']))}','540','400')" style="text-decoration:none" class="btn btn-primary radius">
+													变更维护人
+												</a>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<th style="width:80px;color:black;font-size:15px">
+											<div align="right" style="color: #757575;">
+												封盘人：&nbsp;
+											</div>
+										</th>
+										<th style="color:black;font-size:15px">
+											&nbsp;&nbsp;&nbsp;
+											{$fengpan['bmming']}-{$fengpan["ygmingcheng"]}
+											<div style="line-height:5PX;"></div>
+											<span style="color: #757575">
+												&nbsp;&nbsp;&nbsp;电话:
+											</span>
+											<span style="color: black">
+												&nbsp;&nbsp;&nbsp;{$fpdh}
+											</span>
+										</th>
+										<th></th>
+									</tr>
+								</table>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</div>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="tabCon" style="display:none"></div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>跟进记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th width="80" style="color:black;font-size:15px">
+									<strong>跟进时间</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>跟进方式</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>跟进人</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>所在部门</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>跟进内容</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px;display:none">
+									<strong>操作</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach name="kygenjin" item="gj">
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$gj.gjshijian|date='Y-m-d h:i',###}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											<foreach name="genjinfs" item="vv">
+												<if condition='$gj["genjinfs"] eq $vv["lxid"]'>
+													{$vv.lxming}
+												</if>
+											</foreach>
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$gj.ygmingcheng}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$gj.bmming}</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$gj.gjneirong}</strong>
+									</td>
+									<td class="f-14" style="font-size:12px;color:black;display:none">
+										<strong>
+											<a title="编辑" href="javascript:;" onclick="admin_xiaoqu_edit('编辑小区','{:U('Ziyuan/editXiaoqu',array('id'=>$xq['id']))}','800')" style="text-decoration:none" >
+												<i class="Hui-iconfont">&#xe6df;</i>
+											</a>
+											<a title="删除" href="javascript:;" onclick="admin_xiaoqu_del(this,'{$xq.id}')" class="ml-5" style="text-decoration:none">
+												<i class="Hui-iconfont">&#xe6e2;</i>
+											</a>
+										</strong>
+									</td>
+								</tr>
+							</foreach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>带看记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th width="80" style="color:black;font-size:15px;display:none">
+									<strong>图片</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>带看时间</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>带看房源</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>带看人</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>所在部门</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>带看内容</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px;display:none">
+									<strong>操作</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach name="kydaikan" item="dk">
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;display:none">
+										<strong>{$dk.tupian}</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$dk.dkshijian|date='Y-m-d h:i',###}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$dk.dkfangyuan}</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$dk.ygmingcheng}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$dk.bmming}</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$dk.kehupj}</strong>
+									</td>
+									<td class="f-14" style="font-size:12px;color:black;display:none">
+										<strong>
+											<a title="编辑" href="javascript:;" onclick="admin_xiaoqu_edit('编辑小区','{:U('Ziyuan/editXiaoqu',array('id'=>$xq['id']))}','800')" style="text-decoration:none" >
+												<i class="Hui-iconfont">&#xe6df;</i>
+											</a>
+											<a title="删除" href="javascript:;" onclick="admin_xiaoqu_del(this,'{$xq.id}')" class="ml-5" style="text-decoration:none">
+												<i class="Hui-iconfont">&#xe6e2;</i>
+											</a>
+										</strong>
+									</td>
+								</tr>
+							</foreach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>提醒记录</strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th width="80" style="color:black;font-size:15px">
+									<strong>提醒时间</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>提醒人</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>所在部门</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>提醒内容</strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px;display:none">
+									<strong>操作</strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach name="kytixing" item="tx">
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$tx.txshijian|date='Y-m-d h:i',###}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>
+											{$tx.ygmingcheng}
+										</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$tx.bmming}</strong>
+									</td>
+									<td style="font-size:12px;color:black;">
+										<strong>{$tx.txneirong}</strong>
+									</td>
+									<td class="f-14" style="font-size:12px;color:black;display:none">
+										<strong>
+											<a title="编辑" href="javascript:;" onclick="admin_xiaoqu_edit('编辑小区','{:U('Ziyuan/editXiaoqu',array('id'=>$xq['id']))}','800')" style="text-decoration:none" >
+												<i class="Hui-iconfont">&#xe6df;</i>
+											</a>
+											<a title="删除" href="javascript:;" onclick="admin_xiaoqu_del(this,'{$xq.id}')" class="ml-5" style="text-decoration:none">
+												<i class="Hui-iconfont">&#xe6e2;</i>
+											</a>
+										</strong>
+									</td>
+								</tr>
+							</foreach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tabCon" style="display:none">
+				<div>&nbsp;</div>
+				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+				<div class="formControls col-xs-10 col-sm-10 col-md-10">
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="12" style="color:black;font-size:16px">
+									<strong>客源操作日志<strong>
+								</th>
+							</tr>
+							<tr class="text-c">
+								<th width="80" style="color:black;font-size:15px">
+									<strong>时间<strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>类型<strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>操作人<strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>所在部门<strong>
+								</th>
+								<th width="80" style="color:black;font-size:15px">
+									<strong>操作内容<strong>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach name="xiaoqu" item="xq">
+								<tr class="text-c">
+									<td style="font-size:12px;color:black;"></td>
+									<td style="font-size:12px;color:black;"></td>
+									<td style="font-size:12px;color:black;"></td>
+									<td style="font-size:12px;color:black;"></td>
+									<td style="font-size:12px;color:black;"></td>
+								</tr>
+							</foreach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+	<script type="text/javascript">
+		jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+			var $tab_menu=$(tabBar);
+			//初始化操作
+			$tab_menu.removeClass(class_name);
+			$(tabBar).eq(i).addClass(class_name);
+			$(tabCon).hide();
+			$(tabCon).eq(i).show();
+			$tab_menu.bind(tabEvent,function(){
+				$tab_menu.removeClass(class_name);
+				$(this).addClass(class_name);
+				var index=$tab_menu.index(this);
+				$(tabCon).hide();
+				$(tabCon).eq(index).show()
+			})
+		}
+		$(function(){
+			$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","0")
+		});
+	</script>
+	<script type="text/javascript">
+		function vr_url(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function edit(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function fengpan(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function kaipan(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function genjin(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function tixing(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function daikan(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function jubao(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function bgwhr(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function tonghua(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+		function xzdianhua(title,url,w,h){
+			layer_show(title,url,w,h);
+		}
+	</script>
+	<script language="JavaScript" type="text/JavaScript">
+		<!--
+		function showdiv(targetid1,targetid2,objN){
+			var target1=document.getElementById(targetid1);
+			var target2=document.getElementById(targetid2);
+			var clicktext=document.getElementById(objN)
+			if (target1.style.display=="block"){
+				target1.style.display="none";
+				target2.style.display="block";
+				clicktext.innerText="关闭";
+			} else {
+				target1.style.display="block";
+				target2.style.display="none";
+				clicktext.innerText='显示';
+			}
+		}
+		-->
+	</script>
+	<script type="text/javascript">
+		var isFrist = false;
+		$("#fy_img").click(function(){
+			if(!isFrist){
+				var fy_id={$fangyuan["id"]};
+				$.ajax({
+					url:'{:U('fangyuan/get_fy_img')}',
+					Type:"POST",
+					data:"fy_id="+fy_id,
+					dataType:"json",
+					success:function(data){
+						var city = data.city;
+						for(var i in city){
+							var img=$("<img/>");
+							$(img).attr('src',city[i]['image']);
+							$(img).attr('class','fy_img');
+							$("#fy_img_div").append(img);
+						}
+					}
+				});
+				isFrist = true;
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		function sike(obj,id){
+			layer.confirm('您确定要设置此客源为私客吗？',function(index){
+				$.ajax({
+					type: 'POST',
+					url: '{:U('Kyneirong/sikeHandle')}',
+					data:'id='+id,
+					dataType: 'json',
+					success: function(data){
+						$(obj).parents(".div2").remove();
+						layer.msg('已修改!',{icon:1,time:1000});
+					},
+					error:function(data) {
+						console.log(data.msg);
+					},
+				});
+			});
+		}
+		function gongke(obj,id){
+			layer.confirm('您确定要设置此客源为公客吗？',function(index){
+				$.ajax({
+					type: 'POST',
+					url: '{:U('Kyneirong/gongkeHandle')}',
+					data:'id='+id,
+					dataType: 'json',
+					success: function(data){
+						$(obj).parents(".div2").remove();
+						layer.msg('已修改!',{icon:1,time:1000});
+					},
+					error:function(data) {
+						console.log(data.msg);
+					},
+				});		
+			});
+		}
+	</script>
+</block>
+        
+        
+        
