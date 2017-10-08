@@ -107,7 +107,7 @@
 				</div>
 			</div>
 			<br/>
-			<div class="row cl">
+			<!--<div class="row cl">
 				<label class="form-label col-xs-2 col-sm-2">
 					周边学区：
 				</label>
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <a class="layui-btn layui-btn-primary" id="cz1">重置</a>
-			</div>
+			</div>-->
 			<br/>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">
@@ -128,12 +128,6 @@
 				</label>
 				<div class="formControls col-xs-8 col-sm-4">
 					<input type="text" class="input-text" value="" placeholder="" id="csjunjia" name="csjunjia">
-				</div>
-				<label class="form-label col-xs-4 col-sm-2">
-					座栋规则：
-				</label>
-				<div class="formControls col-xs-8 col-sm-4">
-					<input type="text" class="input-text" value="" placeholder="" id="zdguize" name="zdguize">
 				</div>
 			</div>
 			<br/>

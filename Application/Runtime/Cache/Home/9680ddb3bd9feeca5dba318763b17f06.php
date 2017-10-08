@@ -15,19 +15,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="/kaidandashi/Public/favicon.ico" >
-<link rel="Shortcut Icon" href="/kaidandashi/Public/favicon.ico" />
+<link rel="Bookmark" href="/Public/favicon.ico" >
+<link rel="Shortcut Icon" href="/Public/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -202,7 +202,7 @@
 			color: white;
 		}
 	</style>
-	<link rel="stylesheet" href="/kaidandashi/Public/lib/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="/Public/lib/layui/css/layui.css" media="all">
 
 </head>
 <body >
@@ -272,10 +272,10 @@
 	</div>
 
 
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -285,7 +285,7 @@
 	});
 </script>
 
-	<script type="text/javascript" src="/kaidandashi/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		/*管理员-角色-添加*/
 		function admin_role_add(title,url,w,h){

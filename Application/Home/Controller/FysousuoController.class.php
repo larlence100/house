@@ -19,9 +19,8 @@
         public function index(){
 
             if (!$_GET['isget']) {
-                $condition="gongsiid=".session('gongsiid');
-                $condition.=" and leixing=1";
-                //$condition.=" and zhuangtai=1";
+
+                $condition.="leixing=1";
                 $count=M('fangyuan')->query("select count(*) from __FANGYUAN__ where {$condition}");
                 /*p($count);
                 die;*/
@@ -32,7 +31,6 @@
 (select fyid,count(*) dqshu from jjrxt_xianzhi group by fyid) b on a.id=b.fyid where {$condition} order by bianhao DESC limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
                 $fangyuan=$Model->query($list);
-
 
                 $this->assign('fangyuan',$fangyuan);// 赋值数据集
                 $this->assign('count',$count);// 赋值分页输出
@@ -102,10 +100,10 @@ $this->chaoxiang=M('Peizhi')->where(array('pzming'=>'chaoxiang'))->select();
                 $louceng1=$_GET['louceng1'];
                 $louceng2=$_GET['louceng2'];
 
-                $condition="gongsiid=".session('gongsiid');
+                //$condition="gongsiid=".session('gongsiid');
                 
                 if($leixing){//片区
-                    $condition.=" and leixing=$leixing";
+                    $condition.="leixing=$leixing";
                 }
                 if ($xiaoqu) {//小区
                     $condition.=" and xiaoqu=$xiaoqu";

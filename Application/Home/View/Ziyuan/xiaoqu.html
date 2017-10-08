@@ -235,7 +235,7 @@
 					<th width="80">拼音检索</th>
 					<th width="80">所属片区</th>
 					<th width="80">所属行政区</th>
-					<th width="80">所属学区</th>
+<!--					<th width="80">所属学区</th>-->
 					<!-- <th width="80">座栋规则</th> -->
 					<th width="80">地图坐标</th>
 					<!-- <th width="80">小区地址</th> -->
@@ -262,14 +262,14 @@
 								<if condition='$xq["ssxzq"] eq $xzq["id"]'>{$xzq.xzqming}</if>
 							</foreach>
 						</td>
-						<td>{$xq.ssxuexiao}</td>
+						<!--<td>{$xq.ssxuexiao}</td>-->
 						<!-- <td>{$xq.zdguize}</td> -->
 						<td>{$xq.dituzb}</td>
 						<!-- <td>{$xq.xiaoqudz}</td> -->
 						<td class="f-14" id="td">
-							<a title="详情" data-href="{:U('Ziyuan/xiaoqurr',array('id'=>$xq['id']))}" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" href="javascript:;" style="text-decoration:none">
+							<!--<a title="详情" data-href="{:U('Ziyuan/xiaoqurr',array('id'=>$xq['id']))}" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" href="javascript:;" style="text-decoration:none">
 								<i class="Hui-iconfont" style="font-size: 22px;">&#xe720;</i>
-							</a>
+							</a>-->
 							<a title="编辑" href="javascript:;" onclick="layer_show('编辑小区','{:U('Ziyuan/editXiaoqu',array('id'=>$xq['id']))}','960')" style="text-decoration:none" class="ml-5">
 								<i class="Hui-iconfont" style="font-size: 18px;">&#xe6df;</i>
 							</a>

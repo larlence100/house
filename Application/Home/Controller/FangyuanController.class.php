@@ -203,10 +203,10 @@
             $data['hezuotandan']=I('hezuotandan');
             $data['beizhu']=I('beizhu');
 
-            if (I('shouyaobm')) {
+            /*if (I('shouyaobm')) {
                 $data['shouyaobm']=I('shouyaobm');
                 $data['shouyaoren']=session('uid');
-            }
+            }*/
             
             $data['czriqi']=strtotime(I('czriqi'));
             $data['fukuanfs']=I('fukuanfs');
@@ -308,12 +308,12 @@
             $this->assign('shangturen',$shangturen);
 
             //存钥部门
-            $shouyaobmid=M('fangyuan')->where(array('id'=>$id))->getField('shouyaobm');
-            $this->shouyaobm=M('bumen')->where(array('id'=>$shouyaobmid))->find();
+            /*$shouyaobmid=M('fangyuan')->where(array('id'=>$id))->getField('shouyaobm');
+            $this->shouyaobm=M('bumen')->where(array('id'=>$shouyaobmid))->find();*/
 
             //收钥人
-            $shouyaorenid=M('fangyuan')->where(array('id'=>$id))->getField('shouyaoren');
-            $this->shouyaoren=M('yonghu')->where(array('id'=>$shouyaorenid))->find();
+           /* $shouyaorenid=M('fangyuan')->where(array('id'=>$id))->getField('shouyaoren');
+            $this->shouyaoren=M('yonghu')->where(array('id'=>$shouyaorenid))->find();*/
 
             //录入人
             $weihurenid=M('fangyuan')->where(array('id'=>$id))->getField('weihurenid');

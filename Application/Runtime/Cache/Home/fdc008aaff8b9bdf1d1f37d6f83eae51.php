@@ -15,19 +15,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="/Public/favicon.ico" >
-<link rel="Shortcut Icon" href="/Public/favicon.ico" />
+<link rel="Bookmark" href="/kaidandashi/Public/favicon.ico" >
+<link rel="Shortcut Icon" href="/kaidandashi/Public/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -66,7 +66,7 @@
             color: white;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="/Public/lib/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/layui/css/layui.css">
 
 </head>
 <body >
@@ -75,7 +75,7 @@
 	<div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div>
 	<article class="page-container"  style="margin-top: 10px;">
 		
-		<form action="/index.php/home/ziyuan/editxzqHandle" method="post" class="form form-horizontal" id="form-admin-xzq-edit">
+		<form action="/kaidandashi/index.php/home/ziyuan/editxzqHandle" method="post" class="form form-horizontal" id="form-admin-xzq-edit">
 			<input type="hidden" name="id" value="<?php echo ($xingzhengqu["id"]); ?>"/>
 			<br/>
 			<div class="layui-form-item">
@@ -98,10 +98,10 @@
 	</article>
 
 
-<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -111,9 +111,9 @@
 	});
 </script>
 
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$(".permission-list dt input:checkbox").click(function(){

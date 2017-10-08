@@ -15,19 +15,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="/kaidandashi/Public/favicon.ico" >
-<link rel="Shortcut Icon" href="/kaidandashi/Public/favicon.ico" />
+<link rel="Bookmark" href="/Public/favicon.ico" >
+<link rel="Shortcut Icon" href="/Public/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -217,7 +217,7 @@
 			<i class="Hui-iconfont">&#xe68f;</i>
 		</a>
 	</nav>
-	<link rel="stylesheet" href="/kaidandashi/Public/lib/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="/Public/lib/layui/css/layui.css" media="all">
 	<div class="page-container">
 		<form class="layui-form" action="<?php echo U('Ziyuan/xiaoqu');?>" method="get" id="form">
 			<div align="center">
@@ -260,7 +260,7 @@
 					<th width="80">拼音检索</th>
 					<th width="80">所属片区</th>
 					<th width="80">所属行政区</th>
-					<th width="80">所属学区</th>
+<!--					<th width="80">所属学区</th>-->
 					<!-- <th width="80">座栋规则</th> -->
 					<th width="80">地图坐标</th>
 					<!-- <th width="80">小区地址</th> -->
@@ -282,14 +282,14 @@
 						<td>
 							<?php if(is_array($ssxzq)): foreach($ssxzq as $key=>$xzq): if($xq["ssxzq"] == $xzq["id"]): echo ($xzq["xzqming"]); endif; endforeach; endif; ?>
 						</td>
-						<td><?php echo ($xq["ssxuexiao"]); ?></td>
+						<!--<td><?php echo ($xq["ssxuexiao"]); ?></td>-->
 						<!-- <td><?php echo ($xq["zdguize"]); ?></td> -->
 						<td><?php echo ($xq["dituzb"]); ?></td>
 						<!-- <td><?php echo ($xq["xiaoqudz"]); ?></td> -->
 						<td class="f-14" id="td">
-							<a title="详情" data-href="<?php echo U('Ziyuan/xiaoqurr',array('id'=>$xq['id']));?>" data-title="<?php if($xq.xiaoqum): echo ($xq["xiaoqum"]); endif; ?>" href="javascript:;" style="text-decoration:none">
+							<!--<a title="详情" data-href="<?php echo U('Ziyuan/xiaoqurr',array('id'=>$xq['id']));?>" data-title="<?php if($xq.xiaoqum): echo ($xq["xiaoqum"]); endif; ?>" href="javascript:;" style="text-decoration:none">
 								<i class="Hui-iconfont" style="font-size: 22px;">&#xe720;</i>
-							</a>
+							</a>-->
 							<a title="编辑" href="javascript:;" onclick="layer_show('编辑小区','<?php echo U('Ziyuan/editXiaoqu',array('id'=>$xq['id']));?>','960')" style="text-decoration:none" class="ml-5">
 								<i class="Hui-iconfont" style="font-size: 18px;">&#xe6df;</i>
 							</a>
@@ -307,10 +307,10 @@
 	</div>
 
 
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -320,10 +320,10 @@
 	});
 </script>
 
-	<script type="text/javascript" src="/kaidandashi/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-	<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-	<script src="/kaidandashi/Public/lib/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+	<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+	<script src="/Public/lib/layui/layui.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		$("#table").on("click","#td a",function(){
 			Hui_admin_tab(this);

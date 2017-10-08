@@ -13,13 +13,13 @@
 		<meta charset="utf-8">
 		<meta name="renderer" content="webkit|ie-comp|ie-stand">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><script src="/kaidandashi/Public/echarts/build/dist/echarts-all.js"></script> 
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 		<meta http-equiv="Cache-Control" content="no-siteapp"/>
-		<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css"/>
-		<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css"/>
-		<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin"/>
-		<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin"/>
+		<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css"/>
 		<style type="text/css">
 			#greetings{
 				position: absolute;
@@ -75,20 +75,7 @@
 		<div class="container mt-20"  style="height: 500px;">
 			<div class="row">
 				<div class="col-md-8">
-					<div class="panel panel-default pd-15">
-						<div class="mt-20 text-c" id="search_welcome">
-							<span class="select-box size-XL" style="width:90px">
-								<select name="" id=""  class="select">
-									<option value="1">房源</option>
-								</select>
-							</span>
-							<input type="text" placeholder="请输入房源编号、小区、业主姓名、电话、门牌号..." class="input-text ac_input size-XL" name="sousou"  autocomplete="off" style="width:500px" id="search_input">
-							<div id="greetings" >
-								<ul id="tcontent"></ul>
-							</div>
-							<a class="btn btn-primary size-XL" id="search_button">查询</a>
-						</div>
-					</div>
+
 					<div class="panel panel-default mt-20 ">
 						<div class="pl-10 pt-10 pr-10">
 							<blockquote>常用入口</blockquote>
@@ -101,44 +88,20 @@
 								<li>
 									<a class="btn radius btn-danger size-L" href="javascript:;" onclick="admin_esfy_add('新增(出租)房源','<?php echo U('Fangyuan/addEsfy',array('jylx'=>'2'));?>','950')">+新增(出租)房源</a>
 								</li>
-								<li>
-									<a class="btn radius btn-success size-L" href="javascript:;" onclick="admin_esfy_add('新增(买卖)客源','<?php echo U('Keyuan1/addKeyuan');?>','1100')">+新增(买卖)客源</a>
-								</li>
-								<li>
-									<a class="btn radius btn-success size-L" href="javascript:;" onclick="admin_esfy_add('新增(租赁)客源','<?php echo U('Keyuan1/addKeyuan2');?>','1100')">+新增(租赁)客源</a>
-								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4" style="padding-left: 0px;">
 					<div class="panel panel-default pd-15" style="height: 170px;" >
-						<div class="col-md-5 col-sm-5 col-xs-5">
-							<?php if($useri["touxiang"] == 1): ?><a href="javascript:;" onClick="layer_show('添加头像','<?php echo U('Index/avatar');?>',500,400);">
-								<img src="/kaidandashi/Upload/Avatar/<?php echo session('gongsiid');?>/<?php echo session('username');?>_100.jpg?+Math.random()" class="img-responsive radius" alt="用户头像" style="width:120px;height: 130px;">
-							</a>
-							<span>点击上图上传头像<span>
-							<?php else: ?>
-							<a href="javascript:;" onClick="layer_show('添加头像','<?php echo U('Index/avatar');?>',500,400);">
-								<img src="/kaidandashi/Public/static/h-ui/images/ucnter/avatar-default.jpg" class="img-responsive radius" alt="用户头像" style="width:120px;height: 155px;">
-								<span>点击上图上传头像<span>
-							</a><?php endif; ?>
-						</div>
+
 						<div class="col-md-7 col-sm-7 col-xs-7">
 							<div>
-								<span>姓名</span>
+								<span>账号</span>
 								<span class="pd-15"><?php echo ($useri['ygmingcheng']); ?></span>
 							</div>
 							<div>
-								<span>工号</span>
-								<span class="pd-15"><?php echo ($useri['ygbianhao']); ?></span>
-							</div>
-							<div>
-								<span>部门</span>
-								<span class="pd-15"><?php echo ($useri['bmming']); ?></span>
-							</div>
-							<div>
-								<span>职务</span>
+								<span>角色</span>
 								<span class="pd-15"><?php echo ($remark); ?></span>
 							</div>
 							<div>
@@ -148,50 +111,22 @@
 						</div>
 					</div>
 					<div style="line-height:20PX;">&nbsp;</div>
-					<div class="panel panel-default  pd-10" style="">	
-						<blockquote>房源收集与发布</blockquote>
-						<div class="text-c">
-							<table class="table table-border table-bordered">
-							  <tr><td colspan="4">收集房源</td></tr>
-							  <tr>
-							    <td class="va-m" height="30"><a href="http://hn.58.com/ershoufang/" target="_blank" class="pd-10">58同城</a></td>
-							    <td class="va-m"><a href="http://huainan.ganji.com/fang5/" target="_blank" class="pd-10">赶集</a></td>
-							    <td class="va-m"><a href="http://huainan.baixing.com/ershoufang/" target="_blank" class="pd-10">百姓</a></td>
-							    <td class="va-m"><a href="https://huainan.anjuke.com/sale/" target="_blank" class="pd-10">安居客</a></td>
-							  </tr>
-							</table>
-							<div style="line-height:20PX;">&nbsp;</div>
-							<table class="table table-border table-bordered">
-							  <tr><td colspan="4">发布房源</td></tr>
-							  <tr>
-							    <td class="va-m" height="30"><a href="http://post.58.com/fang/1/12/s5" target="_blank" class="pd-10">58同城</a></td>
-							    <td class="va-m"><a href="http://huainan.ganji.com/pub/pub.php?act=pub&method=load&cid=7&mcid=21&domain=huainan" target="_blank" class="pd-10">赶集</a></td>
-							    <td class="va-m"><a href="http://huainan.baixing.com/fabu/ershoufang" target="_blank" class="pd-10">百姓</a></td>
-							    <td class="va-m"><a href="https://huainan.anjuke.com/propsale/?from=sy_tab" target="_blank" class="pd-10">安居客</a></td>
-							  </tr>
-							</table>							
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>
 		<footer class="footer mt-20" style="border: 1px solid #000">
 			<div class="container">
 				<p>
-					Copyright &copy;2008-2017 
-					<a href="http://www.kaidandashi.com" target="_blank" title="" style="text-decoration: none;">开单大师</a>
-					 All Rights Reserved.<br>
-					本系统由
-					<a href="http://www.kaidandashi.com" target="_blank" title="" style="text-decoration: none;">淮南市银泰科技软件有限公司</a>
-					提供技术支持
+					Copyright &copy;2017-2020房屋管理系统All Rights Reserved.<br>
 				</p>
 			</div>
 		</footer>
-		<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
-		<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-		<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
-		<script type="text/javascript" src="/kaidandashi/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+		<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+		<script type="text/javascript" src="/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 		<script>
 			$(document).ready(function(){
 				$(document).bind("contextmenu",function(e){
@@ -296,7 +231,9 @@
 		    // #tab_demo .tabCon 内容区
 		    // click 事件 点击切换，可以换成mousemove 移动鼠标切换
 		    // 1默认第2个tab为当前状态（从0开始）
-			$(function());
+			$(function(){
+				$.Huitab("#tab_ticheng .tabBar span","#tab_ticheng .tabCon","current","mousemove","0")
+			});
 		</script>
 	</body>
 </html>

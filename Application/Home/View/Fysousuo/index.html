@@ -189,10 +189,6 @@ html,body{
 						
 						<td>
 							<if condition='$es["tupian"]'><span class="label label-primary radius">图</span></if>
-							<if condition='$es["xuequ"]'><span class="label label-success radius">学</span></if>
-							<if condition='($es["shouyaobm"]) or ($es["shouyaoren"])'><span class="label label-secondary radius">钥</span></if>
-							<if condition='$es["jishou"]'><span class="label label-danger radius">急</span></if>                                          
-                            <if condition='$es["dqshu"] gt 9'><span class="label label-warning radius">精</span></if>
                         </td>
 						<td id="td">
 						<a data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>" href="javascript:void;" style="color:red;">

@@ -54,7 +54,7 @@ class IndexController extends CommonController {
         //输出个人信息
         $this->useri=$Model->table(array('jjrxt_yonghu'=>'a','jjrxt_bumen'=>'b'))->field('a.ygmingcheng,a.dianhua,a.touxiang,a.ygbianhao,b.bmming')->where('a.bumen=b.id and a.id='.session('uid'))->find();
         //输出我的收藏
-        $condition="gongsiid=".session('gongsiid');
+        //$condition="gongsiid=".session('gongsiid');
         $shoucang=M('shoucang')->where(array('user_id'=>session('uid')))->select();
         if ($shoucang) {
             foreach ($shoucang as $key => $value) {
@@ -62,9 +62,9 @@ class IndexController extends CommonController {
             }
             $arr = array_values($array);
             $char = implode(",", $arr);
-            $condition.=" and id in ($char)";
+            $condition.=" id in ($char)";
         }else{
-            $condition.=" and id=0";
+            $condition.=" id=0";
         }
         //echo $condition;
         $count=M('fangyuan')->query("select count(*) from __FANGYUAN__ where {$condition}");
@@ -88,7 +88,7 @@ class IndexController extends CommonController {
         $today=date("m-d");
         $this->user_chankan=M('yonghu')->where(array('id'=>session('uid')))->getField('xzchakan');
         $this->xzchakan=M('xianzhi')->where(array('uid'=>session('uid'),'time'=>$today))->count();
-        $this->gonggao=M('Gsgonggao')->group('ggshijian desc')->limit(7)->select();
+        //$this->gonggao=M('Gsgonggao')->group('ggshijian desc')->limit(7)->select();
         $roleuser=M('role_user')->where(array('user_id'=>session('uid')))->getField('role_id');
         $this->remark=M('role')->where(array('id'=>$roleuser))->getField('remark');
         $this->display();// 输出模板

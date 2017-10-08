@@ -15,19 +15,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="/Public/favicon.ico" >
-<link rel="Shortcut Icon" href="/Public/favicon.ico" />
+<link rel="Bookmark" href="/kaidandashi/Public/favicon.ico" >
+<link rel="Shortcut Icon" href="/kaidandashi/Public/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -35,10 +35,10 @@
 <body >
 
 
-<link rel="stylesheet" href="/Public/lib/layui/css/layui.css"  media="all">
+<link rel="stylesheet" href="/kaidandashi/Public/lib/layui/css/layui.css"  media="all">
 <div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div>
 	<article class="page-container">
-		<form action="/index.php/home/rbac/addUserHandle" method="post" class="form form-horizontal demoform" id="form-admin-node-add">
+		<form action="/kaidandashi/index.php/home/rbac/addUserHandle" method="post" class="form form-horizontal demoform" id="form-admin-node-add">
 			<div class="col-xs-12 col-sm-12">
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-2">
@@ -63,16 +63,6 @@
 						<input type="password" class="input-text" value="" placeholder="" id="password" name="mima">
 					</div>
 					<label class="form-label col-xs-4 col-sm-2">
-						<span class="c-red"></span>员工编号：
-					</label>
-					<div class="formControls col-xs-8 col-sm-4">
-						<input type="text" class="input-text" value="" placeholder="" id="password" name="ygbianhao">
-					</div>
-					
-				</div>
-				<br/>
-				<div class="row cl">
-					<label class="form-label col-xs-4 col-sm-2">
 						<span class="c-red">*</span>所属角色：
 					</label>
 					<div class="formControls col-xs-8 col-sm-4">
@@ -81,32 +71,10 @@
 								<option value="<?php echo ($v['id']); ?>"><?php echo ($v["name"]); ?>(<?php echo ($v["remark"]); ?>)</option><?php endforeach; endif; ?>
 						</select>
 					</div>
-					<div class="row cl">
-					<label class="form-label col-xs-4 col-sm-2">
-						<span class="c-red">*</span>所属部门：
-					</label>
-					<div class="formControls col-xs-8 col-sm-4">
-						<select name="bumen" class="input-text radius">
-							<?php if(is_array($bumen)): foreach($bumen as $key=>$v): ?><option style="display:none">请选择部门</option>
-								<option value="<?php echo ($v['id']); ?>"><?php echo ($v["bmming"]); ?></option><?php endforeach; endif; ?>
-						</select>
-					</div>
 				</div>
-				</div>
-				
 				<br/>
-				<div class="row cl">
-					<label class="form-label col-xs-4 col-sm-2">
-						限制查看数：
-					</label>
-					<div class="formControls col-xs-8 col-sm-4">
-						<select name="xzchakan" class="input-text radius">
-							<option value="30">30</option>
-							<option value="40">40</option>
-							<option value="50">50</option>
-						</select>
-					</div>
-				</div>
+
+
 			</div>
   <div style="height: 50px;"></div>
   <div class="layui-form-item" style="width:100%;
@@ -131,10 +99,10 @@
 	
 
 
-<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -144,9 +112,9 @@
 	});
 </script>
 
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-	<script type="text/javascript" src="/Public/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="/kaidandashi/Public/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$(".permission-list dt input:checkbox").click(function(){

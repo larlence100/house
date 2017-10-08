@@ -5,28 +5,20 @@ namespace Api\Controller;
  */
 class RentController extends ApiController
 {
+    const PAGESIZE = 20;
+
     public function rent_list(){
 
 
             if (!$_GET['isget']) {
-                $condition="gongsiid=".session('gongsiid');
-                $condition.=" and leixing=1";
-                //$condition.=" and zhuangtai=1";
-                $count=M('fangyuan')->query("select count(*) from __FANGYUAN__ where {$condition}");
-                /*p($count);
-                die;*/
-                $Page  = new \Think\Page($count['0']['count(*)'],20);// 实例化分页类 传入总记录数和每页显示的记录数(25)
-                $show  = $Page->show();// 分页显示输出
-
+                $condition = '';
+                $condition.="leixing=". I('leixing');
+                $count=M('fangyuan')->query("select count(*) as total from __FANGYUAN__ where {$condition}");
+                $Page  = new \Think\Page($count[0]['total'],static::PAGESIZE);
                 $list="select * from jjrxt_fangyuan a left outer join
 (select fyid,count(*) dqshu from jjrxt_xianzhi group by fyid) b on a.id=b.fyid where {$condition} order by bianhao DESC limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
                 $fangyuan=$Model->query($list);
-
-
-                $this->assign('fangyuan',$fangyuan);// 赋值数据集
-                $this->assign('count',$count);// 赋值分页输出
-                $this->assign('page',$show);
 
                 $this->zujialx=M('Peizhi')->where(array('pzming'=>'zujialx'))->select();
                 $this->leixing=M('Peizhi')->where(array('pzming'=>'leixing'))->select();
@@ -39,7 +31,7 @@ class RentController extends ApiController
                 $this->user_chankan=M('yonghu')->where(array('id'=>session('uid')))->getField('xzchakan');
                 $this->xzchakan=M('xianzhi')->where(array('uid'=>session('uid'),'time'=>$today))->count();
 
-                return $this->returnApiSuccess($fangyuan);
+                return $this->returnApiSuccess(['count'=>$count[0]['total'],'pagesize'=>static::PAGESIZE,'list'=>$fangyuan]);
             }else{
                 $leixing=$_GET['leixing'];
                 $xiaoqu=$_GET['xiaoqu'];

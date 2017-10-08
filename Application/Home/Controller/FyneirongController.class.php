@@ -59,7 +59,7 @@
             $data['xiaoqu']=I('xiaoqu');
             $data['xiaoqum']=I('xiaoqum');
 
-            if (I('shouyaobm')) {
+           /* if (I('shouyaobm')) {
                 if ($fy1['shouyaoren']){
                     $data['shouyaobm']=I('shouyaobm');
                 }else{
@@ -68,7 +68,7 @@
                 }
             }elseif (I('shouyaobm')=="0") {
                 $data['shouyaobm']=I('shouyaobm');
-            }
+            }*/
            
             $data['mianji']=I('mianji');
             $data['shoujia']=I('shoujia');

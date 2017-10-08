@@ -15,19 +15,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="/kaidandashi/Public/favicon.ico" >
-<link rel="Shortcut Icon" href="/kaidandashi/Public/favicon.ico" />
+<link rel="Bookmark" href="/Public/favicon.ico" >
+<link rel="Shortcut Icon" href="/Public/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/kaidandashi/Public/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/Public/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -211,10 +211,6 @@ html,body{
 						
 						<td>
 							<?php if($es["tupian"]): ?><span class="label label-primary radius">图</span><?php endif; ?>
-							<?php if($es["xuequ"]): ?><span class="label label-success radius">学</span><?php endif; ?>
-							<?php if(($es["shouyaobm"]) or ($es["shouyaoren"])): ?><span class="label label-secondary radius">钥</span><?php endif; ?>
-							<?php if($es["jishou"]): ?><span class="label label-danger radius">急</span><?php endif; ?>                                          
-                            <?php if($es["dqshu"] > 9): ?><span class="label label-warning radius">精</span><?php endif; ?>
                         </td>
 						<td id="td">
 						<a data-href="<?php echo U('Fangyuan/neirong',array('id'=>$es['id']));?>" data-title="<?php if($es.bianhao): echo ($es["bianhao"]); endif; ?>" href="javascript:void;" style="color:red;">
@@ -270,10 +266,10 @@ html,body{
     text-align:center;"><?php echo ($page); ?></div>
 	
 
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/Public/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -283,7 +279,7 @@ html,body{
 	});
 </script>
 
-	<script type="text/javascript" src="/kaidandashi/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/Public/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 	
 </body>
 </html>

@@ -16,15 +16,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/html5shiv.js"></script>
-<script type="text/javascript" src="/kaidandashi/Public/lib/respond.min.js"></script>
+<script type="text/javascript" src="/Public/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/Public/lib/respond.min.js"></script>
 <![endif]-->
-<link href="/kaidandashi/Public/static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="/kaidandashi/Public/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="/kaidandashi/Public/static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
-<link href="/kaidandashi/Public/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="/Public/static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/Public/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/Public/static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/Public/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="/kaidandashi/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/Public/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>登录</title>
@@ -36,7 +36,7 @@
 <div class="header"></div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" id="frmlogin" action="/kaidandashi/index.php/home/login/Login" method="post">
+    <form class="form form-horizontal" id="frmlogin" action="/index.php/home/login/Login" method="post">
       <div class="row cl">
         <label class="form-label col-xs-4"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
@@ -54,7 +54,7 @@
         <div class="formControls col-xs-8 col-xs-offset-4">
           <input id="yzm" name="yzm" class="input-text size-L" type="text" placeholder="验证码" onblur="" onclick="" value="" style="width:100px;">
           <span class="label label-danger"><?php echo ($verifyerror); ?></span>
-        <img class="img" src="/kaidandashi/index.php/home/login/verifyImg" width="140px" height="40px" 
+        <img class="img" src="/index.php/home/login/verifyImg" width="140px" height="40px" 
         onclick="this.src=this.src+'?'+Math.random()"/>
            </div>
       </div>
@@ -68,8 +68,8 @@
   </div>
 </div>
 <div class="footer">Copyright  2008-2017 <a href="http://www.kaidandashi.com/" target="_blank">开单大师</a> - 专业 专注 用心 </div>
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/kaidandashi/Public/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/static/h-ui/js/H-ui.min.js"></script>
 <script>
 	$(document).ready(function(){
 	    $(document).bind("contextmenu",function(e){

@@ -15,7 +15,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="/kaidandashi/Public/lib/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="/Public/lib/layui/css/layui.css"  media="all">
   <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 
   <style type="text/css">
@@ -57,7 +57,7 @@
 </head>
 <body>
 <div style="position:fixed;top:0;width: 100%; border-top-style: solid;border-top-width: 2px;border-top-color: #009688;"></div> 
-<form class="layui-form" action="/kaidandashi/index.php/home/fangyuan/addEsfyHandle" method="post" id="addEsfy" style="margin-top: 10px;">
+<form class="layui-form" action="/index.php/home/fangyuan/addEsfyHandle" method="post" id="addEsfy" style="margin-top: 10px;">
 
   <div class="layui-form-item">
     <div class="layui-inline">
@@ -455,8 +455,8 @@
   </div>
 </form>
 
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script src="/kaidandashi/Public/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script src="/Public/lib/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 layui.use(['form', 'layedit', 'laydate'], function(){

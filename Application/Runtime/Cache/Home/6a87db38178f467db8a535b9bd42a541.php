@@ -15,7 +15,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="/kaidandashi/Public/lib/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="/Public/lib/layui/css/layui.css"  media="all">
   <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
   <style type="text/css">
   html,body{
@@ -88,7 +88,7 @@
       </select>
     </div>
       <div class="layui-input-inline" style="width:400px;">
-        <input type="text" name="sousuo" list="greetings"  autocomplete="off" placeholder="请输入房源编号、小区、业主姓名、电话、经纪人..." class="layui-input" id="sousuo" >
+        <input type="text" name="sousuo" list="greetings"  autocomplete="off" placeholder="请输入房源编号、小区、业主姓名、电话" class="layui-input" id="sousuo" >
         <div id="greetings" >
            <ul id="tcontent">
               
@@ -104,7 +104,6 @@
     </div>
 
     <div class="layui-inline">
-
       <div class="layui-input-inline" style="width:80px;margin-left:20px;">
         <select name="zhuangxiu" >
         <option value="">装修</option>
@@ -125,7 +124,7 @@
       </div>
     </div>
 
-    <div class="layui-inline" style="float:right;" id="tianjiafy3">
+    <div class="layui-inline" style="float:right;margin-bottom: 10px;" id="tianjiafy3">
        <a class="layui-btn  layui-btn-danger"  id="tianjiafy">
            添加房源
         </a>
@@ -143,13 +142,13 @@
   </div>
 
   <div class="layui-form-item" >
-    <div class="layui-input-inline" style="width:100px;margin-left:20px;">
-        <select name="zhuangtai" >
-        <option value="0">全部</option>
-          <?php if(is_array($zhuangtai)): foreach($zhuangtai as $key=>$pz): ?><option value="<?php echo ($pz["lxid"]); ?>" <?php if($pz['lxid'] == 1): ?>selected=""<?php endif; ?>><?php echo ($pz["lxming"]); ?></option><?php endforeach; endif; ?>
-        </select>
-      </div>
-    <div class="layui-input-block">
+      <!--<div class="layui-input-inline" style="width:100px;margin-left:20px;">
+          <select name="zhuangtai" >
+          <option value="0">全部</option>
+            <?php if(is_array($zhuangtai)): foreach($zhuangtai as $key=>$pz): ?><option value="<?php echo ($pz["lxid"]); ?>" <?php if($pz['lxid'] == 1): ?>selected=""<?php endif; ?>><?php echo ($pz["lxming"]); ?></option><?php endforeach; endif; ?>
+          </select>
+        </div>-->
+    <!--<div class="layui-input-block">
       <input type="checkbox" lay-filter="checkbox" lay-skin="primary" title="我的房源" name="myfy" value="1"  /> 
       <input type="checkbox" lay-filter="checkbox" lay-skin="primary" title="我的收藏" name="mysc" value="1"  />
       <input type="checkbox" lay-filter="checkbox" lay-skin="primary" title="今日浏览" name="jrll" value="1"  />
@@ -165,7 +164,7 @@
 <input type="checkbox" lay-filter="checkbox" lay-skin="primary" title="小区名错误" name="noxiaoqu" value="1"  id="noxiaoqu"/>
 
     </div>  </div>
-
+-->
   <div class="layui-form-item">
     <input type="hidden" name="isget" value="1" >
       <label class="layui-form-label">价格</label>
@@ -227,9 +226,9 @@
 
 
 <iframe frameborder=0 width=100% height=70% marginheight=0 marginwidth=0  src="<?php echo U('fysousuo/index');?>" id="iframe" name='iframe'></iframe>  
-<script type="text/javascript" src="/kaidandashi/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/kaidandashi/Public/lib/layer/2.4/layer.js"></script>
-<script src="/kaidandashi/Public/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/Public/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/lib/layer/2.4/layer.js"></script>
+<script src="/Public/lib/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 	$(document).ready(function(){
