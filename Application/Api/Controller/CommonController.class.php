@@ -10,10 +10,16 @@ use Home\Controller\FysousuoController;
 
 class CommonController extends ApiController
 {
-    public function getHouseParameList()
+    public function param()
     {
         $peizhi = M('peizhi');
-        $this->retutnJson($peizhi->select());
+        $this->returnApiSuccessWithData($peizhi->select());
+    }
+
+    public function house_field()
+    {
+        $fyzidua = M('fyziduan');
+        $this->returnApiSuccessWithData($fyzidua->select());
     }
 
     public function getHouseEstate()

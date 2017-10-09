@@ -15,6 +15,10 @@ class ApiController extends RestController
     const ERROR_STATUS = 1;
     const ERROR_MSG = '返回失败';
 
+    const PARAM_ERROR_STATUS = 2;
+    const PARAM_ERROR_MSG = '参数错误';
+
+
     public function getStatusCode(){
         return $this->statusCode;
     }
@@ -29,24 +33,34 @@ class ApiController extends RestController
         $this->response($data,'json',$this->statusCode);
     }
 
-    public function returnApiError($msg = self::ERROR_MSG, $array = [])
+
+    public function returnApiSuccessWithMsg($code =self::SUCCESS_STATUS,$msg = self::SUCCESS_MSG)
     {
         $data = [
-            'code'=>$this->statusCode,
+            'code'=>$code,
             'msg' => $msg,
-            'data' => $array
         ];
         $this->retutnJson($data);
     }
 
-    public function returnApiSuccess($array = [],$msg = self::SUCCESS_STATUS)
+    public function returnApiSuccessWithData($array = [],$msg = self::SUCCESS_MSG,$code = self::SUCCESS_STATUS)
     {
         $data = [
-            'code'=>$this->statusCode,
+            'code'=>$code,
             'msg' => $msg,
             'data' => $array
         ];
         return $this->retutnJson($data);
+    }
+
+    public function returnApiErrorWithData($array = [], $msg = self::ERROR_MSG,$code = self::ERROR_STATUS)
+    {
+        $data = [
+            'code'=>$code,
+            'msg' => $msg,
+            'data' => $array
+        ];
+        $this->retutnJson($data);
     }
 
 
