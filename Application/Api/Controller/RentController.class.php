@@ -8,29 +8,22 @@ class RentController extends ApiController
     const PAGESIZE = 20;
 
     public function rent_list(){
-            /*if (!$_GET['isget']) {
-                $condition = '';
-                $condition.="leixing=". I('leixing');
-                $count=M('fangyuan')->query("select count(*) as total from __FANGYUAN__ where {$condition}");
-                $Page  = new \Think\Page($count[0]['total'],static::PAGESIZE);
-                $list="select * from jjrxt_fangyuan a left outer join
-(select fyid,count(*) dqshu from jjrxt_xianzhi group by fyid) b on a.id=b.fyid where {$condition} order by bianhao DESC limit ".$Page->firstRow.','.$Page->listRows;
-                $Model = new \Think\Model;
-                $fangyuan=$Model->query($list);
+                $city = I('city');
 
-                $this->zujialx=M('Peizhi')->where(array('pzming'=>'zujialx'))->select();
-                $this->leixing=M('Peizhi')->where(array('pzming'=>'leixing'))->select();
-                $this->yongtu=M('Peizhi')->where(array('pzming'=>'yongtu'))->select();
-                $this->zhuangtai=M('Peizhi')->where(array('pzming'=>'zhuangtai'))->select();
-                $this->chaoxiang=M('Peizhi')->where(array('pzming'=>'chaoxiang'))->select();
-                $this->zhuangxiu=M('Peizhi')->where(array('pzming'=>'zhuangxiu'))->select();
+                //根据城市获取片区
+                $pianqu = M('pianqu');
+                $pianquRow = $pianqu->where(['pinyinjs'=>$city])->limit(1)->find();
 
-                $today=date("m-d");
-                $this->user_chankan=M('yonghu')->where(array('id'=>session('uid')))->getField('xzchakan');
-                $this->xzchakan=M('xianzhi')->where(array('uid'=>session('uid'),'time'=>$today))->count();
+                //根据片区获取小区
+                /*$xiaoqu = M('xiaoqu');
+                $xiaoquResult = $xiaoqu->where(['sspianqu'=>$pianquRow['id']])->select();
+                $xiaoquIds = array();
+                foreach($xiaoquResult as $item)
+                {
+                    $xiaoquIds[] = $item['id'];
+                }
+                var_dump($xiaoquIds);exit;*/
 
-                return $this->returnApiSuccess(['count'=>$count[0]['total'],'pagesize'=>static::PAGESIZE,'list'=>$fangyuan]);
-            }else{*/
                 $leixing=$_GET['leixing'];
                 $xiaoqu=$_GET['xiaoqu'];
                 $zuodong=$_GET['zuodong'];
@@ -82,8 +75,11 @@ class RentController extends ApiController
                 $louceng1=$_GET['louceng1'];
                 $louceng2=$_GET['louceng2'];
 
-                if($leixing){//片区
+                if($leixing){
                     $condition.="leixing=$leixing";
+                }
+                if($pianquRow['id']){//片区
+                    $condition.=" and pianqu=".$pianquRow['id'];
                 }
                 if ($xiaoqu) {//小区
                     $condition.=" and xiaoqu=$xiaoqu";
@@ -250,8 +246,6 @@ class RentController extends ApiController
                 $today=date("m-d");
                 $this->user_chankan=M('yonghu')->where(array('id'=>session('uid')))->getField('xzchakan');
                 $this->xzchakan=M('xianzhi')->where(array('uid'=>session('uid'),'time'=>$today))->count();*/
-
-          /*  }*/
     }
 
     public function rent_detail()
