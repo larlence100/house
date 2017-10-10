@@ -36,7 +36,7 @@
 <div class="header"></div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" id="frmlogin" action="/index.php/home/login/Login" method="post">
+    <form class="form form-horizontal" id="frmlogin" action="/home/login/Login" method="post">
       <div class="row cl">
         <label class="form-label col-xs-4"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
@@ -54,7 +54,7 @@
         <div class="formControls col-xs-8 col-xs-offset-4">
           <input id="yzm" name="yzm" class="input-text size-L" type="text" placeholder="验证码" onblur="" onclick="" value="" style="width:100px;">
           <span class="label label-danger"><?php echo ($verifyerror); ?></span>
-        <img class="img" src="/index.php/home/login/verifyImg" width="140px" height="40px" 
+        <img class="img" src="/home/login/verifyImg" width="140px" height="40px" 
         onclick="this.src=this.src+'?'+Math.random()"/>
            </div>
       </div>
