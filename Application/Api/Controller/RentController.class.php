@@ -204,7 +204,8 @@ class RentController extends ApiController
                 }else if ($louceng2) {
                     $condition.=" and louceng<=$louceng";
                 }
-                $count=M('fangyuan')->query("select count(*) from __FANGYUAN__ where {$condition}");
+                $count=M('fangyuan')->query("select count(*) as total from __FANGYUAN__ where {$condition}");
+
                 /*p($count);
                 die;*/
                 $Page  = new \Think\Page($count['0']['count(*)'],20);// 实例化分页类 传入总记录数和每页显示的记录数(25)
@@ -232,7 +233,8 @@ class RentController extends ApiController
                 $list="select * from jjrxt_fangyuan where {$condition} order by ".$paixu." limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
                 $fangyuan=$Model->query($list);
-                return $this->returnApiSuccessWithData($fangyuan);
+
+                return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>static::PAGESIZE,'list'=>$fangyuan]);
 
              /*   $this->xiaoqum=M('xiaoqu')->where(array('gongsiid'=>session('gongsiid')))->select();
 
@@ -253,7 +255,7 @@ class RentController extends ApiController
         $id = I('id');
         $result = getHouseInfoById($id);
         if(empty($result)){
-            return $this->returnApiSuccessWithMsg(parent::ERROR_STATUS,'非法ID');
+            return $this->returnApiSuccessWithMsg('非法ID');
         }
         return $this->returnApiSuccessWithData($result);
     }

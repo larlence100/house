@@ -34,7 +34,16 @@ class ApiController extends RestController
     }
 
 
-    public function returnApiSuccessWithMsg($code =self::SUCCESS_STATUS,$msg = self::SUCCESS_MSG)
+    public function returnApiSuccessWithMsg($msg = self::SUCCESS_MSG,$code =self::SUCCESS_STATUS)
+    {
+        $data = [
+            'code'=>$code,
+            'msg' => $msg,
+        ];
+        $this->retutnJson($data);
+    }
+
+    public function returnApiErrorWithMsg($msg = self::ERROR_MSG,$code =self::ERROR_STATUS)
     {
         $data = [
             'code'=>$code,
