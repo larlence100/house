@@ -255,12 +255,9 @@ class RentController extends ApiController
      */
     public function rent_detail()
     {
+        //ID
         $id = I('id');
         $result = getHouseInfoById($id);
-
-
-
-
         if(empty($result)){
             return $this->returnApiSuccessWithMsg('非法ID');
         }
