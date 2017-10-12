@@ -250,6 +250,9 @@ class RentController extends ApiController
                 $this->xzchakan=M('xianzhi')->where(array('uid'=>session('uid'),'time'=>$today))->count();*/
     }
 
+    /**
+     * 房屋详情
+     */
     public function rent_detail()
     {
         $id = I('id');
@@ -257,7 +260,7 @@ class RentController extends ApiController
 
 
 
-        
+
         if(empty($result)){
             return $this->returnApiSuccessWithMsg('非法ID');
         }
