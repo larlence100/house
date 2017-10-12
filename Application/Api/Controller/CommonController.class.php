@@ -6,14 +6,14 @@
 namespace Api\Controller;
 
 
-use Home\Controller\FysousuoController;
-
 class CommonController extends ApiController
 {
     public function param()
     {
         $peizhi = M('peizhi');
-        $this->returnApiSuccessWithData($peizhi->select());
+        $result = $peizhi->select();
+        $data = groupByArray($result,'pzming');
+        $this->returnApiSuccessWithData($data);
     }
 
     public function house_field()
