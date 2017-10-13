@@ -2,7 +2,7 @@
 
     function getHouseInfoById($id){
         $house = M('fangyuan');
-        $data =  $house->where(['id'=>$id])->select();
+        $data =  $house->find($id);
         return $data;
     }
 

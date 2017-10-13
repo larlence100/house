@@ -253,9 +253,8 @@ class RentController extends ApiController
     /**
      * 房屋详情
      */
-    public function rent_detail()
+    public function detail()
     {
-        //ID
         $id = I('id');
         $result = getHouseInfoById($id);
         if(empty($result)){
@@ -263,8 +262,5 @@ class RentController extends ApiController
         }
         return $this->returnApiSuccessWithData($result);
     }
-    public function getRentList()
-    {
-
-    }
+    
 }
