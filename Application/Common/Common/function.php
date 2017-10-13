@@ -37,7 +37,11 @@ function getHousePhoto($bianhao)
 {
     $photo = M('photo');
     $result = $photo->where(['fybh'=>$bianhao])->field('image')->select();
-    return $result;
+    $data = [];
+    foreach($result as $key=>$value){
+        $data[$key] = $value['image'];
+    }
+    return $data;
 }
 
 
