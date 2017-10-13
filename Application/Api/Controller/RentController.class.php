@@ -233,7 +233,9 @@ class RentController extends ApiController
                 $list="select * from jjrxt_fangyuan where {$condition} order by ".$paixu." limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
                 $fangyuan=$Model->query($list);
-
+                foreach($fangyuan as $k=>$v){
+                    $fangyuan[$k]['photo'] = getHousePhoto($v['bianhao']);
+                }
                 return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>static::PAGESIZE,'list'=>$fangyuan]);
 
              /*   $this->xiaoqum=M('xiaoqu')->where(array('gongsiid'=>session('gongsiid')))->select();
@@ -257,10 +259,11 @@ class RentController extends ApiController
     {
         $id = I('id');
         $result = getHouseInfoById($id);
+        $result['photo'] = getHousePhoto($result['bianhao']);
         if(empty($result)){
             return $this->returnApiSuccessWithMsg('非法ID');
         }
         return $this->returnApiSuccessWithData($result);
     }
-    
+
 }
