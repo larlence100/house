@@ -106,11 +106,6 @@
         public function addEsfyHandle(){
             /*p($_POST);
             die;*/
-            
-
-            if (session('gongsiid')=="") {
-                $this->error('请重新登录');
-            }
 
             $map=array(
                     'gongsiid'=>session('gongsiid'),
@@ -125,13 +120,8 @@
                 $this->error('房源已存在');
             }
 
-            $bh=M('fybianhao')->where(array('gongsiid'=>session('gongsiid')))->setInc('bianhao');
-
-            $bh1=M('fybianhao')->where(array('gongsiid'=>session('gongsiid')))->getField('bianhao');
-            
-
             $data['gongsiid']=session('gongsiid');
-            $data['bianhao']=$bh1;
+            $data['bianhao']=rand(10000,99999);
 
             $data['leixing']=I('leixing');//类型
             $data['yongtu']=I('yongtu');//用途

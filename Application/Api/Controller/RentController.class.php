@@ -24,7 +24,9 @@ class RentController extends ApiController
                 }
                 var_dump($xiaoquIds);exit;*/
 
-                $leixing=$_GET['leixing'];
+                $leixing=I('leixing');
+                $yongtu=I('yongtu');
+
                 $xiaoqu=$_GET['xiaoqu'];
                 $zuodong=$_GET['zuodong'];
                 $danyuan=$_GET['danyuan'];
@@ -56,7 +58,7 @@ class RentController extends ApiController
                 //$zhuangtai=$_GET['zhuangtai'];
                 $zhuangxiu=$_GET['zhuangxiu'];
                 $chaoxiang=$_GET['chaoxiang'];
-                $yongtu=$_GET['yongtu'];
+
 
                 //$waiwangtb=$_GET['waiwangtb'];
                 $yaoshi=$_GET['yaoshi'];
