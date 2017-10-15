@@ -29,7 +29,7 @@ class LoginController extends Controller {
         //$verify->useZh = true;  //使用中文验证码
     $verify->fontSize = 35; //验证码字体大小
     $verify->useNoise = false;  //关闭验证码干扰项
-        $verify->length = 2; 
+        $verify->length = 4;
         $verify->imageW = 220;
         $verify->imageH= 70;
         ob_end_clean();
