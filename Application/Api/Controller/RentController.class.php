@@ -205,14 +205,8 @@ class RentController extends ApiController
                     $condition.=" and louceng<=$louceng";
                 }
                 $count=M('fangyuan')->query("select count(*) as total from __FANGYUAN__ where {$condition}");
-
-                /*p($count);
-                die;*/
-                $Page  = new \Think\Page($count['0']['count(*)'],20);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+                $Page  = new \Think\Page($count['0']['count(*)'],20);
                 $show  = $Page->show();// 分页显示输出
-
-                //$list="select * from __FANGYUAN__ where {$condition} order by bianhao DESC limit ".$Page->firstRow.','.$Page->listRows;
-                //$fangyuan=M('fangyuan')->query($list);
                 if (I('paixu')==1) {
                     $paixu="bianhao DESC";
                 }elseif (I('paixu')==2) {
@@ -259,7 +253,16 @@ class RentController extends ApiController
     {
         $id = I('id');
         $result = getHouseInfoById($id);
+
+        //经纬度
+        $xiaoquInfo = getXiaoQuInfo($result['xiaoqu']);
+        $logAndDim = explode(',',$xiaoquInfo[dituzb]);
+        $result['longitude'] = $logAndDim[0];
+        $result['dimensions'] = $logAndDim[1];
+
+        //图片
         $result['photo'] = getHousePhoto($result['bianhao']);
+
         if(empty($result)){
             return $this->returnApiSuccessWithMsg('非法ID');
         }

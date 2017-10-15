@@ -39,9 +39,22 @@ function getHousePhoto($bianhao)
     $result = $photo->where(['fybh'=>$bianhao])->field('image')->select();
     $data = [];
     foreach($result as $key=>$value){
-        $data[$key] = $value['image'];
+        $data[$key] = "/Upload/".$bianhao.'/t_'.$value['image'];
     }
     return $data;
+}
+
+/**
+ * 获取小区详细信息
+ * @param $xiaoqu_id
+ * @return mixed
+ * author Fox
+ */
+function getXiaoQuInfo($xiaoqu_id)
+{
+    $xiaoqu = M('xiaoqu');
+    $result = $xiaoqu->where(['id'=>$xiaoqu_id])->find();
+    return $result;
 }
 
 
