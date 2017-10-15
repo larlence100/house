@@ -8,6 +8,7 @@ class RentController extends ApiController
     const PAGESIZE = 20;
 
     public function rent_list(){
+                $pageSize = I('pagesize')? I('pagesize'): static::PAGESIZE;
                 $city = I('city');
 
                 //根据城市获取片区
@@ -208,7 +209,7 @@ class RentController extends ApiController
                     $condition.=" and louceng<=$louceng";
                 }
                 $count=M('fangyuan')->query("select count(*) as total from __FANGYUAN__ where {$condition}");
-                $Page  = new \Think\Page($count['0']['count(*)'],20);
+                $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
                 $show  = $Page->show();// 分页显示输出
                 if (I('paixu')==1) {
                     $paixu="bianhao DESC";
@@ -227,13 +228,14 @@ class RentController extends ApiController
                 }else{
                     $paixu="bianhao DESC";
                 }
+
                 $list="select * from jjrxt_fangyuan where {$condition} order by ".$paixu." limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
                 $fangyuan=$Model->query($list);
                 foreach($fangyuan as $k=>$v){
                     $fangyuan[$k]['photo'] = getHousePhoto($v['bianhao']);
                 }
-                return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>static::PAGESIZE,'list'=>$fangyuan]);
+                return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$fangyuan]);
 
              /*   $this->xiaoqum=M('xiaoqu')->where(array('gongsiid'=>session('gongsiid')))->select();
 
