@@ -27,6 +27,7 @@ class RentController extends ApiController
                 $leixing=I('leixing');
                 $yongtu=I('yongtu');
 
+
                 $xiaoqu=$_GET['xiaoqu'];
                 $zuodong=$_GET['zuodong'];
                 $danyuan=$_GET['danyuan'];
