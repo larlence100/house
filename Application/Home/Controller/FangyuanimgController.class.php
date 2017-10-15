@@ -31,10 +31,10 @@
      */
     public function ajax_upload(){
         // 根据自己的业务调整上传路径、允许的格式、文件大小
-        
         $path = "/Upload/".$_POST['fybh'];
         ajax_upload($path);
     }
+
 }
 ?>
         

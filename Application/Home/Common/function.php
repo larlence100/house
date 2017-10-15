@@ -305,8 +305,10 @@
                     $timg->thumb(300,300)->save($newpath);
 
                     //删除原图
-                    unlink('./Upload/'.session('gongsiid').'/'.$_POST['xqid'].'/'.$file['savename']);                 
-                    rename($newpathbig,'./Upload/'.session('gongsiid').'/'.$_POST['xqid'].'/'.$file['savename']);
+                    //unlink('./Upload/'.session('gongsiid').'/'.$_POST['xqid'].'/'.$file['savename']);
+                    //unlink('./Upload/'.session('gongsiid').'/'.$_POST['xqid'].'/'.$file['savename']);
+                    rename($newpathbig,'./Upload/'.$_POST['xqid'].'/'.$file['savename']);
+                    rename($newpathbig,'./Upload/'.$_POST['xqid'].'/'.$file['savename']);
                     //返回给AJAX
                     $data['name']=trim($file['savepath'].$file['savename'],'.');
 
