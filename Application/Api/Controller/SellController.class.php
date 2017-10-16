@@ -24,7 +24,7 @@ class SellController extends ApiController
             }
             $data['status'] = 1;
             $data['leixing'] = I('leixing');//类型
-            $data['yongtu'] = I('yongtu');//用途
+            $data['yongtu'] =I('yongtu')?I('yongtu'):1;//用途
             $data['xiaoqu'] = I('xiaoqu');
             $data['cqxingzhi'] = 1;
             $data['yangtai'] = I('yangtai')?I('yangtai'):0;
