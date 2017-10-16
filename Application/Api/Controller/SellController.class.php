@@ -22,13 +22,24 @@ class SellController extends ApiController
                     throw new Exception($key.' not allow null');
                 }
             }
-            $data['leixing']=I('leixing');//类型
-            $data['yongtu']=I('yongtu');//用途
-            $data['xiaoqu']=I('xiaoqu');
-            $data['xiaoqum']=I('xiaoqum');
+            $data['status'] = 1;
+            $data['leixing'] = I('leixing');//类型
+            $data['yongtu'] = I('yongtu');//用途
+            $data['xiaoqu'] = I('xiaoqu');
+            $data['cqxingzhi'] = 1;
+            $data['yangtai'] = I('yangtai')?I('yangtai'):0;
+            if($data['xiaoqu']){
+                $xiaoqu = getXiaoQuInfo($data['xiaoqu']);
+                if(!$xiaoqu){
+                    throw new Exception(1,'未找到该小区');
+                }
+                $data['xiaoqum'] = $xiaoqu['xiaoqum'];
+                $data['pianqu'] = $xiaoqu['sspianqu'];
+                $data['xingzhengqu'] = $xiaoqu['ssxzq'];
+            }
+
             $data['mianji']=I('mianji');
             $data['shoujia']=I('shoujia');
-
             if(I('mianji')!="" and I('shoujia')!=""){
                 $num1=I('shoujia')*10000;
                 $num2=I('mianji');
@@ -36,6 +47,7 @@ class SellController extends ApiController
                 $danjia=number_format($num,2,".", "");
                 $data['danjia']=$danjia;
             }
+
             $data['zujia']=I('zujia');
             $data['zujialx']=I('zujialx');
             $data['chaoxiang']=I('chaoxiang');
@@ -71,9 +83,5 @@ class SellController extends ApiController
         {
             $this->returnApiErrorWithMsg($e->getMessage());
         }
-
-        //var_dump($data);exit;
-
-
     }
 }

@@ -14,7 +14,9 @@
 
     namespace Home\Controller;
     use Think\Controller;
-    class FyneirongController extends CommonController {
+use Think\Log;
+
+class FyneirongController extends CommonController {
 
         public function xiugai(){
             $this->bumen=M('bumen')->where(array('gongsiid'=>session('gongsiid')))->select();
@@ -58,6 +60,9 @@
 
             $data['xiaoqu']=I('xiaoqu');
             $data['xiaoqum']=I('xiaoqum');
+
+            $data['status'] =I('status');
+
 
            /* if (I('shouyaobm')) {
                 if ($fy1['shouyaoren']){

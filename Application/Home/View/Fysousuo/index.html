@@ -188,7 +188,9 @@ html,body{
 					<tr class="text-c" data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>"  ondblclick="Hui_admin_tabb(this)">
 						
 						<td>
-							<if condition='$es["tupian"]'><span class="label label-primary radius">图</span></if>
+						  <if condition='$es["tupian"]'><span class="label label-primary radius">图</span></if>
+                          <if condition='$es["status"] eq 1'><span class="label label-primary radius">未审核</span></if>
+                          <if condition='$es["status"] eq 2'><span class="label label-primary radius">未通过</span></if>
                         </td>
 						<td id="td">
 						<a data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>" href="javascript:void;" style="color:red;">

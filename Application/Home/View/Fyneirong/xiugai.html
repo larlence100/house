@@ -440,15 +440,19 @@
       </div>
     </div>
   </div>
-
-  
-
-
-
 <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">备注</label>
     <div class="layui-input-block">
       <textarea placeholder="请输入内容" style="width: 600px;" class="layui-textarea" name="beizhu">{$fangyuan['beizhu']}</textarea>
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">审核状态</label>
+    <div class="layui-input-block">
+
+      <input type="radio" name="status" value="0" title="显示" <if condition='$fangyuan["status"] eq 0'>checked=""</if> >
+      <input type="radio" name="status" value="2" title="不显示" <if condition='$fangyuan["status"] eq 2'>checked=""</if> >
     </div>
   </div>
 
@@ -483,8 +487,8 @@
         ,laydate = layui.laydate;
         //监听提交
         form.on('submit(demo1)', function(data){
-            parent.layer.msg('更新成功',{time:3600});
-            setTimeout("parent.location.reload();",{time:3600});
+          /*  parent.layer.msg('更新成功',{time:3600});
+            setTimeout("parent.location.reload();",{time:3600});*/
         });
   
   
