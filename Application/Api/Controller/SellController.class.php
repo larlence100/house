@@ -16,12 +16,24 @@ class SellController extends ApiController
         try{
             $data = I();
             $data['bianhao']= rand(10000,99999);
+
+
+            $data['yezhudianhua']=I('yezhudianhua');
+            $data['verify'] = I('verify');
+            $checkCode = getVerifyCode($data['yezhudianhua'],$data['verify']);
+            if(!$checkCode){
+                throw new Exception('验证码不正确');
+            }else{
+                updateVerifyCode($checkCode['id']);
+            }
             foreach($data as $key=>$value)
             {
                 if($value == ''){
                     throw new Exception($key.' not allow null');
                 }
             }
+
+
             $data['status'] = 1;
             $data['leixing'] = I('leixing');//类型
             $data['yongtu'] =I('yongtu')?I('yongtu'):1;//用途
@@ -58,7 +70,7 @@ class SellController extends ApiController
             $data['danyuan']=I('danyuan');
             $data['fanghao']=I('fanghao');
             $data['yezhu']=I('yezhu');
-            $data['yezhudianhua']=I('yezhudianhua');
+
             $data['fybiaoti']=I('fybiaoti');
             $data['shi']=I('shi');
             $data['ting']=I('ting');

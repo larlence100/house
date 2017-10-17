@@ -14,6 +14,7 @@ class smsController extends ApiController
         $mobile = I('mobile');
         $cacheMobile= S($mobile);
 
+
         //限制发送频率
         if($cacheMobile){
             $this->returnApiErrorWithMsg('发送频率过于频繁');
@@ -38,7 +39,10 @@ class smsController extends ApiController
         $req ->setSmsTemplateCode("SMS_68645010"); //配置短信模板 列表中有模板id
         $resp = $c ->execute( $req );
         if($resp->result->err_code == 0){
+            //限制频率
             S($mobile,$mobile,60);
+            //存表
+            smsLog($mobile,$code);
             $this->returnApiSuccessWithMsg('发送成功');
         }else{
             $this->returnApiErrorWithMsg('发送失败');

@@ -57,8 +57,40 @@ function getXiaoQuInfo($xiaoqu_id)
     return $result;
 }
 
+/**
+ * 短信发送存表
+ * @param $moible
+ * @param $code
+ * @return mixed
+ * author Fox
+ */
+function smsLog($moible,$code)
+{
+    $sms = M('sms');
+    $data = [
+        'code' => $code,
+        'mobile'=> $moible,
+        'created_at' => time()
+    ];
+    //var_dump($data);exit;
+    $result = $sms->add($data);
+    return $result;
+}
+
+function getVerifyCode($mobile,$code)
+{
+    $sms = M('sms');
+    $result = $sms->where('mobile =' .$mobile.' and code =' .$code.' and used_at = 0')->order('created_at')->find();
+    return $result;
+}
 
 
+function updateVerifyCode($id)
+{
+    $sms = M('sms');
+    $result = $sms->where('id='.$id)->save(['used_at'=>time()]);
+    return $result;
+}
 
 
 
