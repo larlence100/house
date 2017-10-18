@@ -17,15 +17,9 @@ class SellController extends ApiController
             $data = I();
             $data['bianhao']= rand(10000,99999);
 
-
             $data['yezhudianhua']=I('yezhudianhua');
             $data['verify'] = I('verify');
-            $checkCode = getVerifyCode($data['yezhudianhua'],$data['verify']);
-            if(!$checkCode){
-                throw new Exception('验证码不正确');
-            }else{
-                updateVerifyCode($checkCode['id']);
-            }
+
             foreach($data as $key=>$value)
             {
                 if($value == ''){
@@ -33,6 +27,12 @@ class SellController extends ApiController
                 }
             }
 
+           /* $checkCode = getVerifyCode($data['yezhudianhua'],$data['verify']);
+            if(!$checkCode){
+                throw new Exception('验证码不正确');
+            }else{
+                updateVerifyCode($checkCode['id']);
+            }*/
 
             $data['status'] = 1;
             $data['leixing'] = I('leixing');//类型
