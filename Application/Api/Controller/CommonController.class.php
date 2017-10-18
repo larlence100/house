@@ -34,4 +34,13 @@ class CommonController extends ApiController
         header("Content-type: application/json");
         exit(json_encode($data));
     }
+
+
+    public function ajax_upload(){
+
+        // 根据自己的业务调整上传路径、允许的格式、文件大小
+        $path = "/Upload/".date('Y').'/'.date('m').'/'.date('d');
+
+        ajax_upload($path);
+    }
 }
