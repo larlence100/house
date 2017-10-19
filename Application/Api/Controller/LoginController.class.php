@@ -21,16 +21,16 @@ class LoginController extends ApiController {
             $iv=define_str_replace(I('get.iv')); //把空格转成+
             $encryptedData=urldecode(I('get.encryptedData'));  //解码
             $code=define_str_replace(I('get.code')); //把空格转成+
-            $msg=D('weixin_user')->getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
+            $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
-                $users_db=D('Users');
-                $info=$users_db->getUserInfo($open_id);
+                $users_db=M('Weixin_user');
+                $info=$users_db->where('openid',$open_id)->find();
                 if(!$info||empty($info)){
-                    $users_db->addUser(['open_id'=>$open_id,'last_time'=>['exp','now()']]); //用户信息入库
-                    $info=$users_db->getUserInfo($open_id);                  //获取用户信息
+                    $users_db->add(['openid'=>$open_id,'username'=>'','last_time'=>time()]); //用户信息入库
+                    $info = $users_db->where('openid',$open_id)->find();                //获取用户信息
                     $session_id=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
-                    $session_db->addSession(['uid'=>$info['id'],'id'=>$session_id]); //保存session
+                    $session_db->addSession(['user_id'=>$info['id'],'id'=>$session_id]); //保存session
                 }
                 if($session_id){
                     $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);  //把3rd_session返回给客户端

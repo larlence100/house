@@ -96,6 +96,24 @@ function define_str_replace($data){
     return str_replace(' ','+',$data);
 }
 
+public function getUserInfo($code,$encryptedData,$iv){
+
+    import('Org.Weixin.errorCode');
+    import('Org.Weixin.wxBizDataCrypt');
+
+    $appid= '';
+    $secret= '';
+    $grant_type='authorization_code';
+    $url='https://api.weixin.qq.com/sns/jscode2session';
+    $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
+    $user_data=json_decode(file_get_contents($url));
+    $session_key= define_str_replace($user_data->session_key);
+    $data="";
+    $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
+    $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
+    return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
+}
+
 /**
  * 上传文件类型控制 此方法仅限ajax上传使用
  * @param  string   $path    字符串 保存文件路径示例： /Upload/image/
