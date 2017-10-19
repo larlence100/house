@@ -99,7 +99,7 @@ function updateVerifyCode($id)
  * @param  integer  $maxSize 允许的上传文件最大值 52428800
  * @return booler   返回ajax的json格式数据
  */
-function ajax_upload($path='file',$format='image',$maxSize='52428800'){
+function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
 
     ini_set('max_execution_time', '0');
     // 去除两边的/

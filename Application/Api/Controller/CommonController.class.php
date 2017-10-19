@@ -41,6 +41,6 @@ class CommonController extends ApiController
         // 根据自己的业务调整上传路径、允许的格式、文件大小
         $path = "/upload/".date('Y').'/'.date('m').'/'.date('d');
 
-        ajax_upload($path);
+        ajaxUpload($path);
     }
 }
