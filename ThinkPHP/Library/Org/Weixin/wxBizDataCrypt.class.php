@@ -7,7 +7,7 @@
  */
 
 
-include_once "errorCode.php";
+include_once "errorCode.class.php";
 
 
 class WXBizDataCrypt
