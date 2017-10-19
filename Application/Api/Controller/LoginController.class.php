@@ -7,13 +7,14 @@
  */
 namespace Api\Controller;
 
-class LoginController{
+class LoginController extends ApiController {
 
     // 微信登录
     public function weixin_login(){
-        $session_db=D('Session');
+
+        $session_db=M('Session');
         $session_id=I('get.sessionid','');
-        $session=$session_db->getSession($session_id);
+        $session=$session_db->where('sessionid',$session_id)->find();
         if( !empty( $session ) ){
             $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);
         }else{
