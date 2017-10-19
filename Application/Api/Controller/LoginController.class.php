@@ -25,11 +25,11 @@ class LoginController extends ApiController {
             $iv=define_str_replace(I('get.iv')); //把空格转成+
             $encryptedData=urldecode(I('get.encryptedData'));  //解码
             $code=define_str_replace(I('get.code')); //把空格转成+
-            //$msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
-            $msg = [
+            $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
+           /* $msg = [
                 'errCode' =>0,
                 'open_id' => 44444
-            ];
+            ];*/
 
             if($msg['errCode']==0){
                 $open_id=$msg['open_id'];
