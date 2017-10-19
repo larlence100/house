@@ -13,24 +13,21 @@ class LoginController extends ApiController {
     public function weixin_login(){
 
 
-        $session_id=I('get.sessionid','');
+        $session_id=I('session_id','');
 
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
-//var_dump($session);exit;
         if( !empty( $session ) ){
-            $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);
+            $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
         }else{
-
-            $iv=define_str_replace(I('get.iv')); //把空格转成+
-            $encryptedData=urldecode(I('get.encryptedData'));  //解码
-            $code=define_str_replace(I('get.code')); //把空格转成+
+            $iv=define_str_replace(I('iv')); //把空格转成+
+            $encryptedData=urldecode(I('encryptedData'));  //解码
+            $code=define_str_replace(I('code')); //把空格转成+
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
            /* $msg = [
                 'errCode' =>0,
-                'open_id' => 44444
+                'open_id' => 55555
             ];*/
-
             if($msg['errCode']==0){
                 $open_id=$msg['open_id'];
                 $users_db=M('users');
@@ -40,19 +37,19 @@ class LoginController extends ApiController {
                     $users_db->add(['openid'=>$open_id,'username'=>'','last_time'=>time()]); //用户信息入库
                     $info = $users_db->where(['openid'=>$open_id])->find();                //获取用户信息
                     $session_id=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
-                    $session_id=111;  //生成3rd_session
+                    //$session_id=111;  //生成3rd_session
                     $session_db->add(['user_id'=>$info['id'],'session_id'=>$session_id]); //保存session
                 }
 
                 if($session_id){
-                    $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);  //把3rd_session返回给客户端
+                    //把3rd_session返回给客户端
+                    $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
                 }else{
                     $user_session = $session_db->where(['user_id'=>$info['id']])->find();
-                    $this->ajaxReturn(['error_code'=>0,'sessionid'=>$user_session['session_id']]);
+                    $this->returnApiSuccessWithData(['sessionid'=>$user_session['session_id']]);
                 }
-
             }else{
-                $this->ajaxReturn(['error_code'=>'用户信息获取失败！']);
+                $this->returnApiErrorWithMsg('用户信息获取失败！');
             }
 
         }
