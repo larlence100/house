@@ -21,7 +21,7 @@ class LoginController extends ApiController {
             $iv=define_str_replace(I('get.iv')); //把空格转成+
             $encryptedData=urldecode(I('get.encryptedData'));  //解码
             $code=define_str_replace(I('get.code')); //把空格转成+
-            $msg=D('Weixin')->getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
+            $msg=D('weixin_user')->getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
                 $users_db=D('Users');
