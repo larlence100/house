@@ -96,7 +96,7 @@ function define_str_replace($data){
     return str_replace(' ','+',$data);
 }
 
-public function getUserInfo($code,$encryptedData,$iv){
+ function getUserInfo($code,$encryptedData,$iv){
 
     import('Org.Weixin.errorCode');
     import('Org.Weixin.wxBizDataCrypt');
