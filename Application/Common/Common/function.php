@@ -92,6 +92,10 @@ function updateVerifyCode($id)
     return $result;
 }
 
+function define_str_replace($data){
+    return str_replace(' ','+',$data);
+}
+
 /**
  * 上传文件类型控制 此方法仅限ajax上传使用
  * @param  string   $path    字符串 保存文件路径示例： /Upload/image/
