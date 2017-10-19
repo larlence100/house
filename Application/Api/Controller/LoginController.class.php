@@ -12,30 +12,43 @@ class LoginController extends ApiController {
     // 微信登录
     public function weixin_login(){
 
-        $session_db=M('Session');
+
         $session_id=I('get.sessionid','');
-        $session=$session_db->where('sessionid',$session_id)->find();
+
+        $session_db=M('Session');
+        $session=$session_db->where(['session_id'=>$session_id])->find();
+//var_dump($session);exit;
         if( !empty( $session ) ){
             $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);
         }else{
+
             $iv=define_str_replace(I('get.iv')); //把空格转成+
             $encryptedData=urldecode(I('get.encryptedData'));  //解码
             $code=define_str_replace(I('get.code')); //把空格转成+
-            $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
+            //$msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
+            $msg = [
+                'errCode' =>0,
+                'open_id' => 44444
+            ];
+
             if($msg['errCode']==0){
-                $open_id=$msg['data']->openId;
-                $users_db=M('Weixin_user');
-                $info=$users_db->where('openid',$open_id)->find();
+                $open_id=$msg['open_id'];
+                $users_db=M('users');
+                $info=$users_db->where(['openid'=>$open_id])->find();
+
                 if(!$info||empty($info)){
                     $users_db->add(['openid'=>$open_id,'username'=>'','last_time'=>time()]); //用户信息入库
-                    $info = $users_db->where('openid',$open_id)->find();                //获取用户信息
+                    $info = $users_db->where(['openid'=>$open_id])->find();                //获取用户信息
                     $session_id=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
-                    $session_db->addSession(['user_id'=>$info['id'],'id'=>$session_id]); //保存session
+                    $session_id=111;  //生成3rd_session
+                    $session_db->add(['user_id'=>$info['id'],'session_id'=>$session_id]); //保存session
                 }
+
                 if($session_id){
                     $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_id]);  //把3rd_session返回给客户端
                 }else{
-                    $this->ajaxReturn(['error_code'=>0,'sessionid'=>$session_db->getSid($info['id'])]);
+                    $user_session = $session_db->where(['user_id'=>$info['id']])->find();
+                    $this->ajaxReturn(['error_code'=>0,'sessionid'=>$user_session['session_id']]);
                 }
 
             }else{
