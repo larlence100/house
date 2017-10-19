@@ -103,9 +103,9 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
 
     ini_set('max_execution_time', '0');
     // 去除两边的/
-    $path=trim($path,'/');
+    /*$path=trim($path,'/');
     // 添加Upload根目录
-    $path=strtolower(substr($path, 0,6))==='upload' ? ucfirst($path) : 'Upload/'.$path;
+    $path=strtolower(substr($path, 0,6))==='upload' ? ucfirst($path) : 'Upload/'.$path;*/
     // 上传文件类型控制
     $ext_arr= array(
         'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
@@ -119,17 +119,19 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
         // 上传文件配置
         $config=array(
             'maxSize'   =>  $maxSize,               // 上传文件最大为50M
-            'rootPath'  =>  './',                   // 文件上传保存的根路径
-            'savePath'  =>  'Upload/',         // 文件上传的保存路径（相对于根路径）
+            'rootPath'  =>  './Upload/',                   // 文件上传保存的根路径
+            'savePath'  =>  '',         // 文件上传的保存路径（相对于根路径）
             'saveName'  =>  array('uniqid',''),     // 上传文件的保存规则，支持数组和字符串方式定义
             'autoSub'   =>  true,                  // 自动使用子目录保存上传文件 默认为true
             'exts'      =>  ''//isset($ext_arr[$format])?$ext_arr[$format]:'',
 
         );
+
         // 实例化上传
         $upload=new \Think\Upload($config);
         // 调用上传方法
         $info=$upload->upload();
+
         $data=array();
         $Img = D('Photo');
         if(!$info){
@@ -141,30 +143,34 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
             // 返回成功信息
             foreach($info as $file){
                 //上传的图片同步保存到数据库表
-                $d['gongsiid'] = session('gongsiid');
-                $d['uid'] = session('uid');
-                $d['image'] = $file['savename'];
-                $d['fybh'] = $_POST['fybh'];
-                $d['create_time'] = time();
-                $Img->add($d);
+
                 //把fangyuan表tupian字段更新为 1
-                M('Fangyuan')->where(array('bianhao'=>$_POST['fybh']))->setField('tupian',1);
+                //M('Fangyuan')->where(array('bianhao'=>$_POST['fybh']))->setField('tupian',1);
 
                 //为上传成功的图片生成缩略图
-                $timg = new \Think\Image();
+               /* $timg = new \Think\Image();
+
                 $timg->open(trim($file['savepath'].$file['savename']));
 
                 $newpathbig =  trim($file['savepath']).'b_'.substr($file['savename'],0,strrpos($file['savename'], '.')).'.'.$file['ext'];
                 $newpath =  trim($file['savepath']).'t_'.substr($file['savename'],0,strrpos($file['savename'], '.')).'.'.$file['ext'];
 
                 $timg->thumb(800,800)->save($newpathbig);
-                $timg->thumb(300,300)->save($newpath);
+                $timg->thumb(300,300)->save($newpath);*/
 
                 //删除原图
                 //unlink('./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
                 //rename($newpathbig,'./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
                 //返回给AJAX
                 $data['filePath']=trim($file['savepath'].$file['savename'],'.');
+
+                ///记录到图片表
+                $d['uid']       = 10000;
+                $d['image']     =  $data['filePath'];
+                //$d['fybh']      = 10000;
+                $d['create_time'] = time();
+                $Img->add($d);
+
                 echo json_encode($data);
             }
         }
