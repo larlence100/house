@@ -15,6 +15,16 @@ function getHouseInfoById($id){
     return $data;
 }
 
+function getUserBySessionId($session_id)
+{
+    $session = M('session');
+    $data =  $session->where(['session_id'=>$session_id])->find();
+    if (!$data) {
+        throw new \Think\Exception('未找到该用户信息');
+    }
+    return $data;
+}
+
 /**
  * 数组分组
  * @param $result

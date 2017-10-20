@@ -30,6 +30,7 @@ class OrderController extends ApiController {
     {
         try{
             $id             = I('fangyuan_id','');
+            $session_id     = I('session_id','');
             $order_no       = I('order_no','');
             $order_money    = I('order_money',0);
             $order_time     = I('order_time',time());
@@ -40,7 +41,8 @@ class OrderController extends ApiController {
 
             $addData = [
                 'fangyuan_id'=>$id,
-                'order_no'=>$order_no,
+                'user_id'   =>getUserBySessionId($session_id),
+                'order_no'  =>$order_no,
                 'order_money'=>$order_money,
                 'order_time'=>$order_time
             ];
