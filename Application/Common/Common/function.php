@@ -216,6 +216,7 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
         return  date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
     }
 
+    
     function getOrderByOrderNo($order_no){
         $house = M('order');
         $data =  $house->where(['order_no'=>$order_no])->find();
