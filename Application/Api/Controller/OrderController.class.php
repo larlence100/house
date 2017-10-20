@@ -39,9 +39,10 @@ class OrderController extends ApiController {
             $order      = M('order');
             $result = getHouseInfoById($id);
 
+            $userSession = getUserBySessionId($session_id);
             $addData = [
                 'fangyuan_id'=>$id,
-                'user_id'   =>getUserBySessionId($session_id),
+                'user_id'   =>$userSession['user_id'],
                 'order_no'  =>$order_no,
                 'order_money'=>$order_money,
                 'order_time'=>$order_time
