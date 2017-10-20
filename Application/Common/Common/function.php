@@ -236,5 +236,18 @@ function buildOrderNo()
     return  date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
 }
 
+function getUserNickNameByid($id)
+{
+    $user = M('users');
+    $result = $user->where(['id'=>$id])->getField('nickname');
+    return $result;
+}
+
+function getFyTitleById($id)
+{
+    $fangyuan = M('fangyuan');
+    $result = $fangyuan->where(['id'=>$id])->getField('fybiaoti');
+    return $result;
+}
 
 

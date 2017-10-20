@@ -210,9 +210,9 @@
 				<thead>
 					<tr class="text-c">
 						<th width="40">序号</th>
+						<th width="150">查看房源</th>
 						<th width="150">订单号</th>
 						<th width="150">用户</th>
-						<th width="150">查看房源</th>
 						<th width="90">支付金额</th>
 						<th width="100">支付状态</th>
 						<th width="100">时间</th>
@@ -223,9 +223,9 @@
 				<volist name="list" id="v">
 					<tr class="text-c">
 						<td>{$i+$firstRow}</td>
+						<td>{:getFyTitleById($v['fangyuan_id'])}</td>
 						<td>{$v.order_no}</td>
-						<td>{$v.user_id}</td>
-						<td>{$v.fangyuan_id}</td>
+						<td>{:getUserNickNameByid($v['user_id'])}</td>
 						<td>{$v.order_money}</td>
 						<td><if condition='$v["status"]'><span class="label radius">已支付</span><else/><span class="label label-success radius">未支付</span></if></td>
 						<td>{$v.order_time|date='Y-m-d H:i',###}</td>
