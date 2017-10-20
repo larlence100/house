@@ -21,7 +21,7 @@ class OrderController extends ApiController {
 
             $this->returnApiSuccessWithData(['price'=>100]);
         }catch (Exception $e){
-            $this->returnApiSuccessWithMsg($e->getMessage());
+            $this->returnApiErrorWithMsg($e->getMessage());
         }
 
     }
@@ -51,7 +51,7 @@ class OrderController extends ApiController {
             $this->returnApiSuccessWithData(['phone'=>$result['yezhudianhua']]);
 
         }catch (Exception $e){
-            $this->returnApiSuccessWithMsg($e->getMessage());
+            $this->returnApiErrorWithMsg($e->getMessage());
         }
 
     }
