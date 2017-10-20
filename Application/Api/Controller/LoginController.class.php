@@ -38,7 +38,7 @@ class LoginController extends ApiController {
                     $info = $users_db->where(['openid'=>$open_id])->find();                //获取用户信息
                     $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
                     //$session_id=111;  //生成3rd_session
-                    $session_db->add(['user_id'=>$info['id'],'session_id'=>$newSessionId]); //保存session
+                    $session_db->add(['user_id'=>$info['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
                 }
 
                 if($newSessionId){
