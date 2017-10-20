@@ -77,7 +77,7 @@ class OrderController extends ApiController {
                 'order_status'=>static::IS_PAY_STATUS
             ];
             $order = M('order');
-            if (!$order->where(['order_no'=>$order_no])->update($updateData)){
+            if (!$order->where(['order_no'=>$order_no])->save($updateData)){
                 throw new Exception('记录失败!');
             };
 

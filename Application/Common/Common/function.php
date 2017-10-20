@@ -212,6 +212,12 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
     }
 }
 
+/**
+ * 获取订单号
+ * @param $order_no
+ * @return mixed
+ * @throws \Think\Exception
+ */
 function getOrderByOrderNo($order_no){
     $house = M('order');
     $data =  $house->where(['order_no'=>$order_no])->find();
@@ -221,6 +227,10 @@ function getOrderByOrderNo($order_no){
     return $data;
 }
 
+/**
+ * 生成订单号
+ * @return string
+ */
 function buildOrderNo()
 {
     return  date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
