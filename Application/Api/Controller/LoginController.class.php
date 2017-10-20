@@ -29,13 +29,13 @@ class LoginController extends ApiController {
             ];*/
 
             if($msg['errCode']==0){
-                $open_id=$msg['open_id'];
+                $open_id=$msg['data']->openId;
                 $users_db=M('users');
-                $info=$users_db->where(['openid'=>$open_id])->find();
+                $info=$users_db->where(['appid'=>$open_id])->find();
 
                 if(!$info||empty($info)){
-                    $users_db->add(['openid'=>$open_id,'username'=>'','last_time'=>time()]); //用户信息入库
-                    $info = $users_db->where(['openid'=>$open_id])->find();                //获取用户信息
+                    $users_db->add(['appid'=>$open_id,'nickname'=>'','last_time'=>time()]); //用户信息入库
+                    $info = $users_db->where(['appid'=>$open_id])->find();                //获取用户信息
                     $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
                     //$session_id=111;  //生成3rd_session
                     $session_db->add(['user_id'=>$info['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
