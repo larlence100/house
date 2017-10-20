@@ -11,6 +11,11 @@ use Think\Exception;
 
 class OrderController extends ApiController {
 
+    const PAY_MONEY         = 100;
+    const IS_NO_PAY_STATUS  = 0;
+    const PAY_STATUS        = 1;
+    const ERROR_PAY_STATUS  = 2;
+
     // 微信登录
     public function get_price()
     {
@@ -26,7 +31,38 @@ class OrderController extends ApiController {
 
     }
 
-    public function create_order()
+    public function order_pay()
+    {
+        try{
+            $id             = I('fangyuan_id','');
+            $session_id     = I('session_id','');
+
+            $fangyuan   = M('fangyuan');
+            $order      = M('order');
+            $result = getHouseInfoById($id);
+
+            $userSession = getUserBySessionId($session_id);
+            $addData = [
+                'fangyuan_id'=>$id,
+                'user_id'   =>$userSession['user_id'],
+                'order_no'  =>build_order_no(),
+                'order_money'=>static::PAY_MONEY,
+                'order_status'=>static::IS_NO_PAY_STATUS,
+                'order_time'=>time()
+            ];
+            if (!$order->add($addData)){
+                throw new Exception('订单生成失败!');
+            };
+
+            $this->returnApiSuccessWithData(['phone'=>$result['yezhudianhua']]);
+
+        }catch (Exception $e){
+            $this->returnApiErrorWithMsg($e->getMessage());
+        }
+
+    }
+
+    public function pay_callback()
     {
         try{
             $id             = I('fangyuan_id','');

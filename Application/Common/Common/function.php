@@ -210,6 +210,11 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
             }
         }
     }
+
+    function build_order_no()
+    {
+        return  date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+    }
 }
 
 
