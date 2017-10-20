@@ -13,8 +13,7 @@ class LoginController extends ApiController {
     public function weixin_login(){
 
 
-        $session_id=I('session_id','');
-
+        $session_id=I('session_id');
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
         if( !empty( $session ) ){
@@ -60,8 +59,8 @@ class LoginController extends ApiController {
         import('Org.Weixin.errorCode');
         import('Org.Weixin.wxBizDataCrypt');
 
-        $appid= '';
-        $secret= '';
+        $appid= 'wxd60a9da2a894158b';
+        $secret= 'f63615e5126f553e1f35e80e48fb2411';
         $grant_type='authorization_code';
         $url='https://api.weixin.qq.com/sns/jscode2session';
         $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
