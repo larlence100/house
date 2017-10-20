@@ -45,7 +45,7 @@ class OrderController extends ApiController {
             $addData = [
                 'fangyuan_id'=>$id,
                 'user_id'   =>$userSession['user_id'],
-                'order_no'  =>build_order_no(),
+                'order_no'  =>  build_order_no(),
                 'order_money'=>static::PAY_MONEY,
                 'order_status'=>static::IS_NO_PAY_STATUS,
                 'order_time'=>time()
