@@ -4,11 +4,14 @@
  * 获取房屋详情
  * @param $id
  * @return mixed
- * author Fox
+ * @throws Exception
  */
 function getHouseInfoById($id){
     $house = M('fangyuan');
     $data =  $house->find($id);
+    if (!$data) {
+        throw new Exception('未找到该房源信息');
+    }
     return $data;
 }
 
