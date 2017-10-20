@@ -27,6 +27,7 @@ class LoginController extends ApiController {
                 'errCode' =>0,
                 'open_id' => 55555
             ];*/
+           
             if($msg['errCode']==0){
                 $open_id=$msg['open_id'];
                 $users_db=M('users');
