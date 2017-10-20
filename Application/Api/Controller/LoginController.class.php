@@ -14,12 +14,6 @@ class LoginController extends ApiController {
 
 
         $session_id=I('session_id');
-        var_dump($session_id);
-        var_dump($session_id);exit;
-
-
-
-
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
         if( !empty( $session ) ){
@@ -42,14 +36,14 @@ class LoginController extends ApiController {
                 if(!$info||empty($info)){
                     $users_db->add(['openid'=>$open_id,'username'=>'','last_time'=>time()]); //用户信息入库
                     $info = $users_db->where(['openid'=>$open_id])->find();                //获取用户信息
-                    $session_id=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
+                    $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
                     //$session_id=111;  //生成3rd_session
-                    $session_db->add(['user_id'=>$info['id'],'session_id'=>$session_id]); //保存session
+                    $session_db->add(['user_id'=>$info['id'],'session_id'=>$newSessionId]); //保存session
                 }
 
-                if($session_id){
+                if($newSessionId){
                     //把3rd_session返回给客户端
-                    $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
+                    $this->returnApiSuccessWithData(['sessionid'=>$newSessionId]);
                 }else{
                     $user_session = $session_db->where(['user_id'=>$info['id']])->find();
                     $this->returnApiSuccessWithData(['sessionid'=>$user_session['session_id']]);
