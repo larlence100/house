@@ -42,7 +42,7 @@ class OrderController extends ApiController {
             $result = getHouseInfoById($id);
 
             $userSession = getUserBySessionId($session_id);
-            $order_no = build_order_no();
+            $order_no = buildOrderNo();
             $addData = [
                 'fangyuan_id'=>$id,
                 'user_id'   =>$userSession['user_id'],
