@@ -15,6 +15,8 @@ class LoginController extends ApiController {
 
         $session_id=I('session_id');
         var_dump($session_id);exit;
+
+        
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
         if( !empty( $session ) ){
