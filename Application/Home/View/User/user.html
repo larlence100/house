@@ -210,6 +210,7 @@
 				<thead>
 					<tr class="text-c">
 						<th width="40">序号</th>
+						<th width="40">APPID</th>
 						<th width="150">称昵</th>
 						<th width="150">手机号码</th>
 						<th width="90">最后登录时间</th>
@@ -221,6 +222,7 @@
 				<volist name="user" id="v">
 					<tr class="text-c">
 						<td>{$i+$firstRow}</td>
+						<td>{$v.appid}</td>
 						<td>{$v.nickname}</td>
 						<td>{$v.mobile}</td>
 						<td>{$v.last_time|date='y-m-d H:i',###}</td>
