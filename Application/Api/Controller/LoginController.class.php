@@ -14,6 +14,7 @@ class LoginController extends ApiController {
 
 
         $session_id=I('session_id');
+        var_dump($session_id);exit;
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
         if( !empty( $session ) ){
@@ -27,7 +28,7 @@ class LoginController extends ApiController {
                 'errCode' =>0,
                 'open_id' => 55555
             ];*/
-           
+
             if($msg['errCode']==0){
                 $open_id=$msg['open_id'];
                 $users_db=M('users');
