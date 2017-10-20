@@ -10,7 +10,7 @@ function getHouseInfoById($id){
     $house = M('fangyuan');
     $data =  $house->find($id);
     if (!$data) {
-        throw new Exception('未找到该房源信息');
+        throw new \Think\Exception('未找到该房源信息');
     }
     return $data;
 }
