@@ -13,7 +13,7 @@ class OrderController extends ApiController {
 
     const PAY_MONEY         = 100;
     const IS_NO_PAY_STATUS  = 0;
-    const PAY_STATUS        = 1;
+    const IS_PAY_STATUS        = 1;
     const ERROR_PAY_STATUS  = 2;
 
     // 微信登录
@@ -65,29 +65,23 @@ class OrderController extends ApiController {
     public function pay_callback()
     {
         try{
-            $id             = I('fangyuan_id','');
             $session_id     = I('session_id','');
             $order_no       = I('order_no','');
             $order_money    = I('order_money',0);
-            $order_time     = I('order_time',time());
-
-            $fangyuan   = M('fangyuan');
-            $order      = M('order');
-            $result = getHouseInfoById($id);
 
             $userSession = getUserBySessionId($session_id);
-            $addData = [
-                'fangyuan_id'=>$id,
-                'user_id'   =>$userSession['user_id'],
-                'order_no'  =>$order_no,
-                'order_money'=>$order_money,
-                'order_time'=>$order_time
+            $userOrder =    getOrderByOrderNo($order_no);
+
+            $updateData = [
+                'order_status'=>static::IS_PAY_STATUS
             ];
-            if (!$order->add($addData)){
+            $order = M('order');
+            if (!$order->where(['order_no'=>$order_no])->update($updateData)){
                 throw new Exception('记录失败!');
             };
 
-            $this->returnApiSuccessWithData(['phone'=>$result['yezhudianhua']]);
+            $fangyuan = getHouseInfoById($userOrder['fangyuan_id']);
+            $this->returnApiSuccessWithData(['phone'=>$fangyuan['yezhudianhua']]);
 
         }catch (Exception $e){
             $this->returnApiErrorWithMsg($e->getMessage());
