@@ -14,8 +14,8 @@ class LoginController extends ApiController {
 
 
         $session_id=I('session_id');
-        var_dump($session_id);exit;
         var_dump($session_id);
+        var_dump($session_id);exit;
 
 
 
