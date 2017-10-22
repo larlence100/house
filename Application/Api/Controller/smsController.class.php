@@ -14,7 +14,6 @@ class smsController extends ApiController
         $mobile = I('mobile');
         $cacheMobile= S($mobile);
 
-
         //限制发送频率
         if($cacheMobile){
             $this->returnApiErrorWithMsg('发送频率过于频繁');
