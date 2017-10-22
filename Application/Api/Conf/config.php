@@ -11,5 +11,5 @@ return array(
     ),
 
 
-	'TWO_DIR' => '/house/'
+	'TWO_DIR' => '/house'
 );
