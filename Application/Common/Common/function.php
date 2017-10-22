@@ -52,7 +52,7 @@ function getHousePhoto($bianhao)
     $result = $photo->where(['fybh'=>$bianhao])->field('image')->select();
     $data = [];
     foreach($result as $key=>$value){
-        $data[$key] = TWO_DIR."/Upload/".$value['image'];
+        $data[$key] = C('TWO_DIR')."/Upload/".$value['image'];
     }
     return $data;
 }
