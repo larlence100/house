@@ -8,5 +8,8 @@ return array(
 
     'URL_ROUTE_RULES'=>array(
         'api/common' => 'Api/Common/getHouseParameList'
-    )
+    ),
+
+
+	'TWO_DIR' => '/house/'
 );
