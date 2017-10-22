@@ -58,6 +58,7 @@
             $this->assign('page',$show);
             $this->display();
         }
+
         public function stopUser(){
             $id=I('id');
 

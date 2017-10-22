@@ -16,9 +16,16 @@
     use Think\Controller;
     class ZiyuanController extends CommonController {
         public function get_citys(){
-            $listObj = M('pianqu');
-            $where['ssxzq'] = I('province_id');
-            $where['gongsiid'] = session('gongsiid');
+            $listObj = M('cities');
+            $where['provinceid'] = I('province_id');
+            $list = $listObj->where($where)->select();
+            $data=array('status'=>0,'city'=>$list);
+            header("Content-type: application/json");
+            exit(json_encode($data));
+        }
+        public function get_areas(){
+            $listObj = M('areas');
+            $where['cityid'] = I('area_id');
             $list = $listObj->where($where)->select();
             $data=array('status'=>0,'city'=>$list);
             header("Content-type: application/json");
@@ -123,6 +130,22 @@
             $this->ssxzq=M('xingzhengqu')->where(array('id'))->select();
             $this->display();
         }
+
+        //片区列表
+        public function region(){
+            $Data=M('pianqu');
+            $count=$Data->where($map)->count();
+            $Page=new \Think\Page($count,30);
+            $show=$Page->show();
+            $list="select * from __PIANQU__ {$condition} order by id DESC limit ".$Page->firstRow.','.$Page->listRows;
+            $Pianqu=M('pianqu')->query($list);
+            $this->assign('firstRow',$Page->firstRow);
+            $this->assign('pianqu',$Pianqu);
+            $this->assign('count',$count);
+            $this->assign('page',$show);
+            $this->ssxzq=M('xingzhengqu')->where(array('id'))->select();
+            $this->display();
+        }
         //添加片区
         public function addPianqu(){
             $this->ssxzq=M('xingzhengqu')->select();
@@ -190,14 +213,13 @@
         }
         //添加小区
         public function addXiaoqu(){
-            $this->ssxzq=M('Xingzhengqu')->select();
+            $this->ssxzq=M('provinces')->select();
             $this->sspianqu=M('Pianqu')->select();
             $this->display();
         }
         //添加小区表单处理
         public function addXiaoquHandle(){
             $_POST['shijian']=time();
-            $_POST['gongsiid']=session('gongsiid');
             if (M('Xiaoqu')->add($_POST)) {
                 $this->success('添加成功');
             }else{
@@ -206,8 +228,9 @@
         }
         //更新小区
         public function editXiaoqu(){
-            $this->ssxzq=M('Xingzhengqu')->select();
-            $this->sspianqu=M('Pianqu')->select();
+            $this->ssxzq=M('provinces')->select();
+            $this->sspianqu=M('cities')->select();
+            $this->ssarea=M('areas')->select();
             $this->xiaoqu=M('Xiaoqu')->where(array('id'=>I('id')))->find();
             $this->display();
         }
@@ -217,6 +240,7 @@
             $data['xiaoqum']=I('xiaoqum');
             $data['pinyinjs']=I('pinyinjs');
             $data['sspianqu']=I('sspianqu');
+            $data['ssarea']=I('ssarea');
             $data['ssxzq']=I('ssxzq');
             $data['csjunjia']=I('csjunjia');
             $data['zdguize']=I('zdguize');

@@ -69,24 +69,33 @@
 			</div>
 			<br/>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-2">
-					<span class="c-red">*</span>所属片区：
+				<label class="form-label col-xs-3 col-sm-2">
+					<span class="c-red">*</span>所属省份：
 				</label>
-				<div class="formControls col-xs-4 col-sm-4">
+				<div class="formControls col-xs-3 col-sm-3">
 					<select nullmsg="请选择行政区" datatype="" value="{$xiaoqu.ssxzq}" id="province_id" name="ssxzq" size="1" class="input-text radius" required>
 						<foreach name="ssxzq" item="pq">
 							<option style="display:none"></option>
-                			<option value="{$pq.id}" <if condition='$xiaoqu["ssxzq"] eq $pq["id"]'>selected=""</if>>{$pq.xzqming}</option>
+                			<option value="{$pq.provinceid}" <if condition='$xiaoqu["ssxzq"] eq $pq["provinceid"]'>selected=""</if>>{$pq.province}</option>
                 		</foreach>
               		</select>
 				</div>
-				<div class="formControls col-xs-4 col-sm-4">
-					<select nullmsg="请选择片区" datatype="" value="{$xiaoqu.sspianqu}" id="city_id" name="sspianqu" size="1" class="input-text radius" required>
+				<div class="formControls col-xs-3 col-sm-3">
+					<select nullmsg="所属城市" datatype="" value="{$xiaoqu.sspianqu}" id="city_id" name="sspianqu" size="1" class="input-text radius" required>
 						<foreach name="sspianqu" item="pq">
 							<option style="display:none"></option>
-                			<option value="{$pq.id}" <if condition='$xiaoqu["sspianqu"] eq $pq["id"]'>selected=""</if>>{$pq.pianqum}</option>
+                			<option value="{$pq.cityid}" <if condition='$xiaoqu["sspianqu"] eq $pq["cityid"]'>selected=""</if>>{$pq.city}</option>
                 		</foreach>
               		</select>
+				</div>
+
+				<div class="formControls col-xs-3 col-sm-3">
+					<select nullmsg="所属区域" datatype="" value="{$xiaoqu.ssarea}" id="area_id" name="ssarea" size="1" class="input-text radius" required>
+						<foreach name="ssarea" item="pq">
+							<option style="display:none"></option>
+							<option value="{$pq.areaid}" <if condition='$xiaoqu["ssarea"] eq $pq["areaid"]'>selected=""</if>>{$pq.area}</option>
+						</foreach>
+					</select>
 				</div>
 			</div>
 			<br/>
@@ -191,53 +200,55 @@
 		$("#province_id").change(function(){
 			var province_id=$(this).val();
 			$.ajax({
-				url:'{:U('Ziyuan/get_citys')}',
-				Type:"POST",
-				data:"province_id="+province_id,
-				dataType:"json",
-				success:function(data){
-					var city = data.city;
+						url:'{:U('Ziyuan/get_citys')}',
+					Type:"POST",
+					data:"province_id="+province_id,
+					dataType:"json",
+					success:function(data){
+				var city = data.city;
+				var option=$("<option></option>");
+				$(option).val("0");
+				$(option).html("请选择");
+				var option1=$("<option></option>");
+				$(option1).val("0");
+				$(option1).html("请选择");
+				$("#city_id").html(option);
+				$("#district_id").html(option1);
+				for(var i in city){
 					var option=$("<option></option>");
-					$(option).val("0");
-					$(option).html("请选择");
-					var option1=$("<option></option>");
-					$(option1).val("0");
-					$(option1).html("请选择");
-					$("#city_id").html(option);
-					$("#district_id").html(option1);
-					for(var i in city){
-						var option=$("<option></option>");
-						$(option).val(city[i]['id']);
-						$(option).html(city[i]['pianqum']);
-						$("#city_id").append(option);
-					}
+					$(option).val(city[i]['cityid']);
+					$(option).html(city[i]['city']);
+					$("#city_id").append(option);
 				}
-				
-			});
+			}
 		});
-	</script>
-	<script>
+		});
+
 		$("#city_id").change(function(){
-			var city_id=$(this).val();
+			var areas_id=$(this).val();
 			$.ajax({
-				url:'{:U('Ziyuan/get_district')}',
-				Type:"POST",
-				data:"city_id="+city_id,
-				dataType:"json",
-				success:function(data){
-					var district = data.district;
+						url:'{:U('Ziyuan/get_areas')}',
+					Type:"POST",
+					data:"area_id="+areas_id,
+					dataType:"json",
+					success:function(data){
+				var city = data.city;
+				var option=$("<option></option>");
+				$(option).val("0");
+				$(option).html("请选择");
+				var option1=$("<option></option>");
+				$(option1).val("0");
+				$(option1).html("请选择");
+				$("#area_id").html(option);
+				$("#district_id").html(option1);
+				for(var i in city){
 					var option=$("<option></option>");
-					$(option).val("0");
-					$(option).html("请选择");
-					$("#district_id").html(option);
-					for(var i in district){
-						var option=$("<option></option>");
-						$(option).val(district[i]['id']);
-						$(option).html(district[i]['xiaoqum']);
-						$("#district_id").append(option);
-					}
+					$(option).val(city[i]['areaid']);
+					$(option).html(city[i]['area']);
+					$("#area_id").append(option);
 				}
-			});
+			}
+		});
 		});
 	</script>
 	<script>

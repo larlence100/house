@@ -250,4 +250,25 @@ function getFyTitleById($id)
     return $result;
 }
 
+function getXzqName($xzqId)
+{
+    $model = M('provinces');
+    $result = $model->where(['provinceid'=>$xzqId])->getField('province');
+    return $result;
+}
+
+function getCityName($cityId)
+{
+    $model = M('cities');
+    $result = $model->where(['cityid'=>$cityId])->getField('city');
+    return $result;
+}
+
+function getAreaName($areaId)
+{
+    $model = M('areas');
+    $result = $model->where(['areaid'=>$areaId])->getField('area');
+    return $result;
+}
+
 

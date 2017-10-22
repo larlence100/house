@@ -233,12 +233,10 @@
 					<th width="40">序号</th>
 					<th width="80">小区名称</th>
 					<th width="80">拼音检索</th>
-					<th width="80">所属片区</th>
-					<th width="80">所属行政区</th>
-<!--					<th width="80">所属学区</th>-->
-					<!-- <th width="80">座栋规则</th> -->
-					<th width="80">地图坐标</th>
-					<!-- <th width="80">小区地址</th> -->
+					<th width="80">所属省份</th>
+					<th width="80">所属城市</th>
+					<th width="80">所属区域</th>
+					<th width="80">经纬度</th>
 					<th width="80">操作</th>
 				</tr>
 			</thead>
@@ -247,21 +245,12 @@
 					<tr class="text-c" data-href="{:U('Ziyuan/xiaoqurr',array('id'=>$xq['id']))}" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" ondblclick="Hui_admin_tabb(this)">
 						<td>{$i+$firstRow}</td>
 						<td id="td">
-							<a data-href="{:U('Ziyuan/xiaoqurr',array('id'=>$xq['id']))}" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" href="javascript:;" style="text-decoration:none">
 								{$xq.xiaoqum}
-							</a>
 						</td>
 						<td>{$xq.pinyinjs}</td>
-						<td>
-							<foreach name="sspianqu" item="pq">
-								<if condition='$xq["sspianqu"] eq $pq["id"]'>{$pq.pianqum}</if>
-							</foreach>
-						</td>
-						<td>
-							<foreach name="ssxzq" item="xzq">
-								<if condition='$xq["ssxzq"] eq $xzq["id"]'>{$xzq.xzqming}</if>
-							</foreach>
-						</td>
+						<td>{:getXzqName($xq['ssxzq'])}</td>
+						<td>{:getCityName($xq['sspianqu'])}</td>
+						<td>{:getAreaName($xq['ssarea'])}</td>
 						<!--<td>{$xq.ssxuexiao}</td>-->
 						<!-- <td>{$xq.zdguize}</td> -->
 						<td>{$xq.dituzb}</td>
@@ -320,7 +309,7 @@
 				dataType:"json",
 				success:function(data){
 					var pics = data.pics;
-					var sj='<tr class="text-c"><td style="color:red">new</td><td><a data-href="{:U('Ziyuan/xiaoqurr')}" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" href="javascript:;" style="text-decoration:none">'+pics["xiaoqum"]+'</a></td><td>'+pics["pinyinjs"]+'</td><td></td><td></td><td>'+pics["ssxuexiao"]+'</td><td>'+pics["dituzb"]+'</td><td></td></tr>';
+					var sj='<tr class="text-c"><td style="color:red">new</td><td><a data-href="" data-title="<if condition='$xq.xiaoqum'>{$xq.xiaoqum}</if>" href="javascript:;" style="text-decoration:none">'+pics["xiaoqum"]+'</a></td><td>'+pics["pinyinjs"]+'</td><td></td><td></td><td>'+pics["ssxuexiao"]+'</td><td>'+pics["dituzb"]+'</td><td></td></tr>';
 					$("#xsjxiaoq").prepend(sj);
 				}
 			});
