@@ -293,7 +293,7 @@
 
             //房源上图人
             $bianhao=M('fangyuan')->where(array('id'=>$id))->getField('bianhao');
-            $uid=M('photo')->where(array('gongsiid'=>session('gongsiid'),'fybh'=>$bianhao))->group('fybh')->getField('uid');
+            //$uid=M('photo')->where(array('gongsiid'=>session('gongsiid'),'fybh'=>$bianhao))->group('fybh')->getField('uid');
             $shangturen=M('yonghu')->where(array('id'=>$uid))->find();
             $this->assign('shangturen',$shangturen);
 
@@ -400,7 +400,7 @@
         public function get_fy_img(){
             $listObj = M('Photo');
             $where['p.fybh'] = I('fy_bh');
-            $list = $listObj->alias('p')->join(' jjrxt_yonghu as y on p.uid=y.id ')->field('p.id,p.gongsiid,p.image,FROM_UNIXTIME(p.create_time,"%Y-%m-%d") AS create_time,p.fybh,y.ygmingcheng')->where($where)->order('p.id desc')->select();
+            $list = $listObj->alias('p')->join(' jjrxt_yonghu as y')->field('p.id,p.image,FROM_UNIXTIME(p.create_time,"%Y-%m-%d") AS create_time,p.fybh,y.ygmingcheng')->where($where)->order('p.id desc')->select();
             //返回查询结果到异步json
             $data=array('pics'=>$list);
             header("Content-type: application/json");

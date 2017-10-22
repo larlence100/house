@@ -19,7 +19,7 @@ use Think\Log;
 class FyneirongController extends CommonController {
 
         public function xiugai(){
-            $this->bumen=M('bumen')->where(array('gongsiid'=>session('gongsiid')))->select();
+
 
             $this->xiaoqum=M('xiaoqu')->where(array('gongsiid'=>session('gongsiid')))->select();
             $this->yongtu=M('Peizhi')->where(array('pzming'=>'yongtu'))->select();
