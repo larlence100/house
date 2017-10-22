@@ -103,6 +103,7 @@
     <div class="layui-input-inline">
       <input type="text" name="xiaoqum" lay-verify="required" autocomplete="off" placeholder="点击搜索" class="layui-input" id="sousuo1" readonly="" value="{$fangyuan['xiaoqum']}">
       <input type="hidden" name="xiaoqu" id="xiaoqu" value="{$fangyuan['xiaoqu']}">
+      <input type="hidden" name="ssarea" id="ssarea" value="{$fangyuan['ssarea']}">
       <div id="greetings" >
       <input type="text" name="" autocomplete="off" placeholder="请搜索小区并选择" class="layui-input" id="sousuo">
            <ul id="tcontent"> 
@@ -637,6 +638,7 @@
             for(var i in district){
               var li=$("<li></li>");
               $(li).attr('dataid',district[i]['id']);
+              $(li).attr('datassarea',district[i]['ssarea']);
               $(li).html(district[i]['xiaoqum']);
               $("#tcontent").append(li);
             }
@@ -654,7 +656,9 @@
      var count=$(this).index();//获取li的下标  
      var Tresult=Uarry.eq(count).text();
      var xiaoquid=Uarry.eq(count).attr('dataid');
-     $("#xiaoqu").val(xiaoquid);
+      var ssarea=Uarry.eq(count).attr('datassarea');
+      $("#xiaoqu").val(xiaoquid);
+      $("#ssarea").val(ssarea);
      $("#sousuo1").val(Tresult);
      $("#sousuo").val(""); 
      $("#greetings").hide(); 

@@ -120,7 +120,6 @@
                 $this->error('房源已存在');
             }
 
-            $data['gongsiid']=session('gongsiid');
             $data['bianhao']=rand(10000,99999);
 
             $data['leixing']=I('leixing');//类型
@@ -128,6 +127,7 @@
             //$data['zhuangtai']=I('zhuangtai');//状态
 
             $data['xiaoqu']=I('xiaoqu');
+            $data['ssarea']=I('ssarea');
             $data['xiaoqum']=I('xiaoqum');
             
             $data['mianji']=I('mianji');
