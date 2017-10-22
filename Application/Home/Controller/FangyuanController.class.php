@@ -266,7 +266,7 @@
 
         //内容页
        public function neirong(){
-
+            var_dump($_SERVER);EXIT;
 
             $this->leixing=M('Peizhi')->where(array('pzming'=>'leixing'))->select();
             $this->yongtu=M('Peizhi')->where(array('pzming'=>'yongtu'))->select();
