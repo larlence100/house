@@ -399,8 +399,9 @@
          */
         public function get_fy_img(){
             $listObj = M('Photo');
-            $where['p.fybh'] = I('fy_bh');
-            $list = $listObj->alias('p')->join(' jjrxt_yonghu as y')->field('p.id,p.image,FROM_UNIXTIME(p.create_time,"%Y-%m-%d") AS create_time,p.fybh,y.ygmingcheng')->where($where)->order('p.id desc')->select();
+            $where['fybh'] = I('fy_bh');
+            $list = $listObj->where($where)->order('id desc')->select();
+            //$list = $listObj->alias('p')->join(' jjrxt_yonghu as y')->field('p.id,p.image,FROM_UNIXTIME(p.create_time,"%Y-%m-%d") AS create_time,p.fybh,y.ygmingcheng')->where($where)->order('p.id desc')->select();
             //返回查询结果到异步json
             $data=array('pics'=>$list);
             header("Content-type: application/json");
