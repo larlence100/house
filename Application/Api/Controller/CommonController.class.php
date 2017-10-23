@@ -8,6 +8,9 @@ namespace Api\Controller;
 
 class CommonController extends ApiController
 {
+    /**
+     * 获取房屋参数
+     */
     public function param()
     {
         $peizhi = M('peizhi');
@@ -16,12 +19,18 @@ class CommonController extends ApiController
         $this->returnApiSuccessWithData($data);
     }
 
+    /**
+     * 获取房屋字段
+     */
     public function house_field()
     {
         $fyzidua = M('fyziduan');
         $this->returnApiSuccessWithData($fyzidua->select());
     }
 
+    /**
+     * 获取小区
+     */
     public function get_xiaoqu()
     {
         $txt=I('xiaoqum');
@@ -32,7 +41,6 @@ class CommonController extends ApiController
         $data=array('status'=>0,'district'=>$list);
         $this->returnApiSuccessWithData($data);
     }
-
 
     /**
      * ajax图片上传

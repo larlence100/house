@@ -47,21 +47,29 @@ class SellController extends ApiController
                 }
                 $data['xiaoqum'] = $xiaoqu['xiaoqum'];
                 $data['pianqu'] = $xiaoqu['sspianqu'];
-                $data['xingzhengqu'] = $xiaoqu['ssxzq'];
+                $data['ssxzq'] = $xiaoqu['ssxzq'];
+                $data['ssarea'] = $xiaoqu['ssarea'];
             }
 
-            $data['mianji']=I('mianji');
-            $data['shoujia']=I('shoujia');
-            if(I('mianji')!="" and I('shoujia')!=""){
-                $num1=I('shoujia')*10000;
-                $num2=I('mianji');
-                $num=$num1/$num2;
-                $danjia=number_format($num,2,".", "");
-                $data['danjia']=$danjia;
+            //出售类型
+            if ($data['leixing'] == 1){
+                $data['mianji']=I('mianji');
+                $data['shoujia']=I('shoujia');
+                if(I('mianji')!="" and I('shoujia')!=""){
+                    $num1=I('shoujia')*10000;
+                    $num2=I('mianji');
+                    $num=$num1/$num2;
+                    $danjia=number_format($num,2,".", "");
+                    $data['danjia']=$danjia;
+                }
             }
 
-            $data['zujia']=I('zujia');
-            $data['zujialx']=I('zujialx');
+            //出租类型
+            if ($data['leixing'] == 2){
+                $data['zujia'] = I('shoujia');
+            }
+
+
             $data['chaoxiang']=I('chaoxiang');
             $data['zhuangxiu']=I('zhuangxiu');
             $data['fwleixing']=I('fwleixing');
@@ -79,13 +87,9 @@ class SellController extends ApiController
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
             $data['niandai']=I('niandai');
-            $data['chushoudj']=I('chushoudj');
-            $data['chuzudj']=I('chuzudj');
-            $data['menweizhi']=I('menweizhi');
-            $data['cheku']=I('cheku');
-            $data['fwleixing']=I('fwleixing');
-            $data['czriqi']=strtotime(I('czriqi'));
             $data['lurusj']=time();
+
+
             $result = M('Fangyuan')->add($data);
             if (!$result) {
                throw new Exception('添加失败');
