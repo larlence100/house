@@ -88,11 +88,12 @@ class SellController extends ApiController
             $data['zlouceng']=I('zlouceng');
             $data['niandai']=I('niandai');
             $data['lurusj']=time();
-            
+
             //房源图片
             $photos = I('photo');
             if ($photos){
                 $photosArr = implode('',$photos);
+                var_dump($photosArr);
                 $photoModel = M('photo');
                 foreach ($photosArr as $photo){
                     $photoModel->add(['image'=>$photo,'create_time'=>time()]);
