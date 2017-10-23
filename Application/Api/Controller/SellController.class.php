@@ -88,12 +88,22 @@ class SellController extends ApiController
             $data['zlouceng']=I('zlouceng');
             $data['niandai']=I('niandai');
             $data['lurusj']=time();
-
+            
+            //房源图片
+            $photos = I('photo');
+            if ($photos){
+                $photosArr = implode('',$photos);
+                $photoModel = M('photo');
+                foreach ($photosArr as $photo){
+                    $photoModel->add(['image'=>$photo,'create_time'=>time()]);
+                }
+            }
 
             $result = M('Fangyuan')->add($data);
             if (!$result) {
-               throw new Exception('添加失败');
+                throw new Exception('添加失败');
             }
+
             $this->returnApiSuccessWithMsg('添加成功');
         }catch (Exception $e)
         {
