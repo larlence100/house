@@ -273,7 +273,7 @@ function getAreaName($areaId)
 function getAreaByCityId($cityId)
 {
     $model = M('areas');
-    $result = $model->where(['cityid'=>$cityId])->getField('area');
+    $result = $model->where(['cityid'=>$cityId])->select();
     return $result;
 }
 
