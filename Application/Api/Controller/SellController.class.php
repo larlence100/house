@@ -92,8 +92,7 @@ class SellController extends ApiController
             //房源图片
             $photos = I('photo');
             if ($photos){
-                $photosArr = implode('',$photos);
-                var_dump($photosArr);exit;
+                $photosArr = explode(',',$photos);
                 $photoModel = M('photo');
                 foreach ($photosArr as $photo){
                     $photoModel->add(['image'=>$photo,'create_time'=>time()]);
