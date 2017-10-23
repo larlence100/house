@@ -221,9 +221,9 @@
 				</thead>
 			<tbody id="xsjyh">
 				<volist name="list" id="v">
-					<tr class="text-c">
+						<tr class="text-c">
 						<td>{$i+$firstRow}</td>
-						<td>{:getFyTitleById($v['fangyuan_id'])}</td>
+						<td><a href="{:U('Fangyuan/neirong',array('id'=>$v['fangyuan_id']))}">{:getFyTitleById($v['fangyuan_id'])}</a></td>
 						<td>{$v.order_no}</td>
 						<td>{:getUserNickNameByid($v['user_id'])}</td>
 						<td>{$v.order_money}</td>

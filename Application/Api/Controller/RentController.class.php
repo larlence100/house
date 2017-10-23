@@ -26,14 +26,12 @@ class RentController extends ApiController
                 var_dump($xiaoquIds);exit;*/
 
                 $pianqu = I('city');
-
-
                 $leixing=I('leixing');
                 $yongtu=I('yongtu');
 
-
+                $condition = ' status=1';
                 if($leixing){
-                    $condition.="leixing=$leixing";
+                    $condition.=" and leixing=$leixing";
                 }
                 if($pianqu){//片区
                     $condition.=" and pianqu=".$pianqu;

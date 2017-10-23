@@ -251,7 +251,6 @@
             $data['xinzheng']=$xinzheng;
 
             $data['lurusj']=time();
-            
 
             if (M('Fangyuan')->add($data)) {
                 $this->success('添加成功');

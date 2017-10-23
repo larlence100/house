@@ -161,7 +161,7 @@ html,body{
 
 <block name="content">
 <div style="overflow: auto;">
-<table class="table table-border table-bordered table-hover table-bg table-sort" id="table"  style="margin-bottom:20px;">
+<table class="table table-border table-bordered table-hover table-bg table-sort" id="table"  style="margin-top:10px;">
 		<thead>
             
             <tr class="text-c">
@@ -188,9 +188,10 @@ html,body{
 					<tr class="text-c" data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>"  ondblclick="Hui_admin_tabb(this)">
 						
 						<td>
-						  <if condition='$es["tupian"]'><span class="label label-primary radius">图</span></if>
-                          <if condition='$es["status"] eq 1'><span class="label label-primary radius">未审核</span></if>
-                          <if condition='$es["status"] eq 2'><span class="label label-primary radius">未通过</span></if>
+                          <if condition='$es["status"] eq 1'><span class="label label-primary radius">已显示</span></if>
+                          <if condition='$es["status"] eq 0'><span class="label label-primary radius">未显示</span></if>
+						  <if condition='$es["tupian"]'><span class="label label-primary radius">图</span><else /><span class="label label-primary radius">无图</span></if>
+
                         </td>
 						<td id="td">
 						<a data-href="{:U('Fangyuan/neirong',array('id'=>$es['id']))}" data-title="<if condition='$es.bianhao'>{$es.bianhao}</if>" href="javascript:void;" style="color:red;">
