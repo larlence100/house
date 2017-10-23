@@ -69,7 +69,7 @@ class SellController extends ApiController
             if ($data['leixing'] == 2){
                 $data['zujia'] = I('shoujia');
             }
-            
+
             $data['chaoxiang']=I('chaoxiang');
             $data['zhuangxiu']=I('zhuangxiu');
             $data['fwleixing']=I('fwleixing');
@@ -82,12 +82,18 @@ class SellController extends ApiController
             $data['wei']=I('wei');
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
+            $data['lurusj']=time();
             //$data['yezhu']=I('yezhu');
             //$data['laiyuan']=I('laiyuan');
             //$data['chu']=I('chu');
            //$data['niandai']=I('niandai');
-            $data['lurusj']=time();
 
+
+            $result = M('Fangyuan')->add($data);
+            var_dump($result);exit;
+            if (!$result) {
+                throw new Exception('添加失败');
+            }
             //房源图片
             $photos = I('photo');
             if ($photos){
@@ -98,10 +104,6 @@ class SellController extends ApiController
                 }
             }
 
-            $result = M('Fangyuan')->add($data);
-            if (!$result) {
-                throw new Exception('添加失败');
-            }
 
             $this->returnApiSuccessWithMsg('添加成功');
         }catch (Exception $e)
