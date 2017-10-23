@@ -40,6 +40,7 @@ class SellController extends ApiController
             $data['xiaoqu'] = I('xiaoqu');
             $data['cqxingzhi'] = 1;
             $data['yangtai'] = I('yangtai')?I('yangtai'):0;
+
             if($data['xiaoqu']){
                 $xiaoqu = getXiaoQuInfo($data['xiaoqu']);
                 if(!$xiaoqu){
@@ -68,25 +69,23 @@ class SellController extends ApiController
             if ($data['leixing'] == 2){
                 $data['zujia'] = I('shoujia');
             }
-
-
+            
             $data['chaoxiang']=I('chaoxiang');
             $data['zhuangxiu']=I('zhuangxiu');
             $data['fwleixing']=I('fwleixing');
-            $data['laiyuan']=I('laiyuan');
             $data['zuodong']=I('zuodong');
             $data['danyuan']=I('danyuan');
             $data['fanghao']=I('fanghao');
-            $data['yezhu']=I('yezhu');
-
             $data['fybiaoti']=I('fybiaoti');
             $data['shi']=I('shi');
             $data['ting']=I('ting');
             $data['wei']=I('wei');
-            $data['chu']=I('chu');
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
-            $data['niandai']=I('niandai');
+            //$data['yezhu']=I('yezhu');
+            //$data['laiyuan']=I('laiyuan');
+            //$data['chu']=I('chu');
+           //$data['niandai']=I('niandai');
             $data['lurusj']=time();
 
             //房源图片
