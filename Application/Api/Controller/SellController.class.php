@@ -93,7 +93,7 @@ class SellController extends ApiController
             $photos = I('photo');
             if ($photos){
                 $photosArr = implode('',$photos);
-                var_dump($photosArr);
+                var_dump($photosArr);exit;
                 $photoModel = M('photo');
                 foreach ($photosArr as $photo){
                     $photoModel->add(['image'=>$photo,'create_time'=>time()]);
