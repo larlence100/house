@@ -41,4 +41,10 @@ class CommonController extends ApiController
         //$path = "/upload/".date('Y').'/'.date('m').'/'.date('d');
         ajaxUpload();
     }
+
+    public function get_area_list($cityId)
+    {
+        return getAreaByCityId($cityId);
+    }
+
 }

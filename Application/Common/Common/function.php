@@ -129,10 +129,9 @@ function define_str_replace($data){
 
 /**
  * 上传文件类型控制 此方法仅限ajax上传使用
- * @param  string   $path    字符串 保存文件路径示例： /Upload/image/
- * @param  string   $format  文件格式限制
- * @param  integer  $maxSize 允许的上传文件最大值 52428800
- * @return booler   返回ajax的json格式数据
+ * @param string $path
+ * @param string $format
+ * @param string $maxSize
  */
 function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
 
@@ -268,6 +267,13 @@ function getAreaName($areaId)
 {
     $model = M('areas');
     $result = $model->where(['areaid'=>$areaId])->getField('area');
+    return $result;
+}
+
+function getAreaByCityId($cityId)
+{
+    $model = M('areas');
+    $result = $model->where(['cityid'=>$cityId])->getField('area');
     return $result;
 }
 
