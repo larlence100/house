@@ -45,7 +45,8 @@ class CommonController extends ApiController
     public function get_area_list()
     {
         $cityId = I('cityid');
-        return getAreaByCityId($cityId);
+        $data = getAreaByCityId($cityId);
+        $this->returnApiSuccessWithData($data);
     }
 
 }
