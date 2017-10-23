@@ -42,8 +42,9 @@ class CommonController extends ApiController
         ajaxUpload();
     }
 
-    public function get_area_list($cityId)
+    public function get_area_list()
     {
+        $cityId = I('cityid');
         return getAreaByCityId($cityId);
     }
 
