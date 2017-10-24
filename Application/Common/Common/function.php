@@ -124,7 +124,7 @@ function define_str_replace($data){
      \Think\Log::write('result---'.file_get_contents($url),'WARN');
      $user_data=file_get_contents($url);
      $user_data = json_decode($user_data,true);
-     \Think\Log::write('data---'.$user_data,'WARN');
+     \Think\Log::write('data---'.$user_data['session_key'],'WARN');
 
     $session_key= define_str_replace($user_data['session_key']);
      \Think\Log::write('data---'.$session_key.'---'.$user_data['session_key'],'WARN');
