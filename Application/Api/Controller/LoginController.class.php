@@ -13,6 +13,7 @@ class LoginController extends ApiController {
     public function weixin_login(){
 
         $data = file_get_contents("php://input");
+        $data = json_decode($data,true);
         \Think\Log::write('post_data---'.$data.'I---'.I('code'),'WARN');
         $session_id = $data['session_id'];
         $session_db = M('Session');
