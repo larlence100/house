@@ -126,6 +126,7 @@ function define_str_replace($data){
      \Think\Log::write('data---'.$user_data,'WARN');
 
     $session_key= define_str_replace($user_data->session_key);
+     \Think\Log::write('data---'.$session_key.'---'.$user_data->session_key,'WARN');
     $data="";
     $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
     $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
