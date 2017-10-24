@@ -12,7 +12,8 @@ class LoginController extends ApiController {
     // 微信登录
     public function weixin_login(){
 
-
+        $data = file_get_contents("php://input");
+        \Think\Log::write('post_data---'.$data.'I---'.I('code'),'WARN');
         $session_id=I('session_id');
         $session_db=M('Session');
         $session=$session_db->where(['session_id'=>$session_id])->find();
