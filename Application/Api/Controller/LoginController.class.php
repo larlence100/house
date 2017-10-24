@@ -19,9 +19,11 @@ class LoginController extends ApiController {
         if( !empty( $session ) ){
             $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
         }else{
+
             $iv=define_str_replace(I('iv')); //把空格转成+
             $encryptedData=urldecode(I('encryptedData'));  //解码
             $code=define_str_replace(I('code')); //把空格转成+
+            var_dump($code);exit;
             \Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
            /* $msg = [
