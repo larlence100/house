@@ -121,6 +121,7 @@ function define_str_replace($data){
     //$url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
      $url = "https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$secret."&js_code=".$code."&grant_type=authorization_code";
      \Think\Log::write('url---'.$url,'WARN');
+     \Think\Log::write('result---'.file_get_contents($url),'WARN');
     $user_data=json_decode(file_get_contents($url));
      \Think\Log::write('data---'.$user_data,'WARN');
 
