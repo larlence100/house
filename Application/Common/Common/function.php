@@ -122,11 +122,12 @@ function define_str_replace($data){
      $url = "https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$secret."&js_code=".$code."&grant_type=authorization_code";
      \Think\Log::write('url---'.$url,'WARN');
      \Think\Log::write('result---'.file_get_contents($url),'WARN');
-    $user_data=json_decode(file_get_contents($url));
+     $user_data=file_get_contents($url);
+     $user_data = json_decode($user_data,true);
      \Think\Log::write('data---'.$user_data,'WARN');
 
-    $session_key= define_str_replace($user_data->session_key);
-     \Think\Log::write('data---'.$session_key.'---'.$user_data->session_key,'WARN');
+    $session_key= define_str_replace($user_data['session_key']);
+     \Think\Log::write('data---'.$session_key.'---'.$user_data['session_key'],'WARN');
     $data="";
     $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
     $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
