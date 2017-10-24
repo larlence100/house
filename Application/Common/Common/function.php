@@ -117,9 +117,13 @@ function define_str_replace($data){
     $appid= 'wxd60a9da2a894158b';
     $secret= 'f63615e5126f553e1f35e80e48fb2411';
     $grant_type='authorization_code';
-    $url='https://api.weixin.qq.com/sns/jscode2session';
-    $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
+    //$url='https://api.weixin.qq.com/sns/jscode2session';
+    //$url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
+     $url = "https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$secret."&js_code=".$code."&grant_type=authorization_code";
+     \Think\Log::write('url---'.$url,'WARN');
     $user_data=json_decode(file_get_contents($url));
+     \Think\Log::write('data---'.$user_data,'WARN');
+
     $session_key= define_str_replace($user_data->session_key);
     $data="";
     $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
