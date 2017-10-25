@@ -125,13 +125,14 @@ function define_str_replace($data){
      $user_data = file_get_contents($url);
      \Think\Log::write('data---'.$user_data,'WARN');
      $user_data = json_decode($user_data,true);
-     \Think\Log::write('data---'.$user_data['session_key'],'WARN');
+     \Think\Log::write('data1---'.$user_data['session_key'],'WARN');
 
     $session_key= define_str_replace($user_data['session_key']);
-     \Think\Log::write('data---'.$session_key.'---'.$user_data['session_key'],'WARN');
+     \Think\Log::write('data2---'.$session_key.'---'.$user_data['session_key'],'WARN');
     $data="";
     $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
     $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
+     \Think\Log::write('errCode---'.$errCode,'WARN');
     return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
 }
 
