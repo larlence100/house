@@ -127,7 +127,7 @@ function define_str_replace($data){
      $user_data = json_decode($user_data,true);
      \Think\Log::write('data1---'.$user_data['session_key'],'WARN');
 
-    $session_key= define_str_replace($user_data['session_key']);
+    $session_key= $user_data['session_key'];
      \Think\Log::write('data2---'.$session_key.'---'.$user_data['session_key'],'WARN');
     $data="";
     $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
