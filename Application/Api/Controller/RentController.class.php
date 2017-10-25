@@ -37,6 +37,7 @@ class RentController extends ApiController
                     $condition.=" and pianqu=".$pianqu;
                 }
 
+                $xiaoqu = I('xiaoqu');
                 if ($xiaoqu) {//小区
                     $condition.=" and xiaoqu=".$xiaoqu;
                 }
