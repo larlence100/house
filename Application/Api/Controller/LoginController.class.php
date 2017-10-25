@@ -22,9 +22,9 @@ class LoginController extends ApiController {
             $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
         }else{
 
-            $iv=define_str_replace($data['iv']); //把空格转成+
+            $iv=$data['iv']; //把空格转成+
             $encryptedData=urldecode($data['encryptedData']);  //解码
-            $code=define_str_replace($data['code']); //把空格转成+
+            $code=$data['code']; //把空格转成+
             \Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
            /* $msg = [
