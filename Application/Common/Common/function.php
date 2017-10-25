@@ -146,7 +146,7 @@ function getUserInfo($code,$encryptedData,$iv)
     \Think\Log::write('session_key---'.$session_key,'WARN');
     $data="";
     $wxBizDataCrypt = new \WXBizDataCrypt($appid,$session_key);
-    $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
+    $errCode=$wxBizDataCrypt->decryptData(define_str_replace($encryptedData),$iv,$data);
     \Think\Log::write('errCode---'.$errCode,'WARN');
     return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
 }
