@@ -105,11 +105,8 @@ function updateVerifyCode($id)
     return $result;
 }
 
-function define_str_replace($data){
-    return str_replace(' ','+',$data);
-}
 
- function getUserInfo($code,$encryptedData,$iv){
+ /*function getUserInfo($code,$encryptedData,$iv){
 
     import('Org.Weixin.errorCode');
     import('Org.Weixin.wxBizDataCrypt');
@@ -134,6 +131,33 @@ function define_str_replace($data){
     $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
      \Think\Log::write('errCode---'.$errCode,'WARN');
     return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
+}*/
+function getUserInfo($code,$encryptedData,$iv)
+{
+    import('Org.Weixin.errorCode');
+    import('Org.Weixin.wxBizDataCrypt');
+    $appid = 'wxd60a9da2a894158b';
+    $secret = 'f63615e5126f553e1f35e80e48fb2411';
+    $grant_type='authorization_code';
+    $url='https://api.weixin.qq.com/sns/jscode2session';
+    $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
+    $user_data=json_decode(file_get_contents($url));
+    $session_key= define_str_replace($user_data->session_key);
+    \Think\Log::write('session_key---'.$session_key,'WARN');
+    $data="";
+    $wxBizDataCrypt = new \WXBizDataCrypt($appid,$session_key);
+    $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
+    \Think\Log::write('errCode---'.$errCode,'WARN');
+    return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
+}
+
+/**
+ * 请求过程中因为编码原因+号变成了空格
+ * 需要用下面的方法转换回来
+ */
+function define_str_replace($data)
+{
+    return str_replace(' ','+',$data);
 }
 
 /**
