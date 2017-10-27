@@ -32,9 +32,9 @@ class LoginController extends ApiController {
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
 
-                $info=$users_db->where(['appid'=>$open_id])->find();
+                $userInfo=$users_db->where(['appid'=>$open_id])->find();
 
-                if(!$info||empty($info)){
+                if(!$userInfo||empty($info)){
                     $users_db->add([
                         'appid'=>$open_id,
                         'nickname'=>$msg['data']->nickName,
