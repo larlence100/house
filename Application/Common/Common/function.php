@@ -13,6 +13,18 @@ function getUserInfoByAppid($appid)
     $userInfo = $user->where(['appid'=>$appid])->field('id,nickname,mobile,city,province,country,avatarUrl')->find();
     return $userInfo;
 }
+
+
+
+function getUserBySessionId($session_id)
+{
+    $session = M('session');
+    $data =  $session->where(['session_id'=>$session_id])->find();
+    if (!$data) {
+        throw new \Think\Exception('未找到该用户信息');
+    }
+    return $data;
+}
 /**
  * 获取房屋详情
  * @param $id
@@ -28,15 +40,7 @@ function getHouseInfoById($id){
     return $data;
 }
 
-function getUserBySessionId($session_id)
-{
-    $session = M('session');
-    $data =  $session->where(['session_id'=>$session_id])->find();
-    if (!$data) {
-        throw new \Think\Exception('未找到该用户信息');
-    }
-    return $data;
-}
+
 
 /**
  * 数组分组
@@ -330,20 +334,6 @@ function getAreaByCityId($cityId)
     return $result;
 }
 
-function json_encode_ex($array) {
-    if (version_compare(PHP_VERSION,'5.4.0','<')) {
-        $str = json_encode($array);
-        $str = preg_replace_callback (
-            "#\\\u([0-9a-f]{4})#i",
-            function($matchs) {
-                return iconv('UCS-2BE', 'UTF-8',  pack('H4',  $matchs[1]));
-            },
-            $str
-        );
-        return $str;
-    } else {
-        return json_encode($array, JSON_UNESCAPED_UNICODE);
-    }
-}
+
 
 
