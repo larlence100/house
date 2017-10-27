@@ -17,11 +17,12 @@ class LoginController extends ApiController {
         \Think\Log::write('post_data---'.$data.'I---'.I('code'),'WARN');
         $session_id = $data['session_id'];
         $session_db = M('Session');
+        $users_db=M('users');
         $session=$session_db->where(['session_id'=>$session_id])->find();
         if( !empty( $session ) ){
-            $this->returnApiSuccessWithData(['sessionid'=>$session_id]);
+            $userinfo = getUserInfoById($session['user_id']);
+            $this->returnApiSuccessWithData(['sessionId'=>$session_id,'userInfo'=>$userinfo]);
         }else{
-
             $iv=$data['iv']; //把空格转成+
             $encryptedData=urldecode($data['encryptedData']);  //解码
             $code=$data['code']; //把空格转成+
@@ -30,12 +31,24 @@ class LoginController extends ApiController {
             \Think\Log::write('userData---'.json_encode($msg));
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
-                $users_db=M('users');
+
                 $info=$users_db->where(['appid'=>$open_id])->find();
 
                 if(!$info||empty($info)){
-                    $users_db->add(['appid'=>$open_id,'nickname'=>'','last_time'=>time()]); //用户信息入库
-                    $info = $users_db->where(['appid'=>$open_id])->find();                //获取用户信息
+                    $users_db->add([
+                        'appid'=>$open_id,
+                        'nickname'=>$msg['data']->nickName,
+                        'gender'=>$msg['data']->gender,
+                        'city'=>$msg['data']->city,
+                        'province'=>$msg['data']->province,
+                        'city'=>$msg['data']->city,
+                        'country'=>$msg['data']->country,
+                        'avatarUrl'=>$msg['data']->avatarUrl,
+                        'unionId'=>$msg['data']->unionId,
+                        'nickname'=>,
+                        'last_time'=>time()
+                    ]); //用户信息入库
+                    $userInfo = getUserInfoByAppid($open_id);                //获取用户信息
                     $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
                     //$session_id=111;  //生成3rd_session
                     $session_db->add(['user_id'=>$info['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
@@ -43,10 +56,10 @@ class LoginController extends ApiController {
 
                 if($newSessionId){
                     //把3rd_session返回给客户端
-                    $this->returnApiSuccessWithData(['sessionid'=>$newSessionId]);
+                    $this->returnApiSuccessWithData(['sessionId'=>$newSessionId,'userInfo'=>$userInfo]);
                 }else{
-                    $user_session = $session_db->where(['user_id'=>$info['id']])->find();
-                    $this->returnApiSuccessWithData(['sessionid'=>$user_session['session_id']]);
+                    $user_session = $session_db->where(['user_id'=>$userInfo['id']])->find();
+                    $this->returnApiSuccessWithData(['sessionId'=>$user_session['session_id'],'userInfo'=>$userInfo]);
                 }
             }else{
                 $this->returnApiErrorWithMsg('用户信息获取失败！');

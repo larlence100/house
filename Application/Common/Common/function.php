@@ -1,5 +1,18 @@
 <?php
 
+function getUserInfoById($user_id)
+{
+    $user = M('users');
+    $userInfo = $user->where(['id'=>$user_id])->getField('nickname,mobile,city,province,country,avatarUrl,');
+    return $userInfo;
+}
+
+function getUserInfoByAppid($appid)
+{
+    $user = M('users');
+    $userInfo = $user->where(['appid'=>$appid])->getField('nickname,mobile,city,province,country,avatarUrl,');
+    return $userInfo;
+}
 /**
  * 获取房屋详情
  * @param $id
