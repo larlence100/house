@@ -37,12 +37,12 @@ class LoginController extends ApiController {
                 if(!$userInfo||empty($userInfo)){
                     $users_db->add([
                         'appid'=>$open_id,
-                        'nickname'=>$msg['data']->nickName,
-                        'gender'=>$msg['data']->gender,
-                        'city'=>$msg['data']->city,
-                        'province'=>$msg['data']->province,
-                        'city'=>$msg['data']->city,
-                        'country'=>$msg['data']->country,
+                        'nickname'=>unicode_decode($msg['data']->nickName),
+                        'gender'=>unicode_decode($msg['data']->gender),
+                        'city'=>unicode_decode($msg['data']->city),
+                        'province'=>unicode_decode($msg['data']->province),
+                        'city'=>unicode_decode($msg['data']->city),
+                        'country'=>unicode_decode($msg['data']->country),
                         'avatarUrl'=>$msg['data']->avatarUrl,
                         'unionId'=>'',
                         'last_time'=>time()
