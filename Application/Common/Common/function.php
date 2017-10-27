@@ -325,7 +325,7 @@ function getAreaByCityId($cityId)
 
 function unicode_decode($name)
 {
-    // 转换编码，将Unicode编码转换成可以浏览的utf-8编码
+    //转换编码，将Unicode编码转换成可以浏览的utf-8编码
     $pattern = '/([\w]+)|(\\\u([\w]{4}))/i';
     preg_match_all($pattern, $name, $matches);
     if (!empty($matches))
