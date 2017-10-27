@@ -3,14 +3,14 @@
 function getUserInfoById($user_id)
 {
     $user = M('users');
-    $userInfo = $user->where(['id'=>$user_id])->getField('id,nickname,mobile,city,province,country,avatarUrl');
+    $userInfo = $user->where(['id'=>$user_id])->field('id,nickname,mobile,city,province,country,avatarUrl')->select();
     return $userInfo;
 }
 
 function getUserInfoByAppid($appid)
 {
     $user = M('users');
-    $userInfo = $user->where(['appid'=>$appid])->getField('id,nickname,mobile,city,province,country,avatarUrl');
+    $userInfo = $user->where(['appid'=>$appid])->field('id,nickname,mobile,city,province,country,avatarUrl')->select();
     return $userInfo;
 }
 /**
