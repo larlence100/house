@@ -27,10 +27,7 @@ class LoginController extends ApiController {
             $code=$data['code']; //把空格转成+
             \Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
-           /* $msg = [
-                'errCode' =>0,
-                'open_id' => 55555
-            ];*/
+            \Think\Log::write('userData---'.json_encode($msg));
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
                 $users_db=M('users');
