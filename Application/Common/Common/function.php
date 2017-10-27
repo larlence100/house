@@ -21,7 +21,7 @@ function getUserBySessionId($session_id)
     $session = M('session');
     $data =  $session->where(['session_id'=>$session_id])->find();
     if (!$data) {
-        throw new \Think\Exception('未找到该用户信息');
+        throw new \Think\Exception('error session_id');
     }
     return $data;
 }
@@ -122,33 +122,6 @@ function updateVerifyCode($id)
     return $result;
 }
 
-
- /*function getUserInfo($code,$encryptedData,$iv){
-
-    import('Org.Weixin.errorCode');
-    import('Org.Weixin.wxBizDataCrypt');
-
-    $appid= 'wxd60a9da2a894158b';
-    $secret= 'f63615e5126f553e1f35e80e48fb2411';
-    $grant_type='authorization_code';
-    //$url='https://api.weixin.qq.com/sns/jscode2session';
-    //$url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
-     $url = "https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$secret."&js_code=".$code."&grant_type=authorization_code";
-     \Think\Log::write('url---'.$url,'WARN');
-     //\Think\Log::write('getjsondata---'.json_decode(file_get_contents($url),true).'get_json'.file_get_contents($url),'WARN');
-     $user_data = file_get_contents($url);
-     \Think\Log::write('data---'.$user_data,'WARN');
-     $user_data = json_decode($user_data,true);
-     \Think\Log::write('data1---'.$user_data['session_key'],'WARN');
-
-    $session_key= $user_data['session_key'];
-     \Think\Log::write('data2---'.$session_key.'---'.$user_data['session_key'],'WARN');
-    $data="";
-    $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
-    $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
-     \Think\Log::write('errCode---'.$errCode,'WARN');
-    return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
-}*/
 function getUserInfo($code,$encryptedData,$iv)
 {
     import('Org.Weixin.errorCode');
@@ -161,17 +134,16 @@ function getUserInfo($code,$encryptedData,$iv)
     $user_data=json_decode(file_get_contents($url));
     $session_key= define_str_replace($user_data->session_key);
     \Think\Log::write('session_key---'.$session_key,'WARN');
-    $data="";
-
+    
     /*$session_key = 'Cd2QaJ50efe2C9+QV+4dcQ==';
     $encryptedData="ks8BuECph8DMwB/+M6L9wyqHzsOvGYnlVz+VzxNIcT+Yb2Ye23nHlXkbx+CUjeqVn3UXmQScZHowByHmSstTxMbFZxRlJacy/yqBlPVTojYcoXGRiw3ZxzMVLCyHKPMLEDCRd0lX06fwRayz2tAUwuMCYqXcwD1yyRWzKPE4DAlqEYf/EZ8W6/NyYLO/WQadMb00Y0PLykBVYW0tOk/NSRPrjZLWZi34c1DcH4SR1TE6g47F4SNpe5VWzIvo7HZVTwLRZAhRrG10e3gXIwwWWj5hFE+yY5njJW4rItIUrNZDo+BXRCVa0A977LYtqzFUY4Ssh7z1yzWpvYYv7nRXnyFLCjk3BnRUsxZOvt7AfOmQXpNfN6SoWk6kaB0m+kTxuyGROd0KEXS4vZIszoz2zwxopVS3bek/Peo0TxJIgF+jo6JYlw53qqO9vj4VQEF8SONKPC3Rkjb9Rc+TYtnusQ==";
 
     $iv = 'ZWt9VpuCvHPDx5e9rs45Mg==';*/
 
+
+    $data="";
     $wxBizDataCrypt = new \WXBizDataCrypt($appid,$session_key);
     $errCode=$wxBizDataCrypt->decryptData(define_str_replace($encryptedData),$iv,$data);
-
-
     return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
 }
 

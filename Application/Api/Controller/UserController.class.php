@@ -17,7 +17,6 @@ class UserController extends ApiController
             if(empty($userinfo)){
                 throw new Exception('获取用户信息失败');
             }
-
             return $this->returnApiSuccessWithData($userinfo);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
