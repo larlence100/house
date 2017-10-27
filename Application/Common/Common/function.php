@@ -161,7 +161,7 @@ function getUserInfo($code,$encryptedData,$iv)
     $wxBizDataCrypt = new \WXBizDataCrypt($appid,$session_key);
     $errCode=$wxBizDataCrypt->decryptData(define_str_replace($encryptedData),$iv,$data);
     \Think\Log::write('errCode---'.$errCode,'WARN');
-    return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
+    return ['errCode'=>$errCode,'data'=>json_encode_ex($data),'session_key'=>$session_key];
 }
 
 /**
@@ -323,32 +323,20 @@ function getAreaByCityId($cityId)
     return $result;
 }
 
-function unicode_decode($name)
-{
-    //转换编码，将Unicode编码转换成可以浏览的utf-8编码
-    $pattern = '/([\w]+)|(\\\u([\w]{4}))/i';
-    preg_match_all($pattern, $name, $matches);
-    if (!empty($matches))
-    {
-        $name = '';
-        for ($j = 0; $j < count($matches[0]); $j++)
-        {
-            $str = $matches[0][$j];
-            if (strpos($str, '\\u') === 0)
-            {
-                $code = base_convert(substr($str, 2, 2), 16, 10);
-                $code2 = base_convert(substr($str, 4), 16, 10);
-                $c = chr($code).chr($code2);
-                $c = iconv('UCS-2', 'UTF-8', $c);
-                $name .= $c;
-            }
-            else
-            {
-                $name .= $str;
-            }
-        }
+function json_encode_ex($array) {
+    if (version_compare(PHP_VERSION,'5.4.0','<')) {
+        $str = json_encode($array);
+        $str = preg_replace_callback (
+            "#\\\u([0-9a-f]{4})#i",
+            function($matchs) {
+                return iconv('UCS-2BE', 'UTF-8',  pack('H4',  $matchs[1]));
+            },
+            $str
+        );
+        return $str;
+    } else {
+        return json_encode($array, JSON_UNESCAPED_UNICODE);
     }
-    return $name;
 }
 
 
