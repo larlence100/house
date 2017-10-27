@@ -28,7 +28,7 @@ class LoginController extends ApiController {
             $code=$data['code']; //把空格转成+
             \Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
-            \Think\Log::write('userData---'.json_encode($msg));
+            \Think\Log::write('weixin_userData---'.json_encode($msg));
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
 
@@ -47,8 +47,10 @@ class LoginController extends ApiController {
                         'unionId'=>'',
                         'last_time'=>time()
                     ]); //用户信息入库
-                    $userInfo = getUserInfoByAppid($open_id);                //获取用户信息
+                    $userInfo = getUserInfoByAppid($open_id);
+                    //获取用户信息
                     $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
+                    \Think\Log::write('userinfo---'.json_encode($userInfo));
                     //$session_id=111;  //生成3rd_session
                     $session_db->add(['user_id'=>$userInfo['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
                 }
