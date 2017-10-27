@@ -34,7 +34,7 @@ class LoginController extends ApiController {
 
                 $userInfo=$users_db->where(['appid'=>$open_id])->find();
 
-                if(!$userInfo||empty($info)){
+                if(!$userInfo||empty($userInfo)){
                     $users_db->add([
                         'appid'=>$open_id,
                         'nickname'=>$msg['data']->nickName,
@@ -48,15 +48,14 @@ class LoginController extends ApiController {
                         'last_time'=>time()
                     ]); //用户信息入库
                     $userInfo = getUserInfoByAppid($open_id);
-                    //获取用户信息
-                    $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;  //生成3rd_session
-                    \Think\Log::write('userinfo---'.json_encode($userInfo));
+
                     //$session_id=111;  //生成3rd_session
+                    $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;
+                    \Think\Log::write('userinfo---'.json_encode($userInfo));
                     $session_db->add(['user_id'=>$userInfo['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
                 }
 
                 if($newSessionId){
-                    //把3rd_session返回给客户端
                     $this->returnApiSuccessWithData(['sessionId'=>$newSessionId,'userInfo'=>$userInfo]);
                 }else{
                     $user_session = $session_db->where(['user_id'=>$userInfo['id']])->find();
