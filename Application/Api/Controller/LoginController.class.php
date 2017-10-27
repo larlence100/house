@@ -45,7 +45,6 @@ class LoginController extends ApiController {
                         'country'=>$msg['data']->country,
                         'avatarUrl'=>$msg['data']->avatarUrl,
                         'unionId'=>$msg['data']->unionId,
-                        'nickname'=>,
                         'last_time'=>time()
                     ]); //用户信息入库
                     $userInfo = getUserInfoByAppid($open_id);                //获取用户信息
