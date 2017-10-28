@@ -1,0 +1,78 @@
+<extend name="Common/index" />
+
+<block name="css">
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="__PUBLIC__/lib/layui/css/layui.css" media="all">
+</block>
+<block name="content">
+    <div class="layui-body layui-tab-content site-demo site-demo-body">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-main">
+                <div id="LAY_preview">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                        <legend>新闻添加</legend>
+                    </fieldset>
+                    <form class="layui-form" action="{:U('news/add')}" METHOD="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">新闻描述</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">正文</label>
+                            <div class="layui-input-block">
+                               <textarea id="contents" name="contents"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">排序</label>
+                            <div class="layui-input-block">
+                        <input type="number" name="order" placeholder="0" autocomplete="off" class="layui-input" value="0">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否显示</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="new_status" value="0" title="不显示" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><span>不显示 </span></div>
+                                <input type="radio" name="new_status" value="1" title="显示"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><span>显示 </span></div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script src="__PUBLIC__/lib/layui/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use(['form', 'layedit', 'laydate'], function(){
+
+        });
+    </script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="__PUBLIC__/lib/ueditor/1.4.3/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="__PUBLIC__/lib/ueditor/1.4.3/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('contents');
+    </script>
+</block>
+
+

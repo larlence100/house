@@ -134,7 +134,7 @@ function getUserInfo($code,$encryptedData,$iv)
     $user_data=json_decode(file_get_contents($url));
     $session_key= define_str_replace($user_data->session_key);
     \Think\Log::write('session_key---'.$session_key,'WARN');
-    
+
     /*$session_key = 'Cd2QaJ50efe2C9+QV+4dcQ==';
     $encryptedData="ks8BuECph8DMwB/+M6L9wyqHzsOvGYnlVz+VzxNIcT+Yb2Ye23nHlXkbx+CUjeqVn3UXmQScZHowByHmSstTxMbFZxRlJacy/yqBlPVTojYcoXGRiw3ZxzMVLCyHKPMLEDCRd0lX06fwRayz2tAUwuMCYqXcwD1yyRWzKPE4DAlqEYf/EZ8W6/NyYLO/WQadMb00Y0PLykBVYW0tOk/NSRPrjZLWZi34c1DcH4SR1TE6g47F4SNpe5VWzIvo7HZVTwLRZAhRrG10e3gXIwwWWj5hFE+yY5njJW4rItIUrNZDo+BXRCVa0A977LYtqzFUY4Ssh7z1yzWpvYYv7nRXnyFLCjk3BnRUsxZOvt7AfOmQXpNfN6SoWk6kaB0m+kTxuyGROd0KEXS4vZIszoz2zwxopVS3bek/Peo0TxJIgF+jo6JYlw53qqO9vj4VQEF8SONKPC3Rkjb9Rc+TYtnusQ==";
 
