@@ -64,7 +64,7 @@ class LoginController extends BaseController {
                     $this->returnApiSuccessWithData(['sessionId'=>$user_session['session_id'],'userInfo'=>$userInfo]);
                 }
             }else{
-                $this->returnApiErrorWithMsg('用户信息获取失败！');
+                $this->returnApiErrorWithMsg('用户信息获取失败！',2);
             }
 
         }

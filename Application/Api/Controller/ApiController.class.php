@@ -38,7 +38,7 @@ class ApiController extends RestController
                 }
             }
         }catch (Exception $e){
-            static::returnApiErrorWithMsg($e->getMessage());
+            static::returnApiErrorWithMsg($e->getMessage(),2);
         }
 
     }
