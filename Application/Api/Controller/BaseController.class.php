@@ -6,7 +6,7 @@ use Think\Exception;
 /**
  * User: liujianjiang
  */
-class ApiController extends RestController
+class BaseController extends RestController
 {
     protected $statusCode = 200;
 
@@ -18,31 +18,6 @@ class ApiController extends RestController
 
     const PARAM_ERROR_STATUS = 2;
     const PARAM_ERROR_MSG = '参数错误';
-
-    public $user;
-
-    public function _initialize()
-    {
-        try{
-            $sessionId = I('session_id');
-            if(empty($sessionId)){
-                static::returnApiErrorWithMsg('sesison_id is not allow null');
-            }
-            $sessionData = getUserBySessionId($sessionId);
-            if(empty($sessionData)){
-                throw new Exception('sesison_id is error');
-            }else{
-                $userInfo = M('users')->where(['id'=>$sessionData['user_id']])->find();
-                foreach($userInfo as $key=>$value){
-                    $this->user->$key = $value;
-                }
-            }
-        }catch (Exception $e){
-            static::returnApiErrorWithMsg($e->getMessage());
-        }
-
-    }
-
 
     public function getStatusCode(){
         return $this->statusCode;

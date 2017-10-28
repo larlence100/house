@@ -7,6 +7,13 @@ function getUserInfoById($user_id)
     return $userInfo;
 }
 
+function getUserNameById($user_id)
+{
+    $user = M('users');
+    $userInfo = $user->where(['id'=>$user_id])->field('id,nickname,mobile,city,province,country,avatarUrl')->find();
+    return $userInfo['nickname']?$userInfo['nickname']:0;
+}
+
 function getUserInfoByAppid($appid)
 {
     $user = M('users');

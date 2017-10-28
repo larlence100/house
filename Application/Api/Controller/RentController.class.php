@@ -9,8 +9,6 @@ class RentController extends ApiController
 
     public function rent_list(){
                 $pageSize = I('pagesize')? I('pagesize'): static::PAGESIZE;
-                $city = I('city');
-
                 //根据城市获取片区
                 /*$pianqu = M('pianqu');
                 $pianquRow = $pianqu->where(['pinyinjs'=>$city])->limit(1)->find();*/
@@ -49,10 +47,6 @@ class RentController extends ApiController
 
                 if ($yongtu) {//用途
                     $condition.=" and yongtu=$yongtu";
-                }
-
-                if ($noxiaoqu) {//小区id为空
-                    $condition.=" and xiaoqu is null";
                 }
 
                 if ($jiage1!="" and $jiage2!="") {//售价区间
@@ -164,6 +158,14 @@ class RentController extends ApiController
             return $this->returnApiSuccessWithMsg('非法ID');
         }
         return $this->returnApiSuccessWithData($result);
+    }
+
+    public function rent_list_new(){
+        $pianqu = I('cityid');
+        $model = M('fangyuan');
+        $result = $model->where(['pianqu'=>$pianqu,'leixing'=>2])->order('lurusj desc')->limit(3)->select();
+        return $this->returnApiSuccessWithData($result);
+
     }
 
 }

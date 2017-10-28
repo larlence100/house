@@ -34,6 +34,7 @@ class NewsController extends ApiController
         if(!$news){
             $this->returnApiErrorWithMsg('未找到该新闻');
         }
+        $model->where(['id'=>$id,'new_status'=>1])->setInc('click',1);
         $this->returnApiSuccessWithData($news);
     }
 

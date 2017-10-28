@@ -7,7 +7,7 @@
  */
 namespace Api\Controller;
 
-class LoginController extends ApiController {
+class LoginController extends BaseController {
 
     // 微信登录
     public function weixin_login(){

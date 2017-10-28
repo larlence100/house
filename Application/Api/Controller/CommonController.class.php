@@ -6,6 +6,8 @@
 namespace Api\Controller;
 
 
+use Think\Exception;
+
 class CommonController extends ApiController
 {
     /**
@@ -60,5 +62,34 @@ class CommonController extends ApiController
         $data = getAreaByCityId($cityId);
         $this->returnApiSuccessWithData($data);
     }
+
+    public function eveluate()
+    {
+        try{
+            $data = [
+                'user_id'=>$this->user->id,
+                'xiaoqum'=>I('xiaoqum',''),
+                'mianji'=>I('mianji',0),
+                'huxing'=>I('huxing',0),
+                'chaoxiang'=>I('chaoxiang',0),
+                'louceng'=>I('louceng',''),
+                'mobile'=>I('mobile',''),
+                'created_at' =>  time()
+            ];
+            foreach($data as $key=>$value) {
+                if(empty($value)){
+                    throw new Exception($key.' is not allow null');
+                }
+            }
+            $news = M('gujia');
+            if (!$news->add($data)){
+               throw new Exception('提交失败');
+            }
+            $this->returnApiSuccessWithMsg();
+        }catch (Exception $e){
+            $this->returnApiErrorWithMsg($e->getMessage());
+        }
+    }
+
 
 }
