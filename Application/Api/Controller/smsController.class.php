@@ -6,7 +6,7 @@
 namespace Api\Controller;
 
 
-class smsController extends ApiController
+class SmsController extends ApiController
 {
     public function send()
     {
