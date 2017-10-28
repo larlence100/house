@@ -70,7 +70,7 @@ class CommonController extends ApiController
                 'user_id'=>$this->user->id,
                 'xiaoqum'=>I('xiaoqum',''),
                 'mianji'=>I('mianji',0),
-                'huxing'=>I('huxing',0),
+                'fwleixing'=>I('fwleixing',0),
                 'chaoxiang'=>I('chaoxiang',0),
                 'louceng'=>I('louceng',''),
                 'mobile'=>I('mobile',''),
