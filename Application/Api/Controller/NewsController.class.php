@@ -16,13 +16,10 @@ class NewsController extends ApiController
         $condition = "new_status=1";
         $count=M('news')->query("select count(*) as total from {$table} where {$condition}");
         $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
-        $list="select * from {$table} where {$condition} order by `order` DESC limit ".$Page->firstRow.','.$Page->listRows;
+        $sql="select * from {$table} where {$condition} order by `order` DESC limit ".$Page->firstRow.','.$Page->listRows;
         $Model = new \Think\Model;
-        $fangyuan=$Model->query($list);
-        foreach($fangyuan as $k=>$v){
-            $fangyuan[$k]['photo'] = getHousePhoto($v['bianhao']);
-        }
-        return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$fangyuan]);
+        $list=$Model->query($sql);
+        return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);
 
     }
 
