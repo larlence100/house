@@ -6,13 +6,21 @@ function getUserInfoById($user_id)
     $userInfo = $user->where(['id'=>$user_id])->field('id,nickname,mobile,city,province,country,avatarUrl')->find();
     return $userInfo;
 }
-
 function getUserNameById($user_id)
 {
     $user = M('users');
     $userInfo = $user->where(['id'=>$user_id])->field('id,nickname,mobile,city,province,country,avatarUrl')->find();
     return $userInfo['nickname']?$userInfo['nickname']:0;
 }
+
+function getAdminUserNameById($user_id)
+{
+    $user = M('yonghu');
+    $userInfo = $user->where(['id'=>$user_id])->find();
+    return $userInfo['ygmingcheng']?$userInfo['ygmingcheng']:0;
+}
+
+
 
 function getUserInfoByAppid($appid)
 {
@@ -310,6 +318,23 @@ function getAreaByCityId($cityId)
 {
     $model = M('areas');
     $result = $model->where(['cityid'=>$cityId])->select();
+    return $result;
+}
+
+function getFangYuanById($fangyuan_id)
+{
+    $model = M('fangyuan');
+    $result = $model->where(['id'=>$fangyuan_id,'status'=>1])->find();
+    if (!$result) {
+        throw new \Think\Exception('未找到该房源信息');
+    }
+    return $result;
+}
+
+function checkUserFangyuanCollect($fangyuan_id,$user_id)
+{
+    $model = M('shoucang');
+    $result = $model->where(['user_id'=>$user_id,'fyid'=>$fangyuan_id])->find();
     return $result;
 }
 
