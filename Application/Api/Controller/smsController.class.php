@@ -10,8 +10,8 @@ class SmsController extends BaseController
 {
     public function send()
     {
-
-        $mobile = I('mobile');
+        return 1;
+      /*  $mobile = I('mobile');
         $cacheMobile= S($mobile);
 
         //限制发送频率
@@ -45,6 +45,6 @@ class SmsController extends BaseController
             $this->returnApiSuccessWithMsg('发送成功');
         }else{
             $this->returnApiErrorWithMsg('发送失败');
-        }
+        }*/
     }
 }
