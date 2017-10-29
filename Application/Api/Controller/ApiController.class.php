@@ -26,7 +26,7 @@ class ApiController extends RestController
         try{
             $sessionId = I('session_id');
             if(empty($sessionId)){
-                throw new Exception('sesison_id is not allow null');
+                throw new Exception('sessison_id is not allow null');
             }
             $sessionData = getUserBySessionId($sessionId);
             if(empty($sessionData)){
