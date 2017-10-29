@@ -100,7 +100,7 @@ class UserController extends ApiController
             }
             //改变验证码使用状态
             updateVerifyCode($checkCode['id']);
-            
+
             return $this->returnApiSuccessWithMsg('绑定成功!');
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
