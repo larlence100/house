@@ -84,6 +84,7 @@ class SellController extends ApiController
             $data['yangtai'] = I('yangtai',0);
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
+            $data['yezhu_idcard']=I('yezhu_idcard');
             $data['lurusj']=time();
             $data['weihurenid']=$this->user-id;
 
@@ -93,6 +94,15 @@ class SellController extends ApiController
                 $photosArr = explode(',',$photos);
                 if(count($photosArr)<1){
                     throw new Exception('房源图片低于一张');
+                }
+            }
+
+            //判断提交的产权图片不小于1张
+            $cq_photos = I('cq_photo');
+            if ($cq_photos){
+                $cq_photosArr = explode(',',$cq_photos);
+                if(count($cq_photosArr)<1){
+                    throw new Exception('产权图片低于一张');
                 }
             }
 
@@ -106,6 +116,12 @@ class SellController extends ApiController
             $photoModel = M('photo');
             foreach ($photosArr as $photo){
                 $photoModel->add(['image'=>$photo,'fybh'=>$data['bianhao'],'create_time'=>time()]);
+            }
+
+            //更新产权图片到产权图片表
+            $cq_photoModel = M('cq_photo');
+            foreach ($cq_photosArr as $photo){
+                $cq_photoModel->add(['image'=>$photo,'fybh'=>$data['bianhao'],'create_time'=>time()]);
             }
 
             $this->returnApiSuccessWithMsg('添加成功');
