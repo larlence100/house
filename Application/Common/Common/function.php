@@ -213,7 +213,7 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
         }else{
             // 返回成功信息
             foreach($info as $file){
-                $data['filePath']=trim($file['savepath'].$file['savename'],'.');
+                $data['filePath']=trim('/Upload/'.$file['savepath'].$file['savename'],'.');
                 return $data;
             }
         }
