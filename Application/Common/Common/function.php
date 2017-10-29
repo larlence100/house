@@ -176,21 +176,15 @@ function define_str_replace($data)
  * @param string $path
  * @param string $format
  * @param string $maxSize
+ * @return array
+ * author Fox
  */
 function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
 
     ini_set('max_execution_time', '0');
-    // 去除两边的/
-    /*$path=trim($path,'/');
-    // 添加Upload根目录
-    $path=strtolower(substr($path, 0,6))==='upload' ? ucfirst($path) : 'Upload/'.$path;*/
-    // 上传文件类型控制
     $ext_arr= array(
         'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
-        'photo' => array('jpg', 'jpeg', 'png'),
-        'flash' => array('swf', 'flv'),
-        'media' => array('swf', 'flv', 'mp3', 'wav', 'wma', 'wmv', 'mid', 'avi', 'mpg', 'asf', 'rm', 'rmvb'),
-        'file' => array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'htm', 'html', 'txt', 'zip', 'rar', 'gz', 'bz2','pdf')
+        'photo' => array('jpg', 'jpeg', 'png')
     );
 
     if(!empty($_FILES)){
@@ -211,44 +205,15 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
         $info=$upload->upload();
 
         $data=array();
-        $Img = D('Photo');
         if(!$info){
             // 返回错误信息
             $error=$upload->getError();
             $data['error_info']=$error;
-            echo json_encode($data);
+            return $data;
         }else{
             // 返回成功信息
             foreach($info as $file){
-                //上传的图片同步保存到数据库表
-
-                //把fangyuan表tupian字段更新为 1
-                //M('Fangyuan')->where(array('bianhao'=>$_POST['fybh']))->setField('tupian',1);
-
-                //为上传成功的图片生成缩略图
-               /* $timg = new \Think\Image();
-
-                $timg->open(trim($file['savepath'].$file['savename']));
-
-                $newpathbig =  trim($file['savepath']).'b_'.substr($file['savename'],0,strrpos($file['savename'], '.')).'.'.$file['ext'];
-                $newpath =  trim($file['savepath']).'t_'.substr($file['savename'],0,strrpos($file['savename'], '.')).'.'.$file['ext'];
-
-                $timg->thumb(800,800)->save($newpathbig);
-                $timg->thumb(300,300)->save($newpath);*/
-
-                //删除原图
-                //unlink('./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
-                //rename($newpathbig,'./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
-                //返回给AJAX
                 $data['filePath']=trim($file['savepath'].$file['savename'],'.');
-
-                ///记录到图片表
-                $d['uid']       = 10000;
-                $d['image']     =  $data['filePath'];
-                //$d['fybh']      = 10000;
-                $d['create_time'] = time();
-                $Img->add($d);
-
                 return $data;
             }
         }
