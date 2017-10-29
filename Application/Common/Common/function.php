@@ -249,7 +249,7 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
                 $d['create_time'] = time();
                 $Img->add($d);
 
-                echo json_encode($data);
+                return $data;
             }
         }
     }

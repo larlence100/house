@@ -80,7 +80,7 @@ class UserController extends ApiController
             return $this->returnApiErrorWithMsg($e->getMessage());
         }
     }
-    
+
     public function bind_mobile()
     {
         try{
