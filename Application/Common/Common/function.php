@@ -17,7 +17,7 @@ function getAdminUserNameById($user_id)
 {
     $user = M('yonghu');
     $userInfo = $user->where(['id'=>$user_id])->find();
-    return $userInfo['ygmingcheng']?$userInfo['ygmingcheng']:''
+    return $userInfo['ygmingcheng']?$userInfo['ygmingcheng']:'';
 }
 
 
