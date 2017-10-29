@@ -10,14 +10,14 @@ function getUserNameById($user_id)
 {
     $user = M('users');
     $userInfo = $user->where(['id'=>$user_id])->field('id,nickname,mobile,city,province,country,avatarUrl')->find();
-    return $userInfo['nickname']?$userInfo['nickname']:0;
+    return $userInfo['nickname']?$userInfo['nickname']:'';
 }
 
 function getAdminUserNameById($user_id)
 {
     $user = M('yonghu');
     $userInfo = $user->where(['id'=>$user_id])->find();
-    return $userInfo['ygmingcheng']?$userInfo['ygmingcheng']:0;
+    return $userInfo['ygmingcheng']?$userInfo['ygmingcheng']:''
 }
 
 
@@ -48,7 +48,7 @@ function getUserBySessionId($session_id)
  */
 function getHouseInfoById($id){
     $house = M('fangyuan');
-    $data =  $house->find($id);
+    $data =  $house->field('yezhudianhua,yezhu',true)->find($id);
     if (!$data) {
         throw new \Think\Exception('未找到该房源信息');
     }
