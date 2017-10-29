@@ -179,7 +179,7 @@ function define_str_replace($data)
  * @return array
  * author Fox
  */
-function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
+function ajaxUpload($format='image',$maxSize='52428800'){
 
     ini_set('max_execution_time', '0');
     $ext_arr= array(
@@ -195,7 +195,7 @@ function ajaxUpload($path='file',$format='image',$maxSize='52428800'){
             'savePath'  =>  '',         // 文件上传的保存路径（相对于根路径）
             'saveName'  =>  array('uniqid',''),     // 上传文件的保存规则，支持数组和字符串方式定义
             'autoSub'   =>  true,                  // 自动使用子目录保存上传文件 默认为true
-            'exts'      =>  ''//isset($ext_arr[$format])?$ext_arr[$format]:'',
+            'exts'      =>  isset($ext_arr[$format])?$ext_arr[$format]:'',
 
         );
 

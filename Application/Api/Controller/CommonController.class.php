@@ -49,7 +49,7 @@ class CommonController extends ApiController
      */
     public function ajax_upload(){
 
-        $fileData = ajaxUpload();
+        $fileData = ajaxUpload('photo');
         $this->returnApiSuccessWithData($fileData);
     }
 
