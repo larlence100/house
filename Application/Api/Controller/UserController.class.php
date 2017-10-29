@@ -80,7 +80,7 @@ class UserController extends ApiController
             return $this->returnApiErrorWithMsg($e->getMessage());
         }
     }
-
+    
     public function bind_mobile()
     {
         try{
@@ -102,6 +102,24 @@ class UserController extends ApiController
             updateVerifyCode($checkCode['id']);
 
             return $this->returnApiSuccessWithMsg('绑定成功!');
+        }catch (Exception $e){
+            return $this->returnApiErrorWithMsg($e->getMessage());
+        }
+    }
+
+    /**
+     * 我的发布
+     * author Fox
+     */
+    public function myreleased()
+    {
+        try{
+            $pageSize = I('pagesize')? I('pagesize'): 20;
+            $where['weihurenid'] = array('eq',$this->user-id);
+            $count = M('fangyuan')->where($where)->order('lurusj')->count();
+            $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
+            $list = M('fangyuan')->where($where)->field('yezhudianhua,yezhu,yezhulx,yezhugx',true)->order('lurusj')->limit($Page->firstRow.','.$Page->listRows)->select();
+            return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
         }

@@ -85,26 +85,28 @@ class SellController extends ApiController
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
             $data['lurusj']=time();
-            //$data['yezhu']=I('yezhu');
-            //$data['laiyuan']=I('laiyuan');
-            //
-           //$data['niandai']=I('niandai');
+            $data['weihurenid']=$this->user-id;
 
+            //判断提交的图片不小于1张
+            $photos = I('photo');
+            if ($photos){
+                $photosArr = explode(',',$photos);
+                if(count($photosArr)<1){
+                    throw new Exception('房源图片低于一张');
+                }
+            }
+
+            //房源信息存数据库
             $result = M('Fangyuan')->add($data);
             if (!$result) {
                 throw new Exception('添加失败');
             }
 
-            //房源图片更新
-            $photos = I('photo');
-            if ($photos){
-                $photosArr = explode(',',$photos);
-                $photoModel = M('photo');
-                foreach ($photosArr as $photo){
-                    $photoModel->add(['image'=>$photo,'fybh'=>$data['bianhao'],'create_time'=>time()]);
-                }
+            //更新图片到房源图片表
+            $photoModel = M('photo');
+            foreach ($photosArr as $photo){
+                $photoModel->add(['image'=>$photo,'fybh'=>$data['bianhao'],'create_time'=>time()]);
             }
-
 
             $this->returnApiSuccessWithMsg('添加成功');
         }catch (Exception $e)
