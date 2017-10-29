@@ -1,5 +1,7 @@
 <?php
 namespace Api\Controller;
+use Think\Exception;
+
 /**
  * User: liujianjiang
  */
@@ -109,7 +111,7 @@ class RentController extends ApiController
                 $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
                 $show  = $Page->show();// 分页显示输出
 
-                if (I('paixu')==1) {
+               /* if (I('paixu')==1) {
                     $paixu="bianhao DESC";
                 }elseif (I('paixu')==2) {
                     $paixu="shoujia DESC";
@@ -125,7 +127,8 @@ class RentController extends ApiController
                     $paixu="danjia ASC";
                 }else{
                     $paixu="bianhao DESC";
-                }
+                }*/
+                $paixu = "lurusj DESC";
 
                 $list="select * from jjrxt_fangyuan where {$condition} order by ".$paixu." limit ".$Page->firstRow.','.$Page->listRows;
                 $Model = new \Think\Model;
@@ -142,22 +145,29 @@ class RentController extends ApiController
      */
     public function detail()
     {
-        $id = I('id');
-        $result = getHouseInfoById($id);
+        try{
+            $id = I('id');
+            $result = getHouseInfoById($id);
 
-        //经纬度
-        $xiaoquInfo = getXiaoQuInfo($result['xiaoqu']);
-        $logAndDim = explode(',',$xiaoquInfo[dituzb]);
-        $result['longitude'] = $logAndDim[0];
-        $result['dimensions'] = $logAndDim[1];
+            //经纬度
+            $xiaoquInfo = getXiaoQuInfo($result['xiaoqu']);
+            $logAndDim = explode(',',$xiaoquInfo['dituzb']);
+            $result['longitude'] = $logAndDim[0];
+            $result['dimensions'] = $logAndDim[1];
 
-        //图片
-        $result['photo'] = getHousePhoto($result['bianhao']);
+            //图片
+            $result['photo'] = getHousePhoto($result['bianhao']);
 
-        if(empty($result)){
-            return $this->returnApiSuccessWithMsg('非法ID');
+            //用户是否收藏该房源
+            $result['is_collect'] = 0;
+            $check = checkUserFangyuanCollect($id,$this->user->id);
+            if($check){
+                $result['is_collect'] = 1;
+            }
+            return $this->returnApiSuccessWithData($result);
+        }catch (Exception $e){
+            return $this->returnApiErrorWithMsg($e->getMessage());
         }
-        return $this->returnApiSuccessWithData($result);
     }
 
     public function rent_list_new(){
