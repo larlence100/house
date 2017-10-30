@@ -42,6 +42,11 @@ class RentController extends ApiController
                     $condition.=" and xiaoqu=".$xiaoqu;
                 }
 
+                $xiaoqum = I('xiaoqum');
+                if ($xiaoqum) {//小区
+                    $condition.=" and xiaoqum like '%".$xiaoqum."%'";
+                }
+
                 $area = I('area');
                 if($area){
                     $condition.=" and ssarea=".$area;

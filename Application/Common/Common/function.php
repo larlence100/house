@@ -236,12 +236,31 @@ function getOrderByOrderNo($order_no){
 }
 
 /**
- * 生成订单号
- * @return string
+ * 创建订单
+ * @param $fangyuan_id
+ * @param $user_id
+ * @return bool
+ * author Fox
+ * @throws Exception
  */
-function buildOrderNo()
+function buildOrderNo($fangyuan_id,$user_id)
 {
-    return  date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+    $order      = M('order');
+    $order_no  = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+    $addData = [
+        'fangyuan_id'=>$fangyuan_id,
+        'user_id'   =>$user_id,
+        'order_no'  =>  $order_no,
+        'order_money'=>\Api\Controller\OrderController::PAY_MONEY,
+        'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
+        'order_time'=>time()
+    ];
+    var_dump($addData);exit;
+    if (!$order->add($addData)){
+        throw new Exception('订单生成失败!');
+    };
+    return true;
+
 }
 
 function getUserNickNameByid($id)

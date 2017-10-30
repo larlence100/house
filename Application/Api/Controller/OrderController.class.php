@@ -34,26 +34,11 @@ class OrderController extends ApiController {
     public function order_pay()
     {
         try{
-            $id             = I('fangyuan_id','');
-            $session_id     = I('session_id','');
+            $id  = I('fangyuan_id');
 
-            $fangyuan   = M('fangyuan');
-            $order      = M('order');
             $result = getHouseInfoById($id);
 
-            $userSession = getUserBySessionId($session_id);
-            $order_no = buildOrderNo();
-            $addData = [
-                'fangyuan_id'=>$id,
-                'user_id'   =>$userSession['user_id'],
-                'order_no'  =>  $order_no,
-                'order_money'=>static::PAY_MONEY,
-                'order_status'=>static::IS_NO_PAY_STATUS,
-                'order_time'=>time()
-            ];
-            if (!$order->add($addData)){
-                throw new Exception('订单生成失败!');
-            };
+            $order_no = buildOrderNo($result['id'],$this->user->id);
 
             $this->returnApiSuccessWithData(['phone'=>$result['yezhudianhua']]);
 
