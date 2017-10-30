@@ -86,7 +86,7 @@ class SellController extends ApiController
             $data['zlouceng']=I('zlouceng');
             $data['yezhu_idcard']=I('yezhu_idcard');
             $data['lurusj']=time();
-            $data['weihurenid']=$this->user-id;
+            $data['weihurenid']=$this->user->id;
 
             //判断提交的图片不小于1张
             $photos = I('photo');
