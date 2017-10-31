@@ -16,20 +16,7 @@ class OrderController extends ApiController {
     const IS_PAY_STATUS        = 1;
     const ERROR_PAY_STATUS  = 2;
 
-    // 微信登录
-    public function get_price()
-    {
-        try{
-            $id = I('fangyuan_id','');
-            $fangyuan = M('fangyuan');
-            $result = getHouseInfoById($id);
-
-            $this->returnApiSuccessWithData(['price'=>100]);
-        }catch (Exception $e){
-            $this->returnApiErrorWithMsg($e->getMessage());
-        }
-
-    }
+ 
 
     public function order_pay()
     {
