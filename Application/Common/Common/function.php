@@ -255,7 +255,6 @@ function buildOrderNo($fangyuan_id,$user_id)
         'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
         'order_time'=>time()
     ];
-    var_dump($addData);exit;
     if (!$order->add($addData)){
         throw new Exception('订单生成失败!');
     };
