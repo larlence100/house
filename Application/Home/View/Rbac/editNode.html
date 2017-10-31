@@ -183,78 +183,39 @@
 	<link rel="stylesheet" href="__PUBLIC__/lib/layui/css/layui.css" media="all">
 </block>
 <block name="content">
-	<nav class="breadcrumb hidden">
-		<i class="Hui-iconfont">&#xe67f;</i>
-		<a href="{:U('Index/welcome')}">首页</a>
-		<span class="c-gray en">&gt;</span> 管理后台
-		<span class="c-gray en">&gt;</span> 账户
-		<span class="c-gray en">&gt;</span> 角色管理
-		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
-			<i class="Hui-iconfont">&#xe68f;</i>
-		</a>
-	</nav>
-	<div class="page-container">
-		<div class="cl pd-5 bg-1 bk-gray">
-			<span class="l">
-				<if condition='($_SESSION["_ACCESS_LIST"]["HOME"]["RBAC"]["ADDROLE"]) or ($_SESSION["superadmin"])'>
-					<a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加角色','{:U('Rbac/addRole')}','600','400')">
-						<i class="Hui-iconfont">&#xe600;</i> 添加角色
-					</a>
-				</if>
-			</span>
-			<span class="r">
-				
-				<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
-			<i class="Hui-iconfont">&#xe68f;</i></a>
-			</span>
-
-		</a>
-		</div>
-		<table class="table table-border table-bordered table-hover table-bg">
-			<thead>
-
-				<tr class="text-c">
-					<th width="40">序号</th>
-					<th width="200">角色名</th>
-					<th width="200">描述</th>
-					<th>开启状态</th>
-					<th width="170">操作</th>
-				</tr>
-			</thead>
-			<tbody id="xsjjs">
-				<volist name="role" id="v">
-					<tr class="text-c">
-						<td>{$i+$firstRow}</td>
-						<td>{$v.name}</td>
-						<td><a href="#">{$v.remark}</a></td>
-						<td>
-							<if condition='$v["status"]'>
-								开启
-							<else/>
-								关闭
-							</if>
-						</td>
-						<td class="f-14">
-							<a title="权限分配" href="javascript:;" onclick="admin_role_edit_node('权限分配','{:U('Rbac/editNode',array('id'=>$v['id']))}','600','400')" style="text-decoration:none">
-								<i class="Hui-iconfont" style="font-size: 22px;">&#xe62d;</i>
-							</a>
-							<a title="编辑" href="javascript:;" onclick="admin_role_add('角色编辑','{:U('Rbac/editRole',array('id'=>$v['id']))}','600','400')" style="text-decoration:none">
-								<i class="Hui-iconfont" style="font-size: 18px;">&#xe6df;</i>
-							</a>
-							<if condition='$v["id"] neq 1'>
-								<a title="删除" href="javascript:;" onclick="admin_role_del(this,'{$v.id}')" class="ml-5" style="text-decoration:none">
-									<i class="Hui-iconfont" style="font-size: 22px;">&#xe6e2;</i>
-								</a>
-							</if>
-						</td>
-					</tr>
-				</volist>
-			</tbody>
-		</table>
-		<div style="height: 50px;"></div>
-		<div class="pagination" style="width:100%;height:30px;margin:0 auto;background:#fff;position:fixed;bottom:0;text-align:center;">
-			{$page}
-		</div>
+	<div id="wrap">
+		<a id="return" href="{:U('role_list','','')}">返回</a>
+		<form action="{:U('access_handle')}" method="post">
+			<table class="table">
+				<foreach name="node" item="app">
+					<div class="app">
+						<p>
+							<strong>{$app.title}</strong>
+							<input type="checkbox" name="access[]" value="{$app.id}_1" level="1" <if condition="$app['access'] eq 1">checked="checked"</if>>
+						</p>
+						<foreach name="app.child" item="controller">
+							<div class="app_child">
+								<dl class="controller">
+									<dt>
+										<strong>{$controller.title}</strong>
+										<input type="checkbox" name="access[]" value="{$controller.id}_2" level="2" <if condition="$controller['access'] eq 1">checked="checked"</if>>
+									</dt>
+								</dl>
+								<foreach name="controller.child" item="method">
+                                <span class="method">
+                                    <strong>{$method.title}</strong>
+                                    <input type="checkbox" name="access[]" value="{$method.id}_3" level="3" <if condition="$method['access'] eq 1">checked="checked"</if>>
+                                </span>
+								</foreach>
+								<div style="clear:both"></div>
+							</div>
+						</foreach>
+					</div>
+				</foreach>
+			</table>
+			<input type="submit" value="提交"  style="display: block; margin:0 auto; cursor:pointer">
+			<input type="hidden" name="rid" value="{$rid}">
+		</form>
 	</div>
 </block>
 <block name="js">

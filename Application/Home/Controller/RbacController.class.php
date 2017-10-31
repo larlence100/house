@@ -227,6 +227,41 @@
             header("Content-type: application/json");
             exit(json_encode($data));
         }
+
+        public function editNode()
+        {
+            $rid = I('get.rid', 0, 'int');//角色id
+            $field = array('id', 'name', 'title', 'pid');
+            $node = M('node')->field($field)->order('sort asc')->select();
+            $access = M('access')->where('role_id = '.$rid)->getField('node_id', true);
+            $node = node_regroup($node, 0, $access); //递归节点
+            $this->rid = $rid;
+            $this->node = $node;
+            $this->display();
+        }
+
+        //权限配置的表单提交处理
+        public function access_handle() {
+            $rid = I('rid', 0, 'int');
+            $db = M('access');
+            $db->where('role_id = '.$rid)->delete();//删除原有权限
+            $data = array();
+            if(!empty($_POST['access'])) {
+                foreach($_POST['access'] as $v) {
+                    $tmp = explode('_', $v);
+                    $data[] = array(
+                        'role_id'=>$rid,
+                        'node_id'=>$tmp[0],
+                        'level'=>$tmp[1]
+                    );
+                }
+                if($db->addAll($data)) { //写入新权限
+                    $this->success('分配权限成功', U('role_list','',''));
+                } else {
+                    $this->error('分配权限失败');
+                }
+            }
+        }
     }
 ?>
         

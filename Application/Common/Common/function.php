@@ -335,6 +335,19 @@ function checkUserFangyuanCollect($fangyuan_id,$user_id)
     return $result;
 }
 
+function node_regroup($node, $pid = 0, $access = null) {
+    $arr = array();
+    foreach($node as $v) {
+        if(is_array($access)) {
+            $v['access'] = in_array($v['id'], $access) ?  1 : 0;//判断是否已经拥有权限
+        }
+        if($v['pid'] == $pid) {
+            $v['child'] = node_regroup($node, $v['id'], $access);
+            $arr[] = $v;
+        }
+    }
+    return $arr;
+}
 
 
 

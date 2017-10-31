@@ -84,6 +84,7 @@ class SellController extends ApiController
             $data['yangtai'] = I('yangtai',0);
             $data['louceng']=I('louceng');
             $data['zlouceng']=I('zlouceng');
+            $data['tupian']=1;
             $data['yezhu_idcard']=I('yezhu_idcard');
             $data['lurusj']=time();
             $data['weihurenid']=$this->user->id;
