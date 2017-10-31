@@ -38,11 +38,8 @@ class OrderController extends ApiController {
     public function pay_callback()
     {
         try{
-            $session_id     = I('session_id','');
-            $order_no       = I('order_no','');
-            $order_money    = I('order_money',0);
+            $order_no       = I('order_no');
 
-            $userSession = getUserBySessionId($session_id);
             $userOrder =    getOrderByOrderNo($order_no);
 
             $updateData = [
