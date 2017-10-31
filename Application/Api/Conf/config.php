@@ -10,6 +10,7 @@ return array(
         'api/common' => 'Api/Common/getHouseParameList'
     ),
 
-
-	'TWO_DIR' => '/house'
+	'TWO_DIR' => '/house',
+    'PAY_NOTIFY_URL' => 'http://tangfang.com/api/order/notify',
+    'PAY_MONEY' => 0.01
 );

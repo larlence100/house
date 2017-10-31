@@ -245,20 +245,34 @@ function getOrderByOrderNo($order_no){
  */
 function buildOrderNo($fangyuan_id,$user_id)
 {
+
     $order      = M('order');
-    $order_no  = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
-    $addData = [
-        'fangyuan_id'=>$fangyuan_id,
-        'user_id'   =>$user_id,
-        'order_no'  =>  $order_no,
-        'order_money'=>\Api\Controller\OrderController::PAY_MONEY,
-        'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
-        'order_time'=>time()
+    $where = [
+        'fangyuan_id' => $fangyuan_id,
+        'user_id' => $user_id
     ];
-    if (!$order->add($addData)){
-        throw new Exception('订单生成失败!');
-    };
-    return true;
+    $orderObj = $order->where($where)->find();
+    if(!empty($orderObj)){
+        //throw new Exception('订单已经生成，请勿重复下单!');
+        return $orderObj;
+    }else{
+        $order_no  = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+        $addData = [
+            'fangyuan_id'=>$fangyuan_id,
+            'user_id'   =>$user_id,
+            'order_no'  =>  $order_no,
+            'order_money'=> C('PAY_MONEY'),
+            'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
+            'order_time'=>time()
+        ];
+        if (!$order->add($addData)){
+            throw new Exception('订单生成失败!');
+        }else{
+            $id = $order->getLastInsID();
+            $orderObj = $order->find($id);
+            return $orderObj;
+        }
+    }
 
 }
 
