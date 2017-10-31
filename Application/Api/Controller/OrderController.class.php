@@ -16,7 +16,7 @@ class OrderController extends ApiController {
     const IS_PAY_STATUS        = 1;
     const ERROR_PAY_STATUS  = 2;
 
- 
+
 
     public function order_pay()
     {
