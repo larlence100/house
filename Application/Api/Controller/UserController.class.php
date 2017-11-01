@@ -78,9 +78,13 @@ class UserController extends ApiController
                 $count = M('fangyuan')->where($where)->order('lurusj')->count();
                 $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
                 $list = M('fangyuan')->where($where)->field('yezhudianhua,yezhu,yezhulx,yezhugx',true)->order('lurusj')->limit($Page->firstRow.','.$Page->listRows)->select();
+                foreach($list as $k=>$v){
+                    $list[$k]['photo'] = getHousePhoto($v['bianhao']);
+                }
             }else{
                 $list = [];
             }
+
             return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
