@@ -52,7 +52,8 @@ class LoginController extends BaseController {
                     $userInfo = getUserInfoByAppid($open_id);
 
                     //$session_id=111;  //生成3rd_session
-                    $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;
+                    //$newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;
+                    $newSessionId = md5(time().$open_id);
                     \Think\Log::write('userinfo---'.json_encode($userInfo));
                     $session_db->add(['user_id'=>$userInfo['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
                 }

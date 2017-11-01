@@ -308,7 +308,7 @@ function ajax_upload($path='file',$format='image',$maxSize='52428800'){
                 //unlink('./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
                 //rename($newpathbig,'./Upload/'.session('gongsiid').'/'.$_POST['fybh'].'/'.$file['savename']);
                 //返回给AJAX
-                $data['filePath']=trim($file['savepath'].$file['savename'],'.');
+                $data['filePath']=trim($config['rootPath'].$file['savepath'].$file['savename'],'.');
 
                 ///记录到图片表
                 $d['image']     =  $data['filePath'];
