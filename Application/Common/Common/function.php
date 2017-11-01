@@ -349,5 +349,11 @@ function node_regroup($node, $pid = 0, $access = null) {
     return $arr;
 }
 
+function isPayed($fangyuan_id,$user_id){
+    $model = M('order');
+    $result = $model->where(['user_id'=>$user_id,'fangyuan_id'=>$fangyuan_id,'order_status'=>\Api\Controller\OrderController::IS_PAY_STATUS])->find();
+    return $result;
+}
+
 
 

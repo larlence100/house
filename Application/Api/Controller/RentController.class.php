@@ -169,6 +169,15 @@ class RentController extends ApiController
             if($check){
                 $result['is_collect'] = 1;
             }
+
+            //是否已经支付
+            $check = isPayed($id,$this->user->id);
+            if($check){
+                $result['payed'] = 1;
+            }else{
+                $result['payed'] = 0;
+            }
+
             return $this->returnApiSuccessWithData($result);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
