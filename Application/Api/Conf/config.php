@@ -10,7 +10,7 @@ return array(
         'api/common' => 'Api/Common/getHouseParameList'
     ),
 
-	'TWO_DIR' => '/house',
+	'TWO_DIR' => '',
     'PAY_NOTIFY_URL' => 'http://118.31.33.47/api/pay/notify',
     'PAY_MONEY' => 0.01
 );
