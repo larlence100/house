@@ -71,12 +71,16 @@ class UserController extends ApiController
 
             $pageSize = I('pagesize')? I('pagesize'): 20;
             $leixing = I('leixing');
-            $where['id'] = array('in',$collect);
-            $where['leixing'] = array('eq',$leixing);
-            $where['status'] = array('eq',1);
-            $count = M('fangyuan')->where($where)->order('lurusj')->count();
-            $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
-            $list = M('fangyuan')->where($where)->field('yezhudianhua,yezhu,yezhulx,yezhugx',true)->order('lurusj')->limit($Page->firstRow.','.$Page->listRows)->select();
+            if($collect){
+                $where['id'] = array('in',$collect);
+                $where['leixing'] = array('eq',$leixing);
+                $where['status'] = array('eq',1);
+                $count = M('fangyuan')->where($where)->order('lurusj')->count();
+                $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
+                $list = M('fangyuan')->where($where)->field('yezhudianhua,yezhu,yezhulx,yezhugx',true)->order('lurusj')->limit($Page->firstRow.','.$Page->listRows)->select();
+            }else{
+                $list = [];
+            }
             return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
