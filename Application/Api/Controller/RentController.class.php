@@ -179,6 +179,9 @@ class RentController extends ApiController
         $pianqu = I('cityid');
         $model = M('fangyuan');
         $result = $model->where(['pianqu'=>$pianqu,'leixing'=>2])->order('lurusj desc')->limit(3)->select();
+        foreach($result as $k=>$v){
+            $result[$k]['photo'] = getHousePhoto($v['bianhao']);
+        }
         return $this->returnApiSuccessWithData($result);
 
     }
