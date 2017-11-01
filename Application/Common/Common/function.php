@@ -48,7 +48,9 @@ function getUserBySessionId($session_id)
  */
 function getHouseInfoById($id){
     $house = M('fangyuan');
+
     $data =  $house->field('yezhu',true)->find($id);
+
     if (!$data) {
         throw new \Think\Exception('未找到该房源信息');
     }
