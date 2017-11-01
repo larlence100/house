@@ -11,6 +11,6 @@ return array(
     ),
 
 	'TWO_DIR' => '/house',
-    'PAY_NOTIFY_URL' => 'http://tangfang.com/api/order/notify',
+    'PAY_NOTIFY_URL' => 'http://118.31.33.47/api/pay/notify',
     'PAY_MONEY' => 0.01
 );

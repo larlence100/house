@@ -10,6 +10,9 @@ namespace Api\Controller;
 
 use Think\Exception;
 
+require_once LIB_PATH . "WxPay/WxPay.Api.php";
+require_once LIB_PATH . "WxPay/WxPay.JsApiPay.php";
+
 class OrderController extends ApiController
 {
 
@@ -17,18 +20,14 @@ class OrderController extends ApiController
     const IS_PAY_STATUS = 1;
     const ERROR_PAY_STATUS = 2;
 
+    /**
+     * 微信小程序统一下单
+     */
     public function unifiedorder()
     {
-
-
         $id = I('fangyuan_id');
-
         $result = getHouseInfoById($id);
-
         $order = buildOrderNo($result['id'], $this->user->id);
-
-        require_once LIB_PATH . "WxPay/WxPay.Api.php";
-        require_once LIB_PATH . "WxPay/WxPay.JsApiPay.php";
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("支付订单" . $order['order_no']);
         $input->SetOut_trade_no($order['order_no']);
@@ -113,54 +112,6 @@ class OrderController extends ApiController
         } catch (Exception $e) {
             $msg = $e->getMessage();
             $this->returnApiErrorWithMsg($msg);
-        }
-
-    }
-
-
-    public function order_pay()
-    {
-        try {
-            $id = I('fangyuan_id');
-
-            $result = getHouseInfoById($id);
-
-            $order_no = buildOrderNo($result['id'], $this->user->id);
-
-            dump($order_no);
-            exit;
-
-            $this->returnApiSuccessWithData(['phone' => $result['yezhudianhua']]);
-
-        } catch (Exception $e) {
-            $this->returnApiErrorWithMsg($e->getMessage());
-        }
-
-    }
-
-    public function pay_callback()
-    {
-        try {
-            $session_id = I('session_id', '');
-            $order_no = I('order_no', '');
-            $order_money = I('order_money', 0);
-
-            $userSession = getUserBySessionId($session_id);
-            $userOrder = getOrderByOrderNo($order_no);
-
-            $updateData = [
-                'order_status' => static::IS_PAY_STATUS
-            ];
-            $order = M('order');
-            if (!$order->where(['order_no' => $order_no])->save($updateData)) {
-                throw new Exception('记录失败!');
-            };
-
-            $fangyuan = getHouseInfoById($userOrder['fangyuan_id']);
-            $this->returnApiSuccessWithData(['phone' => $fangyuan['yezhudianhua']]);
-
-        } catch (Exception $e) {
-            $this->returnApiErrorWithMsg($e->getMessage());
         }
 
     }
