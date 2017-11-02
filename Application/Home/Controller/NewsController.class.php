@@ -19,10 +19,11 @@
         //部门列表
         public function news(){
             $Data=M('news');
+            $map['deleted_at']=array('eq',0);
             $count=$Data->where($map)->count();
             $Page=new \Think\Page($count,30);
             $show=$Page->show();
-            $list=$Data->where($map)->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+            $list=$Data->where($map)->order('created_at desc')->limit($Page->firstRow.','.$Page->listRows)->select();
             $this->assign('firstRow',$Page->firstRow);
             $this->assign('list',$list);
             $this->assign('count',$count);
@@ -43,9 +44,9 @@
                 ];
                $news = M('news');
                if (!$news->add($data)){
-                   $this->error('添加失败!');
+                   $this->error('添加失败!',U('news/news'));
                }else{
-                    $this->success('添加成功！');
+                    $this->success('添加成功！',U('news/news'));
                }
            }else{
                $this->display();
@@ -75,6 +76,16 @@
                 $this->display();
             }
         }
+
+        public function delete()
+        {
+            $id = I('id');
+            $news = M('news');
+            $news->where(['id'=>$id])->save(['deleted_at'=>time()]);
+            $this->success('删除成功！',U('news/news'));
+
+        }
+
     }
 ?>
         
