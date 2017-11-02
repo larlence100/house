@@ -61,17 +61,15 @@
                 $data = [
                     'title'=>I('title')?I('title'):'',
                     'desc'=>I('desc')?I('desc'):'',
+                    'order'=>I('order',0),
                     'contents'=>I('contents',''),
                     'new_status'=>I('new_status',0),
                     'creater_id' =>  session('uid'),
                     'updated_at' =>  time()
                 ];
-                if (!$news->where(['id'=>$id])->save($data)){
-                    var_dump($news->getLastSql());exit;
-                    $this->error('修改失败!');
-                }else{
-                    $this->success('修改成功！');
-                }
+
+                $news->where(['id'=>$id])->save($data);
+                $this->success('修改成功！',U('news/news'));
             }else{
                 $this->assign('detail',$detail);
                 $this->display();
