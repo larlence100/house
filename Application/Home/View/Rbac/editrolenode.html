@@ -183,10 +183,10 @@
 	<link rel="stylesheet" href="__PUBLIC__/lib/layui/css/layui.css" media="all">
 </block>
 <block name="content">
-	<div id="wrap">
+	<div id="wrap" class="layui-form-item">
 		<a id="return" href="{:U('role_list','','')}">返回</a>
 		<form action="{:U('access_handle')}" method="post">
-			<table class="table">
+			<table class="table " >
 				<foreach name="node" item="app">
 					<div class="app">
 						<p>
