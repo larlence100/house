@@ -358,4 +358,20 @@ function isPayed($fangyuan_id,$user_id){
 }
 
 
+function getPeizhiName($pinyin,$id)
+{
+    $peizhi = M('peizhi');
+    $result = $peizhi->select();
+    $data = groupByArray($result,'pzming');
+    $name = '';
+
+    foreach($data[$pinyin] as $k=>$v)
+    {
+            if($v['lxid'] == $id){
+                $name = $v['lxming'];
+            }
+    }
+    return $name;
+}
+
 

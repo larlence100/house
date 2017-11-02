@@ -203,7 +203,7 @@
 						<th width="150">用户</th>
 						<th width="150">小区名</th>
 						<th width="150">面积</th>
-						<th width="150">户型</th>
+						<th width="150">房屋类型</th>
 						<th width="150">朝向</th>
 						<th width="90">楼层</th>
 						<th width="100">手机号</th>
@@ -217,8 +217,8 @@
 						<td>{:getUserNameById($v['user_id'])}</td>
 						<td>{$v.mianji}</td>
 						<td>{$v.xiaoqum}</td>
-						<td>{$v.huxing}</td>
-						<td>{$v.chaoxiang}</td>
+						<td>{:getPeizhiName('fwleixing',$v['fwleixing'])}</td>
+						<td>{:getPeizhiName('chaoxiang',$v['chaoxiang'])}</td>
 						<td>{$v.louceng}</td>
 						<td>{$v.mobile}</td>
 						<td>{$v.created_at|date='Y-m-d H:i',###}</td>
