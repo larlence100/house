@@ -228,7 +228,7 @@
             exit(json_encode($data));
         }
 
-        public function editNode()
+        public function editRoleNode()
         {
             $rid = I('get.rid', 0, 'int');//角色id
             $field = array('id', 'name', 'title', 'pid');
