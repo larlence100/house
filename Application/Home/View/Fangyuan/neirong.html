@@ -326,49 +326,7 @@
 											</div>
 										</div>
 										<div style="line-height:10PX;">&nbsp;</div>
-										<div class="formControls col-xs-12 col-sm-12 col-md-12">
-											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
-												<span style="float: right;color: #757575">
-													产权性质：
-												</span>
-											</div>
-											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
-											<if condition='$fangyuan["cqxingzhi"]'>
-												<foreach name="cqxingzhi" item="v">
-													<if condition='$fangyuan["cqxingzhi"] eq $v["lxid"]'>
-														{$v.lxming}
-													</if>
-												</foreach>
-											<else/>不详</if>
-											</div>
-											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
-												<span style="float: right;color: #757575">
-													产权年限：
-												</span>
-											</div>
-											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
-											<if condition='$fangyuan["cqnianxian"]'>
-												{$fangyuan["cqnianxian"]}年
-												<else/>不详</if>
-											</div>
-										</div>
 										<div style="line-height:10PX;">&nbsp;</div>
-										<div class="formControls col-xs-12 col-sm-12 col-md-12">
-											<div style="margin:0;padding:0;" class="formControls col-xs-2 col-sm-2 col-md-2">
-												<span style="float: right;color: #757575">
-													产证日期：
-												</span>
-											</div>
-											<div style="margin:0;padding:0;" class="formControls col-xs-4 col-sm-4 col-md-4">
-												<if condition='$fangyuan["czriqi"]'>
-													{$fangyuan["czriqi"]|date='Y-m-d',###}
-												<else/>不详</if>
-											</div>
-
-										</div>
-
-
-
 
 									</th>
 								</tr>
@@ -378,7 +336,7 @@
 										<div class="formControls col-xs-12 col-sm-12 col-md-12">
 											<div style="margin:0;padding:0;" class="formControls col-xs-1 col-sm-1 col-md-1">
 												<span style="float: right;color: #757575">
-													备注：
+													描述：
 												</span>
 											</div>
 											<div style="margin:0;padding:0;" class="formControls col-xs-11 col-sm-11 col-md-11">
