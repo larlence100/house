@@ -278,7 +278,7 @@
             $this->laiyuan=M('Peizhi')->where(array('pzming'=>'laiyuan'))->select();
             $this->kanfangfs=M('Peizhi')->where(array('pzming'=>'kanfangfs'))->select();
             $this->genjinfs=M('Peizhi')->where(array('pzming'=>'genjinfs'))->select();
-
+           $this->yongtu=M('Peizhi')->where(array('pzming'=>'yongtu'))->select();
             $id=I('id');
 
             $peitao1=M('fangyuan')->where(array('id'=>$id))->getField('peitao');
