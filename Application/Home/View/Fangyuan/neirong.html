@@ -377,14 +377,14 @@
 				<div class="formControls col-xs-10 col-sm-10 col-md-10">
 					<div align="center">
 						<if condition='($yesshangtu eq 1) or ($_SESSION["superadmin"] eq 1) or (session("uid") eq 2)'>
-							<a class="btn btn-primary radius  size-XXL" href="javascript:void(0);" onclick="tupian('上传房源图片','{:U('fangyuanimg/add',array('fybh'=>$fangyuan['bianhao']))}','800')">
-								上传房源图片
+							<a class="btn btn-primary radius  size-XXL" href="javascript:void(0);" onclick="tupian('上传房产图片','{:U('fangyuanCqimg/add',array('fybh'=>$fangyuan['bianhao']))}','800')">
+								上传房产图片
 							</a>
 						</if>
 						<a class="btn btn-default radius  size-XXL" href="javascript:;" id="downloadallpic">全部图片下载</a>
 					</div>
 					<div>&nbsp;</div>
-					<div id="fy_img_div" style="padding: 10px;margin: 10px;"></div>
+					<div id="fy_img_div2" style="padding: 10px;margin: 10px;"></div>
 					<div>&nbsp;</div>
 				</div>
 			</div>
@@ -598,6 +598,7 @@
 	<!--//图片上传-->
 	<script type="text/javascript">
 		var isFrist = false;
+		var isFrist2 = false;
 		$("#fy_img").click(function(){
 			//异步显示房源图片列表页
 			if(!isFrist){
@@ -616,6 +617,27 @@
 					}
 				});
 				isFrist = true;
+			}
+		});
+
+		$("#cq_img").click(function(){
+			//异步显示房源图片列表页
+			if(!isFrist2){
+				var fy_bh={$fangyuan["bianhao"]};
+				$.ajax({
+							url:'{:U('Fangyuan/get_fy_cq_img')}',
+						Type:"POST",
+						data:"fy_bh=" + fy_bh,
+						dataType:"json",
+						success:function(data){
+					var pics = data.pics;
+					for(var i in pics){
+						var img='<div class="row"><div class="col-sm-3 col-md-3"><div class="thumbnail mb-10"><div class="picbox"><a href="'+pics[i]['image']+'" data-lightbox="gallery" data-title=""><img class="img-responsive1" width="220px" height="166px" src="'+pics[i]['image']+'" alt="..." /></a></div><div class="caption mt-10"><p><a style="text-decoration:none" class=" btn btn-danger pd-5" onClick="picture_del(this,'+pics[i]['id']+')" href="javascript:;" >删除</a> <a download="'+pics[i]['image']+'" href="'+pics[i]['image']+'" class="btn btn-default" role="button">下载</a></p><p></p></div></div></div></div>';
+						$("#fy_img_div2").append(img);
+					}
+				}
+			});
+				isFrist2 = true;
 			}
 		});
 		/*图片-删除*/
@@ -656,6 +678,24 @@
 					}
 				}
 			});
+		}
+
+		function reloadparentcqimg(){
+			var fy_bh={$fangyuan["bianhao"]};
+			$.ajax({
+						url:'{:U('Fangyuan/get_fy_cq_img')}',
+					Type:"POST",
+					data:"fy_bh=" + fy_bh,
+					dataType:"json",
+					success:function(data){
+				var pics = data.pics;
+				$("#fy_img_div2").empty();
+				for(var i in pics){
+					var img='<div class="row"><div class="col-sm-3 col-md-3"><div class="thumbnail mb-10"><div class="picbox"><a href="'+pics[i]['image']+'" data-lightbox="gallery" data-title=""><img class="img-responsive1" width="220px" height="166px"  src="'+pics[i]['image']+'" alt="..." /></a></div><div class="caption mt-10"><p><a style="text-decoration:none" class=" btn btn-danger pd-5" onClick="picture_del(this,'+pics[i]['id']+')" href="javascript:;" >删除</a> <a download="'+'/'+pics[i]['image']+'" href="'+pics[i]['image']+'" class="btn btn-default" role="button">下载</a></p><p></p></div></div></div></div>';
+					$("#fy_img_div2").append(img);
+				}
+			}
+		});
 		}
 	</script>
 	<script type="text/javascript">

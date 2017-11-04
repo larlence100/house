@@ -405,6 +405,17 @@
             exit(json_encode($data));
         }
 
+        public function get_fy_cq_img(){
+            $listObj = M('CqPhoto');
+            $where['fybh'] = I('fy_bh');
+            $list = $listObj->where($where)->order('id desc')->select();
+            //$list = $listObj->alias('p')->join(' jjrxt_yonghu as y')->field('p.id,p.image,FROM_UNIXTIME(p.create_time,"%Y-%m-%d") AS create_time,p.fybh,y.ygmingcheng')->where($where)->order('p.id desc')->select();
+            //返回查询结果到异步json
+            $data=array('pics'=>$list);
+            header("Content-type: application/json");
+            exit(json_encode($data));
+        }
+
          /**
          * [fy_pic_del 异步删除图片]
          * @return [json] [description]
@@ -429,6 +440,36 @@
                     //删除最后一个房源图片后给fangyun表的tupian字段置 0
                     if ($piccount==1) {
                          M('Fangyuan')->where(array('bianhao'=>$fybh))->setField('tupian',0);
+                    }
+                }else{
+                    $data=array('pics'=>$plist);
+                }
+            }
+            //返回值
+            header("Content-type: application/json");
+            exit(json_encode($data));
+        }
+
+        public function fy_cq_pic_del(){
+
+            $id=I('fy_pic_id');
+
+            //根据图片id查看当前是否还有当前房源的图片
+            $fybh = M('CqPhoto')->where(array('id'=>$id))->getField('fybh');
+            $piccount = M('Photo')->where(array('fybh'=>$fybh))->count();
+
+            $dp=M('Photo');
+            if($id){    //删除当前图片
+                $plist = $dp->where(array('id'=>$id))->find();
+                if ($plist){
+                    unlink('./Upload/'.$plist['gongsiid'].'/'.$plist['fybh'].'/'.$plist['image']);
+
+                    unlink('./Upload/'.$plist['gongsiid'].'/'.$plist['fybh'].'/t_'.$plist['image']);
+                    $dp->where(array('id'=>$id))->delete();
+                    $data=array('pics'=>$plist);
+                    //删除最后一个房源图片后给fangyun表的tupian字段置 0
+                    if ($piccount==1) {
+                        M('Fangyuan')->where(array('bianhao'=>$fybh))->setField('tupian',0);
                     }
                 }else{
                     $data=array('pics'=>$plist);
