@@ -203,7 +203,7 @@ html,body{
 						<td>{$es.mianji}</td>
 
 						<td>
-                          <if condition="$es['leixing'] eq 1">
+                          <if condition="$es['leixing'] eq 2">
                             {$es.shoujia}万元
                           <else />
                             <if condition="$es['zujia']">{$es.zujia}
@@ -211,7 +211,7 @@ html,body{
                                 <if condition='$es["zujialx"] eq $v["lxid"]'>{$v.lxming}</if>
                               </foreach>
                             </if>
-                        </if>
+                          </if>
 
 						</td>
 
