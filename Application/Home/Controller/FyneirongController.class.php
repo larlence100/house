@@ -62,18 +62,6 @@ class FyneirongController extends CommonController {
             $data['xiaoqum']=I('xiaoqum');
 
             $data['status'] =I('status');
-
-
-           /* if (I('shouyaobm')) {
-                if ($fy1['shouyaoren']){
-                    $data['shouyaobm']=I('shouyaobm');
-                }else{
-                    $data['shouyaobm']=I('shouyaobm');
-                    $data['shouyaoren']=session('uid');
-                }
-            }elseif (I('shouyaobm')=="0") {
-                $data['shouyaobm']=I('shouyaobm');
-            }*/
            
             $data['mianji']=I('mianji');
             $data['shoujia']=I('shoujia');
@@ -128,9 +116,7 @@ class FyneirongController extends CommonController {
             }
             
             $data['fukuan']=I('fukuan');
-            $data['yaoshidian']=I('yaoshidian');
-            
-            
+
             $data['yezhu']=I('yezhu');
             
             
@@ -156,7 +142,14 @@ class FyneirongController extends CommonController {
             
             $data['hezuotandan']=I('hezuotandan');
             $data['beizhu']=I('beizhu');
-            
+
+
+
+            $data['yezhudianhua']=I('yezhudianhua');
+            $data['zuodong']=I('zuodong');
+            $data['danyuan']=I('danyuan');
+            $data['fanghao']=I('fanghao');
+
             $data['czriqi']=strtotime(I('czriqi'));
             if (I('fukuanfs')) {
                 $data['fukuanfs']=I('fukuanfs');
@@ -226,7 +219,9 @@ class FyneirongController extends CommonController {
                     M('fyxgjilu')->add($xgjilu);
                 }
             }
-            
+            /*$model = M('fangyuan');
+            $model->where(array('id'=>I('id')))->save($data);
+            var_dump($model->getLastSql());exit;*/
             if(M('fangyuan')->where(array('id'=>I('id')))->save($data)){
                 $this->success('修改成功');
             }else{

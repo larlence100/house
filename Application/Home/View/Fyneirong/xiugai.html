@@ -128,7 +128,23 @@
     </div>-->
   </div>
 
-  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label" style="color:#f00;">门牌号</label>
+      <div class="layui-input-inline" style="width: 70px;">
+        <input type="text" name="zuodong" placeholder="" autocomplete="off" class="layui-input" lay-verify="zuodong" id="zuodong" value="{$fangyuan['zuodong']}">
+      </div>
+      <div class="layui-form-mid layui-word-aux" style="font-size: 16px">座栋</div>
+      <div class="layui-input-inline" style="width: 70px;">
+        <input type="text" name="danyuan" placeholder="" autocomplete="off" class="layui-input" lay-verify="zuodong" id="danyuan" value="{$fangyuan['danyuan']}">
+      </div>
+      <div class="layui-form-mid layui-word-aux" style="font-size: 16px">单元</div>
+      <div class="layui-input-inline" style="width: 70px;">
+        <input type="text" name="fanghao" placeholder="" autocomplete="off" class="layui-input" lay-verify="number" id="fanghao" value="{$fangyuan['fanghao']}">
+      </div>
+      <div class="layui-form-mid layui-word-aux" style="font-size: 16px">房号</div>
+    </div>
+  </div>
 
   <div class="layui-form-item" >
     <div class="layui-inline">
@@ -136,14 +152,18 @@
     <div class="layui-input-inline">
       <input type="text" name="yezhu" autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['yezhu']}">
     </div>
-    <div class="layui-input-inline" style="width:100px;">
+    <!--<div class="layui-input-inline" style="width:100px;">
       <select name="yezhulx" >
       <option value="">请选择</option>
         <foreach name="yezhulx" item="pz">
                           <option value="{$pz.lxid}" <if condition='$fangyuan["yezhulx"] eq $pz["lxid"]'>selected=""</if>>{$pz.lxming}</option>
                         </foreach>
       </select>
-    </div>
+    </div>-->
+      <label class="layui-form-label" style="color:#f00;">电话</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="yezhudianhua" lay-verify="phone" autocomplete="off" class="layui-input" value="{$fangyuan['yezhudianhua']}">
+      </div>
   </div>
   
   </div>
