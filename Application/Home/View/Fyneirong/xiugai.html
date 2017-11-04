@@ -148,9 +148,9 @@
 
   <div class="layui-form-item" >
     <div class="layui-inline">
-    <label class="layui-form-label">姓名</label>
+    <label class="layui-form-label" style="color:#f00;">姓名</label>
     <div class="layui-input-inline">
-      <input type="text" name="yezhu" autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['yezhu']}">
+      <input type="text" name="yezhu" autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['yezhu']}" lay-verify="required">
     </div>
     <!--<div class="layui-input-inline" style="width:100px;">
       <select name="yezhulx" >
@@ -191,9 +191,9 @@
 
   <div class="layui-form-item">
     <div class="layui-inline">
-      <label class="layui-form-label">房源标题</label>
+      <label class="layui-form-label" style="color:#f00;">房源标题</label>
       <div class="layui-input-block">
-        <input type="text" name="fybiaoti"  autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['fybiaoti']}" style="width: 550px;">
+        <input type="text" name="fybiaoti"  autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['fybiaoti']}" style="width: 550px;" lay-verify="required">
 
       </div>
     </div>
