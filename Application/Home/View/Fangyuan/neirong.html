@@ -54,6 +54,7 @@
 					<div class="tabBar clearfix">
 						<span style="font-size:15px">基本信息</span>
 						<span id="fy_img" style="font-size:15px;">房源照片</span>
+						<span id="cq_img" style="font-size:15px;">产权照片</span>
 						<!--<span class="hidden" style="font-size:15px">相关照片</span>
 						<span class="hidden" style="font-size:15px">房屋视频</span>
 						<span class="hidden" style="font-size:15px">匹配客户</span>
@@ -354,12 +355,29 @@
 				<div>&nbsp;</div>
 			</div>
 			<div class="tabCon">
+			<div>&nbsp;</div>
+			<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
+			<div class="formControls col-xs-10 col-sm-10 col-md-10">
+				<div align="center">
+					<if condition='($yesshangtu eq 1) or ($_SESSION["superadmin"] eq 1) or (session("uid") eq 2)'>
+						<a class="btn btn-primary radius  size-XXL" href="javascript:void(0);" onclick="tupian('上传房源图片','{:U('fangyuanimg/add',array('fybh'=>$fangyuan['bianhao']))}','800')">
+							上传房源图片
+						</a>
+					</if>
+					<a class="btn btn-default radius  size-XXL" href="javascript:;" id="downloadallpic">全部图片下载</a>
+				</div>
+				<div>&nbsp;</div>
+				<div id="fy_img_div" style="padding: 10px;margin: 10px;"></div>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+			<div class="tabCon">
 				<div>&nbsp;</div>
 				<div class="formControls col-xs-1 col-sm-1 col-md-1"></div>
 				<div class="formControls col-xs-10 col-sm-10 col-md-10">
 					<div align="center">
 						<if condition='($yesshangtu eq 1) or ($_SESSION["superadmin"] eq 1) or (session("uid") eq 2)'>
-							<a class="btn btn-primary radius  size-XXL" href="javascript:void;" onclick="tupian('上传房源图片','{:U('fangyuanimg/add',array('fybh'=>$fangyuan['bianhao']))}','800')">
+							<a class="btn btn-primary radius  size-XXL" href="javascript:void(0);" onclick="tupian('上传房源图片','{:U('fangyuanimg/add',array('fybh'=>$fangyuan['bianhao']))}','800')">
 								上传房源图片
 							</a>
 						</if>
