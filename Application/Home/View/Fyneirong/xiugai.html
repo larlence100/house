@@ -173,19 +173,11 @@
     <div class="layui-inline">
       <label class="layui-form-label">房源标题</label>
       <div class="layui-input-block">
-        <input type="text" name="fybiaoti"  autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['fybiaoti']}">
+        <input type="text" name="fybiaoti"  autocomplete="off" placeholder="" class="layui-input" value="{$fangyuan['fybiaoti']}" style="width: 550px;">
 
       </div>
     </div>
-    <if condition="($fangyuan['leixing'] eq 1) or ($fangyuan['leixing'] eq 3) ">
-    <div class="layui-inline">
-      <label class="layui-form-label" style="color:#f00;">售价</label>
-      <div class="layui-input-inline" style="width:70px;">
-        <input type="text" name="shoujia"  autocomplete="off" placeholder="" class="layui-input" lay-verify="shuju" value="{$fangyuan['shoujia']}">
-      </div>
-      <div class="layui-form-mid layui-word-aux" style="font-size: 16px">万元</div>
-    </div>
-    </if>
+
    <!-- <div class="layui-inline">
       <input type="checkbox" name="waiwangtb" title="外网同步" value="1" <if condition='$fangyuan["waiwangtb"]'>checked=""</if>>
     </div>-->
@@ -199,6 +191,15 @@
       </div>
       <div class="layui-form-mid layui-word-aux" style="font-size: 16px">平方米</div>
     </div>
+  <if condition="($fangyuan['leixing'] eq 1) or ($fangyuan['leixing'] eq 3) ">
+    <div class="layui-inline">
+      <label class="layui-form-label" style="color:#f00;">售价</label>
+      <div class="layui-input-inline" style="width:70px;">
+        <input type="text" name="shoujia"  autocomplete="off" placeholder="" class="layui-input" lay-verify="shuju" value="{$fangyuan['shoujia']}">
+      </div>
+      <div class="layui-form-mid layui-word-aux" style="font-size: 16px">万元</div>
+    </div>
+  </if>
     <if condition="($fangyuan['leixing'] eq 2) or ($fangyuan['leixing'] eq 3) ">
       <div class="layui-inline">
         <label class="layui-form-label" style="color:#f00;">租价</label>
@@ -325,6 +326,18 @@
         value="{$fangyuan['hu']}">
       </div>
     </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">来源</label>
+      <div class="layui-input-block">
+        <select name="laiyuan" lay-filter="aihao">
+          <option></option>
+          <foreach name="laiyuan" item="pz">
+            <option value="{$pz.lxid}" <if condition='$fangyuan["laiyuan"] eq $pz["lxid"]'>selected=""</if>>{$pz.lxming}</option>
+          </foreach>
+        </select>
+        </select>
+      </div>
+    </div>
   </div>
 
   <div class="layui-form-item" pane="">
@@ -358,11 +371,17 @@
       </div>
     </div>
     <div class="layui-inline">
+      <label class="layui-form-label">产权年限</label>
+      <div class="layui-input-inline">
+        <input type="text" name="cqnianxian"  autocomplete="off" placeholder="请输入" class="layui-input" value="{$fangyuan['cqnianxian']}">
+      </div>
+    </div>
+    <!--<div class="layui-inline">
       <label class="layui-form-label" >产证日期</label>
       <div class="layui-input-inline">
         <input type="text" name="czriqi" id="date"  placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})"   value="<if condition='$fangyuan["czriqi"]'>{$fangyuan['czriqi']|date='Y-m-d',###}<else/>{$fangyuan['czriqi']}</if>">
       </div>
-    </div>
+    </div>-->
     <!--<div class="layui-inline">
       <input type="checkbox" name="man2" title="满两年" value="1" <if condition='$fangyuan["man2"]'>checked=""</if>>
       <input type="checkbox" name="weiyi" title="唯一住房" value="1" <if condition='$fangyuan["weiyi"]'>checked=""</if>>
@@ -371,7 +390,7 @@
   </div>
 
   <div class="layui-form-item">
-    <div class="layui-inline">
+    <!--<div class="layui-inline">
       <label class="layui-form-label" style="color:#f00;">产权性质</label>
       <div class="layui-input-block">
         <select name="cqxingzhi" lay-filter="aihao" lay-verify="required" lay-verify="required">
@@ -382,13 +401,8 @@
           </select>
         </select>
       </div>
-    </div>
-    <div class="layui-inline">
-      <label class="layui-form-label">产权年限</label>
-      <div class="layui-input-inline">
-        <input type="text" name="cqnianxian"  autocomplete="off" placeholder="请输入" class="layui-input" value="{$fangyuan['cqnianxian']}">
-      </div>
-    </div>
+    </div>-->
+
   </div>
 
   <!--<div class="layui-form-item">
@@ -416,19 +430,8 @@
         </select>
       </div>
     </div>-->
-    <div class="layui-inline">
-      <label class="layui-form-label">来源</label>
-      <div class="layui-input-block">
-        <select name="laiyuan" lay-filter="aihao">
-          <option></option>
-          <foreach name="laiyuan" item="pz">
-            <option value="{$pz.lxid}" <if condition='$fangyuan["laiyuan"] eq $pz["lxid"]'>selected=""</if>>{$pz.lxming}</option>
-          </foreach>
-          </select>
-        </select>
-      </div>
-    </div>
-    <div class="layui-inline">
+
+   <!-- <div class="layui-inline">
       <label class="layui-form-label">付款方式</label>
       <div class="layui-input-block">
         <select name="fukuanfs" lay-filter="aihao">
@@ -439,10 +442,10 @@
           </select>
         </select>
       </div>
-    </div>
+    </div>-->
   </div>
 <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">备注</label>
+    <label class="layui-form-label">详情</label>
     <div class="layui-input-block">
       <textarea placeholder="请输入内容" style="width: 600px;" class="layui-textarea" name="beizhu">{$fangyuan['beizhu']}</textarea>
     </div>

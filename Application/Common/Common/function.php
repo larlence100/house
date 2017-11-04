@@ -92,6 +92,19 @@ function getHousePhoto($bianhao)
 }
 
 /**
+ * 判断改房源是否有图片
+ * @param $bianhao
+ * @return mixed
+ * author Fox
+ */
+function getHousePhotoCount($bianhao)
+{
+    $photo = M('photo');
+    $result = $photo->where(['fybh'=>$bianhao])->field('image')->select();
+    return count($result);
+}
+
+/**
  * 获取小区详细信息
  * @param $xiaoqu_id
  * @return mixed

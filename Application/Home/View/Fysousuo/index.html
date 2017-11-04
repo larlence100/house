@@ -190,7 +190,8 @@ html,body{
 						<td>
                           <if condition='$es["status"] eq 1'><span class="label label-primary radius">已显示</span></if>
                           <if condition='$es["status"] eq 0'><span class="label label-primary radius">未显示</span></if>
-						  <if condition='$es["tupian"]'><span class="label label-primary radius">图</span><else /><span class="label label-primary radius">无图</span></if>
+                          <?php $photoCount = getHousePhotoCount($es['bianhao']);?>
+						  <if condition='$photoCount gt 0'><span class="label label-primary radius">图</span><else /><span class="label label-primary radius">无图</span></if>
 
                         </td>
 						<td id="td">
