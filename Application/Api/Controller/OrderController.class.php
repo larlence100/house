@@ -20,14 +20,19 @@ class OrderController extends ApiController
     const IS_PAY_STATUS = 1;
     const ERROR_PAY_STATUS = 2;
 
-    public function get_user_list()
+    public function get_order_list()
     {
         try{
             $pageSize = I('pagesize')? I('pagesize'): 20;
             $where['user_id'] = array('eq',$this->user->id);
+            $where['order_status'] = I('order_status',0);
             $count = M('order')->where($where)->order('order_time')->count();
             $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
             $list = M('order')->where($where)->order('order_time')->limit($Page->firstRow.','.$Page->listRows)->select();
+            foreach($list as $key=>$value){
+                $fy = getFangYuanById($value['id']);
+                $list[$key]['fybiaoti'] = $fy['fybiaoti'];
+            }
             return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);
         }catch (Exception $e){
             return $this->returnApiErrorWithMsg($e->getMessage());
