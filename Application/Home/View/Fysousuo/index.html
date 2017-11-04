@@ -203,7 +203,8 @@ html,body{
 						<td>{$es.mianji}</td>
 
 						<td>
-                          <if condition="$es['leixing'] eq 1">{$es.shoujia}万元
+                          <if condition="$es['leixing'] eq 1">
+                            {$es.shoujia}万元
                           <else/>
                             <if condition="$es['zujia']">{$es.zujia}
                               <foreach name="zujialx" item="v">
