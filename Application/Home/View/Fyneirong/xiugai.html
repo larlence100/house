@@ -529,31 +529,7 @@
     }
   });
 
-  $("#fanghao,#zuodong,#danyuan").blur(function(){
 
-    var xiaoqu=$("#xiaoqu").val();
-    var zuodong=$("#zuodong").val();
-    var danyuan=$("#danyuan").val();
-    var fanghao=$("#fanghao").val();
-    if (xiaoqu!="" && zuodong!="" && danyuan!="" && fanghao!="") {
-          $.ajax({
-          url:'{:U('fangyuan/cfyanzheng')}',
-          Type:"POST",
-          data:{"xiaoqu":xiaoqu,"zuodong":zuodong,"danyuan":danyuan,"fanghao":fanghao},
-          dataType:"json",
-          success:function(data){
-            var city = data.city;
-            if (city=="1") {
-              layer.alert('房源重复', {icon: 5});
-              $("#submit").hide();
-            }else{
-              $("#submit").show();
-            }
-          }
-          
-        });
-    }
-  });
 
 
   form.on('select(province_id)', function(data){

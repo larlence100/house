@@ -183,10 +183,14 @@
 	<link rel="stylesheet" href="__PUBLIC__/lib/layui/css/layui.css" media="all">
 </block>
 <block name="content">
-	<div id="wrap" class="layui-form-item">
-		<a id="return" href="{:U('role_list','','')}">返回</a>
+	<div id="wrap" class="layui-form-item" style="margin: 50px;">
+		<style>
+			.app .app_child{
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+		</style>
 		<form action="{:U('access_handle')}" method="post">
-			<table class="table " >
 				<foreach name="node" item="app">
 					<div class="app">
 						<p>
@@ -212,7 +216,7 @@
 						</foreach>
 					</div>
 				</foreach>
-			</table>
+
 			<input type="submit" value="提交"  style="display: block; margin:0 auto; cursor:pointer">
 			<input type="hidden" name="rid" value="{$rid}">
 		</form>

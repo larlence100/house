@@ -68,6 +68,7 @@ class SellController extends ApiController
             //出租类型
             if ($data['leixing'] == 2){
                 $data['zujia'] = I('shoujia');
+                $data['zujialx'] = I('zujialx');
             }
 
             $data['chaoxiang']=I('chaoxiang');
