@@ -1548,3 +1548,38 @@ function think_filter(&$value){
 function in_array_case($value,$array){
     return in_array(strtolower($value),array_map('strtolower',$array));
 }
+
+function getOrderCount()
+{
+    $model = M('order');
+    $count = $model->count();
+    return $count;
+}
+
+function getOrderPaySuccessCount()
+{
+    $model = M('order');
+    $count = $model->where(['order_status'=>1])->count();
+    return $count;
+}
+
+function getTodayOrderCount()
+{
+    $begintime=strtotime(date("Y-m-d H:i:s",mktime(0,0,0,date('m'),date('d'),date('Y'))));
+    $endtime=strtotime(date("Y-m-d H:i:s",mktime(0,0,0,date('m'),date('d')+1,date('Y'))-1));
+    $model = M('order');
+    $map['order_time'] = array('between',array($begintime,$endtime));
+    $count = $model->where($map)->count();
+    return $count;
+}
+
+function getTodayOrderPaySuccessCount()
+{
+    $begintime=strtotime(date("Y-m-d H:i:s",mktime(0,0,0,date('m'),date('d'),date('Y'))));
+    $endtime=strtotime(date("Y-m-d H:i:s",mktime(0,0,0,date('m'),date('d')+1,date('Y'))-1));
+    $model = M('order');
+    $map['order_status'] = 1;
+    $map['pay_time'] = array('between',array($begintime,$endtime));
+    $count = $model->where($map)->count();
+    return $count;
+}

@@ -75,7 +75,6 @@
 		<div class="container mt-20"  style="height: 500px;">
 			<div class="row">
 				<div class="col-md-8">
-
 					<div class="panel panel-default mt-20 ">
 						<div class="pl-10 pt-10 pr-10">
 							<blockquote>常用入口</blockquote>
@@ -90,6 +89,19 @@
 								</li>
 							</ul>
 						</div>
+					</div>
+					<div class="panel panel-default mt-20 ">
+					<div class="pl-10 pt-10 pr-10">
+						<blockquote>订单统计</blockquote>
+					</div>
+					<div class="pb-10 text-c  class="inline"">
+					<ul class="inline">
+						<li>订单总数({:getOrderCount()})</li>
+						<li>已支付订单总数({:getOrderPaySuccessCount()})</li>
+						<li>今日订单总数({:getTodayOrderCount()})</li>
+						<li>今日支付成功订单数({:getTodayOrderPaySuccessCount()})</li>
+					</ul>
+				</div>
 					</div>
 				</div>
 				<div class="col-md-4" style="padding-left: 0px;">

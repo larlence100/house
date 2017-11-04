@@ -22,7 +22,7 @@
             $count=$Data->where($map)->count();
             $Page=new \Think\Page($count,30);
             $show=$Page->show();
-            $list=$Data->where($map)->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+            $list=$Data->where($map)->order('order_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
             $this->assign('firstRow',$Page->firstRow);
             $this->assign('list',$list);
             $this->assign('count',$count);

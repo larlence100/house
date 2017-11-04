@@ -100,7 +100,8 @@ class PayNotifyCallBack extends \WxPayNotify
             && $result["result_code"] == "SUCCESS") {
 
             $updateData = [
-                'order_status' => OrderController::IS_PAY_STATUS
+                'order_status' => OrderController::IS_PAY_STATUS,
+                'pay_time' => time()
             ];
 
             $order = M('order');
