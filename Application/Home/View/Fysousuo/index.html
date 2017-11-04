@@ -202,12 +202,16 @@ html,body{
 						<td>{$es.xiaoqum}</td>
 						<td>{$es.mianji}</td>
 
-						<td><if condition="$es['shoujia'] gt 0">{$es.shoujia}万元</if>
-							<if condition="$es['zujia']">{$es.zujia}
-								<foreach name="zujialx" item="v">
-								<if condition='$es["zujialx"] eq $v["lxid"]'>{$v.lxming}</if>
-							</foreach>
-							</if>
+						<td>
+                          <if condition="$es['leixing'] eq 1">{$es.shoujia}万元
+                          <else/>
+                            <if condition="$es['zujia']">{$es.zujia}
+                              <foreach name="zujialx" item="v">
+                                <if condition='$es["zujialx"] eq $v["lxid"]'>{$v.lxming}</if>
+                              </foreach>
+                            </if>
+                        </if>
+
 						</td>
 
 						<td>
