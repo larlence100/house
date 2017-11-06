@@ -230,13 +230,14 @@
 
         public function editRoleNode()
         {
+
             $rid = I('get.rid', 0, 'int');//角色id
             $field = array('id', 'name', 'title', 'pid');
             $node = M('node')->field($field)->order('sort asc')->select();
             $access = M('access')->where('role_id = '.$rid)->getField('node_id', true);
             $node = node_regroup($node, 0, $access); //递归节点
-            $this->rid = $rid;
             $this->node = $node;
+            $this->assign('rid',$rid);
             $this->display();
         }
 
@@ -256,7 +257,7 @@
                     );
                 }
                 if($db->addAll($data)) { //写入新权限
-                    $this->success('分配权限成功', U('role_list','',''));
+                    $this->success('更新成功');
                 } else {
                     $this->error('分配权限失败');
                 }

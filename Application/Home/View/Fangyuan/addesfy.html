@@ -645,7 +645,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     var txt=$("#sousuo").val();
     if (txt!="") {
           $.ajax({
-          url:'{:U('Fysousuo/get_xiaoqu')}',
+          url:'{:U('Ziyuan/get_xiaoqu')}',
           Type:"POST",
           data:"txt="+txt,
           dataType:"json",

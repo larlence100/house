@@ -191,6 +191,7 @@
 			}
 		</style>
 		<form action="{:U('access_handle')}" method="post">
+			<input type="hidden" name="rid" value="{$rid}">
 				<foreach name="node" item="app">
 					<div class="app">
 						<p>

@@ -165,6 +165,7 @@ class Rbac {
                     //加强验证和即时验证模式 更加安全 后台权限修改可以即时生效
                     //通过数据库进行访问检查
                     $accessList = self::getAccessList($_SESSION[C('USER_AUTH_KEY')]);
+
                 }else {
                     // 如果是管理员或者当前操作已经认证过，无需再次认证
                     if( $_SESSION[$accessGuid]) {
@@ -173,6 +174,7 @@ class Rbac {
                     //登录验证模式，比较登录后保存的权限访问列表
                     $accessList = $_SESSION['_ACCESS_LIST'];
                 }
+
                 //判断是否为组件化模式，如果是，验证其全模块名
                 if(!isset($accessList[strtoupper($appName)][strtoupper(CONTROLLER_NAME)][strtoupper(ACTION_NAME)])) {
                     $_SESSION[$accessGuid]  =   false;

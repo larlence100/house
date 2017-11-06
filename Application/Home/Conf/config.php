@@ -17,7 +17,7 @@ return array(
 	'RBAC_SUPERADMIN'=>'admin', //超级管理员名称
 	'ADMIN_AUTH_KEY'=>'superadmin', //超级管理员识别
 	'USER_AUTH_ON'=>TRUE, //是否开启验证
-	'USER_AUTH_TYPE'=>1, //验证类型（1：登录验证 2：时时验证）
+	'USER_AUTH_TYPE'=>2, //验证类型（1：登录验证 2：时时验证）
 	'USER_AUTH_KEY'=>'uid', //用户认证识别号
 	'NOT_AUTH_MODULE'=>'Index,Chengjiao', //无需验证的控制器
 	'NOT_AUTH_ACTION'=>'', //无需验证的方法
