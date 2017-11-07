@@ -277,7 +277,7 @@ function buildOrderNo($fangyuan_id,$user_id)
             'fangyuan_id'=>$fangyuan_id,
             'user_id'   =>$user_id,
             'order_no'  =>  $order_no,
-            'order_money'=> intval($pay_money),
+            'order_money'=> C('PAY_MONEY'),
             'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
             'order_time'=>time()
         ];
