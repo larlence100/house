@@ -52,7 +52,8 @@ class IndexController extends CommonController {
         $this->diaoqujl = $Model->table(array('jjrxt_xianzhi'=>'a','jjrxt_yonghu'=>'b','jjrxt_bumen'=>'c','jjrxt_fangyuan'=>'d'))->field('a.shijian,c.bmming,b.ygmingcheng,d.bianhao,d.id')->where('a.uid=b.id and b.bumen=c.id and a.fyid=d.id')->limit(10)->order('a.shijian desc')->select();
 
         //输出个人信息
-        $this->useri=$Model->table(array('jjrxt_yonghu'=>'a','jjrxt_bumen'=>'b'))->field('a.ygmingcheng,a.dianhua,a.touxiang,a.ygbianhao,b.bmming')->where('a.bumen=b.id and a.id='.session('uid'))->find();
+        $this->useri=M('yonghu')->where('id='.session('uid'))->find();
+
         //输出我的收藏
         //$condition="gongsiid=".session('gongsiid');
         $shoucang=M('shoucang')->where(array('user_id'=>session('uid')))->select();
