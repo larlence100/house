@@ -29,34 +29,7 @@
             $this->assign('page',$show);
             $this->display();
         }
-        //角色列表
-        public function Role(){
-            $map=array('gongsiid'=>session('gongsiid'));
-            $Data=M('role');
-            $count=$Data->where($map)->count();
-            $Page=new \Think\Page($count,30);
-            $show=$Page->show();
-            $Role=$Data->where($map)->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
-            $this->assign('firstRow',$Page->firstRow);
-            $this->assign('role',$Role);
-            $this->assign('count',$count);
-            $this->assign('page',$show);
-            $this->display();
-        }
-    	//用户列表
-        public function index(){
-            $map['gongsiid']=session('gongsiid');
-            $map['id']=array('neq',1);
-            $count=D('UserRelation')->where($map)->count();
-            $Page=new \Think\Page($count,30);
-            $show=$Page->show();
-            $Yonghu=D('UserRelation')->where($map)->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->field('mima',true)->relation('role')->select();
-            $this->assign('firstRow',$Page->firstRow);
-            $this->assign('user',$Yonghu);
-            $this->assign('count',$count);
-            $this->assign('page',$show);
-            $this->display();
-        }
+
 
         public function stopUser(){
             $id=I('id');

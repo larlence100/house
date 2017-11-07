@@ -267,6 +267,7 @@ function buildOrderNo($fangyuan_id,$user_id)
         'user_id' => $user_id
     ];
     $orderObj = $order->where($where)->find();
+    $pay_money =  getConfigValue('pay_money');
     if(!empty($orderObj)){
         //throw new Exception('订单已经生成，请勿重复下单!');
         return $orderObj;
@@ -276,7 +277,7 @@ function buildOrderNo($fangyuan_id,$user_id)
             'fangyuan_id'=>$fangyuan_id,
             'user_id'   =>$user_id,
             'order_no'  =>  $order_no,
-            'order_money'=> C('PAY_MONEY'),
+            'order_money'=> intval($pay_money),
             'order_status'=>\Api\Controller\OrderController::IS_NO_PAY_STATUS,
             'order_time'=>time()
         ];
@@ -385,6 +386,14 @@ function getPeizhiName($pinyin,$id)
             }
     }
     return $name;
+}
+
+function getConfigValue($name)
+{
+    $model = M('config');
+    $map['name'] = $name;
+    $value = $model->where($map)->field('value')->find();
+    return $value['value']?$value['value']:'';
 }
 
 

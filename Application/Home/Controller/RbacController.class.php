@@ -233,7 +233,7 @@
 
             $rid = I('get.rid', 0, 'int');//角色id
             $field = array('id', 'name', 'title', 'pid');
-            $node = M('node')->field($field)->order('sort asc')->select();
+            $node = M('node')->where('status=1')->field($field)->order('sort asc')->select();
             $access = M('access')->where('role_id = '.$rid)->getField('node_id', true);
             $node = node_regroup($node, 0, $access); //递归节点
             $this->node = $node;
