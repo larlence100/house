@@ -166,7 +166,7 @@ class RentController extends ApiController
     public function rent_list_new(){
         $pianqu = I('cityid');
         $model = M('fangyuan');
-        $result = $model->where(['pianqu'=>$pianqu,'leixing'=>2])->order('lurusj desc')->limit(3)->select();
+        $result = $model->where(['pianqu'=>$pianqu,'leixing'=>2,'status'=>1])->order('lurusj desc')->limit(3)->select();
         foreach($result as $k=>$v){
             $result[$k]['photo'] = getHousePhoto($v['bianhao']);
         }
