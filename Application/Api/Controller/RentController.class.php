@@ -11,20 +11,6 @@ class RentController extends ApiController
 
     public function rent_list(){
                 $pageSize = I('pagesize')? I('pagesize'): static::PAGESIZE;
-                //根据城市获取片区
-                /*$pianqu = M('pianqu');
-                $pianquRow = $pianqu->where(['pinyinjs'=>$city])->limit(1)->find();*/
-
-                //根据片区获取小区
-                /*$xiaoqu = M('xiaoqu');
-                $xiaoquResult = $xiaoqu->where(['sspianqu'=>$pianquRow['id']])->select();
-                $xiaoquIds = array();
-                foreach($xiaoquResult as $item)
-                {
-                    $xiaoquIds[] = $item['id'];
-                }
-                var_dump($xiaoquIds);exit;*/
-
                 $pianqu = I('city');
                 $leixing=I('leixing');
                 $yongtu=I('yongtu');
@@ -81,8 +67,18 @@ class RentController extends ApiController
                 }
 
                 $zhuangxiu = I('zhuangxiu',0);
-                if ($zhuangxiu) {//户型区间
+                if ($zhuangxiu) {//装修
                     $condition.=" and zhuangxiu>=$zhuangxiu";
+                }
+
+                $chaoxiang = I('chaoxiang',0);
+                if ($chaoxiang) {//朝向
+                    $condition.=" and chaoxiang=$chaoxiang";
+                }
+
+                $laiyuan = I('laiyuan',0);
+                if ($laiyuan) {//来源
+                    $condition.=" and laiyuan=$laiyuan";
                 }
 
                 //出租类型 租租价区间
@@ -116,23 +112,6 @@ class RentController extends ApiController
                 $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
                 $show  = $Page->show();// 分页显示输出
 
-               /* if (I('paixu')==1) {
-                    $paixu="bianhao DESC";
-                }elseif (I('paixu')==2) {
-                    $paixu="shoujia DESC";
-                }elseif (I('paixu')==3) {
-                    $paixu="shoujia ASC";
-                }elseif (I('paixu')==4) {
-                    $paixu="mianji DESC";
-                }elseif (I('paixu')==5) {
-                    $paixu="mianji ASC";
-                }elseif (I('paixu')==6) {
-                    $paixu="danjia DESC";
-                }elseif (I('paixu')==7) {
-                    $paixu="danjia ASC";
-                }else{
-                    $paixu="bianhao DESC";
-                }*/
                 $paixu = "lurusj DESC";
 
                 $list="select * from jjrxt_fangyuan where {$condition} order by ".$paixu." limit ".$Page->firstRow.','.$Page->listRows;
