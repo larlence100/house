@@ -156,8 +156,8 @@ function getUserInfo($code,$encryptedData,$iv)
 {
     import('Org.Weixin.errorCode');
     import('Org.Weixin.wxBizDataCrypt');
-    $appid = 'wxd60a9da2a894158b';
-    $secret = 'f63615e5126f553e1f35e80e48fb2411';
+    $appid = C('APPID');
+    $secret = C('SECRET');
     $grant_type='authorization_code';
     $url='https://api.weixin.qq.com/sns/jscode2session';
     $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);

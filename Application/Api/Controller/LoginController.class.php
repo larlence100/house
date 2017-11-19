@@ -14,7 +14,7 @@ class LoginController extends BaseController {
 
         $data = file_get_contents("php://input");
         $data = json_decode($data,true);
-        \Think\Log::write('post_data---'.$data.'I---'.I('code'),'WARN');
+        //\Think\Log::write('post_data---'.$data.'I---'.I('code'),'WARN');
         $session_id = $data['session_id'];
         $session_db = M('Session');
         $users_db=M('users');
@@ -26,10 +26,10 @@ class LoginController extends BaseController {
             $iv=$data['iv']; //把空格转成+
             $encryptedData=urldecode($data['encryptedData']);  //解码
             $code=$data['code']; //把空格转成+
-            \Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
+            //\Think\Log::write('code---'.$code.'encry---'.$encryptedData.'iv---'.$iv,'WARN');
             $msg=getUserInfo($code,$encryptedData,$iv); //获取微信用户信息（openid）
 
-            \Think\Log::write('weixin_userData---'.json_encode($msg));
+            //\Think\Log::write('weixin_userData---'.json_encode($msg));
 
             if($msg['errCode']==0){
                 $open_id=$msg['data']->openId;
@@ -51,10 +51,9 @@ class LoginController extends BaseController {
                     ]); //用户信息入库
                     $userInfo = getUserInfoByAppid($open_id);
 
-                    //$session_id=111;  //生成3rd_session
+                    //生成3rd_session
                     $newSessionId=`head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168`;
                     //$newSessionId = md5(time().$open_id);
-                    \Think\Log::write('userinfo---'.json_encode($userInfo));
                     $session_db->add(['user_id'=>$userInfo['id'],'session_id'=>$newSessionId,'created_at'=>time()]); //保存session
                 }
 
@@ -69,23 +68,5 @@ class LoginController extends BaseController {
             }
 
         }
-    }
-
-    public function getUserInfo($code,$encryptedData,$iv){
-
-        import('Org.Weixin.errorCode');
-        import('Org.Weixin.wxBizDataCrypt');
-
-        $appid= 'wxd60a9da2a894158b';
-        $secret= 'f63615e5126f553e1f35e80e48fb2411';
-        $grant_type='authorization_code';
-        $url='https://api.weixin.qq.com/sns/jscode2session';
-        $url= sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=%",$url,$appid,$secret,$code,$grant_type);
-        $user_data=json_decode(file_get_contents($url));
-        $session_key= define_str_replace($user_data->session_key);
-        $data="";
-        $wxBizDataCrypt=new \WXBizDataCrypt($appid,$session_key);
-        $errCode=$wxBizDataCrypt->decryptData($encryptedData,$iv,$data);
-        return ['errCode'=>$errCode,'data'=>json_decode($data),'session_key'=>$session_key];
     }
 }
