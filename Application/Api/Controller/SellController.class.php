@@ -69,6 +69,7 @@ class SellController extends ApiController
             if ($data['leixing'] == 2){
                 $data['zujia'] = I('shoujia');
                 $data['zujialx'] = I('zujialx');
+                $data['shoujia']= '';
             }
 
             $data['chaoxiang']=I('chaoxiang');
