@@ -30,6 +30,13 @@ class CommonController extends ApiController
         $this->returnApiSuccessWithData($fyzidua->select());
     }
 
+    public function get_banners()
+    {
+        $config = M('config');
+        $result = $config->where("name = 'banner_one' or name = 'banner_two' or name = 'banner_three'")->field('value')->select();
+        $this->returnApiSuccessWithData($result);
+    }
+
     /**
      * 获取小区
      */
