@@ -28,7 +28,7 @@ class NewsController extends ApiController
         $id = I('id');
         $model = M('news');
         $news = $model->where(['id'=>$id,'new_status'=>1])->find();
-        $news['contents'] = htmlspecialchars_decode($news['contents']); 
+        $news['contents'] = htmlspecialchars_decode($news['contents']);
         if(!$news){
             $this->returnApiErrorWithMsg('未找到该新闻');
         }

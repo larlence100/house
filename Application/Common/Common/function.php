@@ -396,4 +396,56 @@ function getConfigValue($name)
     return $value['value']?$value['value']:'';
 }
 
+/**
+ * 上传文件类型控制 此方法仅限ajax上传使用
+ * @param string $path
+ * @param string $format
+ * @param string $maxSize
+ * @return array
+ * author Fox
+ */
+function uploadPhotos($format='image',$maxSize='52428800'){
+
+    ini_set('max_execution_time', '0');
+    $ext_arr= array(
+        'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
+        'photo' => array('jpg', 'jpeg', 'png')
+    );
+
+    if(!empty($_FILES)){
+        // 上传文件配置
+        $config=array(
+            'maxSize'   =>  $maxSize,               // 上传文件最大为50M
+            'rootPath'  =>  './Upload/',                   // 文件上传保存的根路径
+            'savePath'  =>  '',         // 文件上传的保存路径（相对于根路径）
+            'saveName'  =>  array('uniqid',''),     // 上传文件的保存规则，支持数组和字符串方式定义
+            'autoSub'   =>  true,                  // 自动使用子目录保存上传文件 默认为true
+            'exts'      =>  isset($ext_arr[$format])?$ext_arr[$format]:'',
+
+        );
+
+        // 实例化上传
+        $upload=new \Think\Upload($config);
+        // 调用上传方法
+        $info=$upload->upload();
+
+        $data=array();
+        if(!$info){
+            // 返回错误信息
+            $error=$upload->getError();
+            $data['error_info']=$error;
+            return $data;
+        }else{
+            // 返回成功信息
+            foreach($info as $file){
+
+                $data[$file['key']]['filePath']=trim('/Upload/'.$file['savepath'].$file['savename'],'.');
+
+            }
+
+            return $data;
+        }
+    }
+}
+
 
