@@ -13,6 +13,6 @@ return array(
 	'TWO_DIR' => '',
     'PAY_NOTIFY_URL' => 'http://118.31.33.47/api/pay/notify',
     'PAY_MONEY' => 0.01,
-    'APPID'=>'wxb016a561c08a5946',
-    'SECRET'=>'0ee063eb452cbe753c99876833b07dc6'
+    'APPID'=>'wxd60a9da2a894158b',
+    'SECRET'=>'f63615e5126f553e1f35e80e48fb2411'
 );
