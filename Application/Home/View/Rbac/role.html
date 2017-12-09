@@ -242,7 +242,7 @@
 								<i class="Hui-iconfont" style="font-size: 18px;">&#xe6df;</i>
 							</a>
 							<if condition='$v["id"] neq 1'>
-								<a title="删除" href="javascript:;" onclick="admin_role_del(this,'{$v.id}')" class="ml-5" style="text-decoration:none">
+								<a title="删除" href="{:U('Rbac/delRole',array('id'=>$v['id']))}"  class="ml-5" style="text-decoration:none">
 									<i class="Hui-iconfont" style="font-size: 22px;">&#xe6e2;</i>
 								</a>
 							</if>

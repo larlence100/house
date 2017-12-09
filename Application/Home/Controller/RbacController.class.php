@@ -61,6 +61,16 @@
             }
 
         }
+
+        public function delrole()
+        {
+            $model = M('role');
+            if ($model->where('id='.I('id'))->delete()) {
+                $this->success('刪除成功');
+            }else{
+                $this->error('刪除失败');
+            }
+        }
     	//用户列表
         public function index(){
             $map['gongsiid']=session('gongsiid');
