@@ -81,6 +81,8 @@ class CommonController extends ApiController
                 'chaoxiang'=>I('chaoxiang',0),
                 'louceng'=>I('louceng',''),
                 'mobile'=>I('mobile',''),
+                'nianxian'=>I('nianxian',''),
+                'content'=>I('content',''),
                 'created_at' =>  time()
             ];
             foreach($data as $key=>$value) {

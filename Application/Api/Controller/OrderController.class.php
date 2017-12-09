@@ -30,7 +30,7 @@ class OrderController extends ApiController
             $Page  = new \Think\Page($count['0']['count(*)'],$pageSize);
             $list = M('order')->where($where)->order('order_time')->limit($Page->firstRow.','.$Page->listRows)->select();
             foreach($list as $key=>$value){
-                $fy = getFangYuanById($value['id']);
+                $fy = getFangYuanById($value['fangyuan_id']);
                 $list[$key]['fybiaoti'] = $fy['fybiaoti'];
             }
             return $this->returnApiSuccessWithData(['count'=>$count[0]['total'],'pagesize'=>$pageSize,'list'=>$list]);

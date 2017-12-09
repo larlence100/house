@@ -205,8 +205,10 @@
 						<th width="150">面积</th>
 						<th width="150">房屋类型</th>
 						<th width="150">朝向</th>
+						<th width="150">年限</th>
 						<th width="90">楼层</th>
 						<th width="100">手机号</th>
+						<th width="100">内容</th>
 						<th width="100">时间</th>
 					</tr>
 				</thead>
@@ -219,8 +221,10 @@
 						<td>{$v.xiaoqum}</td>
 						<td>{:getPeizhiName('fwleixing',$v['fwleixing'])}</td>
 						<td>{:getPeizhiName('chaoxiang',$v['chaoxiang'])}</td>
+						<td>{$v.nianxian}</td>
 						<td>{$v.louceng}</td>
 						<td>{$v.mobile}</td>
+						<td>{$v.content}</td>
 						<td>{$v.created_at|date='Y-m-d H:i',###}</td>
 						</td>
 					</tr>
