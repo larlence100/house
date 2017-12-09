@@ -20,7 +20,7 @@
 						<span class="c-red">*</span>角色名称：
 					</label>
 					<div class="formControls col-xs-5">
-						<input type="text" class="input-text" value="" placeholder="" id="name" name="name">
+						<input type="text" class="input-text" value="" placeholder="" id="name" name="name" required>
 					</div>
 				</div>
 				<br/>
@@ -29,7 +29,7 @@
 						<span class="c-red">*</span>角色描述：
 					</label>
 					<div class="formControls col-xs-5">
-						<input type="text" class="input-text" value="" placeholder="" id="remark" name="remark">
+						<input type="text" class="input-text" value="" placeholder="" id="remark" name="remark" required>
 					</div>
 				</div>
 				<br/>
@@ -57,7 +57,8 @@
     "
      id="submit">
     <div class="layui-input-block" style="margin-left: -15px;">
-      <button type="button" class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即提交</button>
+		<input type="submit" class="layui-btn layui-btn-radius">
+      <!--<button type="button" class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1">立即提交</button>-->
       <button type="reset" class="layui-btn layui-btn-radius layui-btn-primary">重置</button>
     </div>
   </div>			
@@ -91,7 +92,18 @@
 				}
 			});
 			$("#form-admin-role-add").validate({
-				
+				rules:{
+
+				},
+				onkeyup:false,
+				focusCleanup:true,
+				success:"valid",
+				submitHandler:function(form){
+					$(form).ajaxSubmit();
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.msg('添加成功',{time:2100});
+					 parent.location.reload();
+				}
 			});
 		});
 	</script>

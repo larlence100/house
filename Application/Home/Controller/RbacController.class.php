@@ -32,7 +32,7 @@
         }
         //角色列表
         public function Role(){
-            $map=array('gongsiid'=>session('gongsiid'));
+
             $Data=M('role');
             $count=$Data->where($map)->count();
             $Page=new \Think\Page($count,30);
@@ -43,6 +43,23 @@
             $this->assign('count',$count);
             $this->assign('page',$show);
             $this->display();
+        }
+
+        public function addRoleHandle()
+        {
+            $model = M('role');
+            $data = [
+                'name'=>I('name'),
+                'remark'=>I('remark'),
+                'status'=>1
+            ];
+
+            if ($model->add($data)) {
+                $this->success('添加成功');
+            }else{
+                $this->error('添加失败');
+            }
+
         }
     	//用户列表
         public function index(){
