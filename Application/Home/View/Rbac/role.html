@@ -238,9 +238,9 @@
 							<a title="权限分配" href="javascript:;" onclick="admin_role_edit_node('权限分配','{:U('Rbac/editRoleNode',array('rid'=>$v['id']))}','800','600')" style="text-decoration:none">
 								<i class="Hui-iconfont" style="font-size: 22px;">&#xe62d;</i>
 							</a>
-							<a title="编辑" href="javascript:;" onclick="admin_role_add('角色编辑','{:U('Rbac/editRole',array('id'=>$v['id']))}','600','400')" style="text-decoration:none">
+							<!--<a title="编辑" href="javascript:;" onclick="admin_role_add('角色编辑','{:U('Rbac/editRole',array('id'=>$v['id']))}','600','400')" style="text-decoration:none">
 								<i class="Hui-iconfont" style="font-size: 18px;">&#xe6df;</i>
-							</a>
+							</a>-->
 							<if condition='$v["id"] neq 1'>
 								<a title="删除" href="{:U('Rbac/delRole',array('id'=>$v['id']))}"  class="ml-5" style="text-decoration:none">
 									<i class="Hui-iconfont" style="font-size: 22px;">&#xe6e2;</i>
