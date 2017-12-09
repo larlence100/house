@@ -9,10 +9,12 @@
 
             $Data=M('order');
             $startTime = I('startTime')?I('startTime'):'';
-            $order_status = I('order_status',1);
+            $order_status = I('order_status',3);
             $endTime = I('endTime')?I('endTime'):date('Y-m-d',time());
             $map['order_time'] = array('between',[strtotime($startTime),strtotime($endTime)]);
-            $map['order_status'] = $order_status;
+            if($order_status !=3) {
+                $map['order_status'] = $order_status;
+            }
             $count=$Data->where($map)->count();
             $Page=new \Think\Page($count,30);
             $show=$Page->show();
