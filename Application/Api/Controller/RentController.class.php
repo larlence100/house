@@ -139,8 +139,13 @@ class RentController extends ApiController
             $result['longitude'] = $logAndDim[0];
             $result['dimensions'] = $logAndDim[1];
 
+
+            $result['mapimg'] = "/Public/images/map_default.jpg";
+
             //图片
             $result['photo'] = getHousePhoto($result['bianhao']);
+
+
 
             //用户是否收藏该房源
             $result['is_collect'] = 0;
