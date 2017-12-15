@@ -142,8 +142,6 @@ class RentController extends ApiController
             //图片
             $result['photo'] = getHousePhoto($result['bianhao']);
 
-            $result['mapimg'] = "/Public/images/map_default.jpg";
-
             //用户是否收藏该房源
             $result['is_collect'] = 0;
             $check = checkUserFangyuanCollect($id,$this->user->id);
@@ -168,7 +166,7 @@ class RentController extends ApiController
     public function rent_list_new(){
         $pianqu = I('cityid');
         $model = M('fangyuan');
-        $result = $model->where(['pianqu'=>$pianqu,'leixing'=>1,'status'=>1])->order('lurusj desc')->limit(3)->select();
+        $result = $model->where(['pianqu'=>$pianqu,'leixing'=>2,'status'=>1])->order('lurusj desc')->limit(3)->select();
         foreach($result as $k=>$v){
             $result[$k]['photo'] = getHousePhoto($v['bianhao']);
         }
